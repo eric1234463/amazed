@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ProfilePage } from '../pages/profile/profile';
 import { GeneratrorPage } from '../pages/qr/qr';
 import { TabsPage } from '../pages/tabs/tabs';
+import { RecordEntryInfoPage } from '../pages/home/recordentryinfo/recordentryinfo'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     GeneratrorPage,
     HomePage,
+    RecordEntryInfoPage,
     TabsPage
   ],
   imports: [
@@ -29,6 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     GeneratrorPage,
     HomePage,
+    RecordEntryInfoPage,
     TabsPage
   ],
   providers: [
