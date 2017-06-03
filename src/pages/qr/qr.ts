@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {QRCodeComponent} from 'angular2-qrcode';
+import {UserService, User} from '../../services/user';
 
-@Component({
-  selector: 'page-about',
-  templateUrl: 'qr.html'
-})
+@Component({ templateUrl: 'qr.html'})
 export class GeneratrorPage {
-
-  constructor(public navCtrl: NavController) {
-
-  }
-
+    public user:String
+    constructor(public navCtrl : NavController,public userService:UserService) {
+        this.user = "" + this.userService.currentUser;
+        console.log(this.user);
+    }
 }

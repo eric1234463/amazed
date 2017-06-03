@@ -1,17 +1,61 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Profile
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar>
+       <ion-title>
+            Eric Kwong
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only>
+        <ion-icon name="brush"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <ion-item-group>
+        <ion-item-divider color="primary">Personal Information</ion-item-divider>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>HKID</p>
+            <span item-right>{{user.hkid}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Gender</p>
+            <span item-right>{{user.gender}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Birthday</p>
+            <span item-right>{{user.birthday}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Age</p>
+            <span item-right>{{user.age}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Height</p>
+            <span item-right>{{user.height}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Weight</p>
+            <span item-right>{{user.weight}}</span>
+        </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+        <ion-item-divider color="primary">Insurance Information</ion-item-divider>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Conpany</p>
+            <span item-right>{{user.company}}</span>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="ionic" item-left></ion-icon>
+            <p>Plan</p>
+            <span item-right>{{user.plan}}</span>
+        </ion-item>
+    </ion-item-group>
 </ion-content>
