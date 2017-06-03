@@ -7,7 +7,7 @@ import {UserService, User} from '../../services/user';
 export class GeneratrorPage {
     public user:String
     constructor(public navCtrl : NavController,public userService:UserService) {
-        this.user = "" + this.userService.currentUser;
+        this.user = "" + JSON.stringify(this.userService.currentUser);
         console.log(this.user);
     }
 }

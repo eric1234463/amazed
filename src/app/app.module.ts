@@ -46,6 +46,5 @@ import {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
->>>>>>> d9e9c45ad94e4468b60902014787132b457279ea
 })
 export class AppModule {}
