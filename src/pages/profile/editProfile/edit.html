@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons start>
+            <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+        </ion-buttons>
+        <ion-title>
+            {{user.username}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="save()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider color="primary">Personal Information</ion-item-divider>
+        <ion-item>
+            <ion-label floating>
+                Username
+            </ion-label>
+            <ion-input [(ngModel)]='user.username' type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                HKID
+            </ion-label>
+            <ion-input [(ngModel)]='user.hkid' type="text"></ion-input>
+        </ion-item>
+        <ion-item class="inputBox">
+            <ion-label>
+                Gender
+            </ion-label>
+            <ion-select [(ngModel)]='user.gender' multiple="false">
+                <ion-option [value]="Men">Men</ion-option>
+                <ion-option [value]="Female">Female</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                Age
+            </ion-label>
+            <ion-input [(ngModel)]='user.age' type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                Height
+            </ion-label>
+            <ion-input [(ngModel)]='user.height' type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>
+                Weight
+            </ion-label>
+            <ion-input [(ngModel)]='user.weight' type="text"></ion-input>
+        </ion-item>
+    </ion-item-group>
+
+</ion-content>

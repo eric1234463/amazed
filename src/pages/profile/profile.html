@@ -1,10 +1,10 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
        <ion-title>
-            Eric Kwong
+            {{user.username}}
         </ion-title>
         <ion-buttons end>
-            <button ion-button icon-only>
+            <button ion-button icon-only (click)='edit()'>
         <ion-icon name="brush"></ion-icon>
       </button>
         </ion-buttons>
@@ -23,11 +23,6 @@
             <ion-icon name="ionic" item-left></ion-icon>
             <p>Gender</p>
             <span item-right>{{user.gender}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Birthday</p>
-            <span item-right>{{user.birthday}}</span>
         </ion-item>
         <ion-item>
             <ion-icon name="ionic" item-left></ion-icon>

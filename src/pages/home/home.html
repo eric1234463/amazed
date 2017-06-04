@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Records</ion-title>
   </ion-navbar>
 </ion-header>
@@ -7,8 +7,8 @@
 <ion-content padding>
   <ion-grid>
     <ion-row (click)="recordEntryInfoClick()">
-      <ion-col col-3 style="text-align: center">Apr <br> 30</ion-col>
-      <ion-col>Medical Check Up<br> Dr. Tam - <span style="text-align: right">Queen Elizabeth</span></ion-col>
+      <ion-col col-3 style="text-align: center">{{user.record.month}} <br> {{user.record.day}}</ion-col>
+      <ion-col>{{user.record.topic}}<br> {{user.record.doctor}} - <span style="text-align: right">{{user.record.hospital}}</span></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
