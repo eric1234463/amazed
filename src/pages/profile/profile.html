@@ -1,56 +1,49 @@
 <ion-header>
-    <ion-toolbar color="primary">
-       <ion-title>
-            {{user.username}}
-        </ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only (click)='edit()'>
-        <ion-icon name="brush"></ion-icon>
-      </button>
-        </ion-buttons>
-    </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-title>
+			{{user.username}}
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)='edit()'>
+				<ion-icon name="create"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
-
 <ion-content>
-    <ion-item-group>
-        <ion-item-divider color="primary">Personal Information</ion-item-divider>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>HKID</p>
-            <span item-right>{{user.hkid}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Gender</p>
-            <span item-right>{{user.gender}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Age</p>
-            <span item-right>{{user.age}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Height</p>
-            <span item-right>{{user.height}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Weight</p>
-            <span item-right>{{user.weight}}</span>
-        </ion-item>
-    </ion-item-group>
-    <ion-item-group>
-        <ion-item-divider color="primary">Insurance Information</ion-item-divider>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Conpany</p>
-            <span item-right>{{user.company}}</span>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ionic" item-left></ion-icon>
-            <p>Plan</p>
-            <span item-right>{{user.plan}}</span>
-        </ion-item>
-    </ion-item-group>
+	<ion-card>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-2>
+				</ion-col>
+				<ion-col col-8>
+					<img class='icon' src="assets/icon/favicon.ico"/>
+				</ion-col>
+				<ion-col col-2>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-list>
+			<ion-item>
+				<p>HKID</p>
+				<span item-right>{{user.hkid}}</span>
+			</ion-item>
+			<ion-item>
+				<p>Gender</p>
+				<span item-right>{{user.gender}}</span>
+			</ion-item>
+			<ion-item>
+				<p>Age</p>
+				<span item-right>{{user.age}}</span>
+			</ion-item>
+			<ion-item>
+				<p>Height</p>
+				<span item-right>{{user.height}}</span>
+			</ion-item>
+			<ion-item>
+				<p>Weight</p>
+				<span item-right>{{user.weight}}</span>
+			</ion-item>
+		</ion-list>
+	</ion-card>
 </ion-content>
