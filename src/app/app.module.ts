@@ -6,8 +6,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
-
-import {MyApp} from './app.component';
+import { MomentModule } from 'angular2-moment';
+import { MyApp } from './app.component';
 import {HomePage} from '../pages/home/home';
 import {ProfilePage} from '../pages/profile/profile';
 import {GeneratrorPage} from '../pages/qr/qr';
@@ -16,7 +16,6 @@ import {RecordEntryInfoPage} from '../pages/home/recordentryinfo/recordentryinfo
 import {StatusBar} from '@ionic-native/status-bar';
 import {NativeStorage} from '@ionic-native/native-storage';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {QRCodeModule} from 'angular2-qrcode';
 import {UserService} from '../services/user';
 import {EditPage} from '../pages/profile/editProfile/edit';
 
@@ -31,11 +30,13 @@ import {EditPage} from '../pages/profile/editProfile/edit';
 		EditPage
 	],
 	imports: [
-		BrowserModule, QRCodeModule, IonicModule.forRoot(MyApp
+		BrowserModule,
+		IonicModule.forRoot(MyApp
 			, {
 				mode: 'ios'
 			}),
 		Ionic2RatingModule,
+		MomentModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule, // imports firebase/database, only needed for database features
 		AngularFireAuthModule, // imports firebase/auth, only needed for auth features

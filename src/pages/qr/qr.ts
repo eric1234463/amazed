@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {QRCodeComponent} from 'angular2-qrcode';
 import {UserService} from '../../services/user';
 
 @Component({templateUrl: 'qr.html'})
