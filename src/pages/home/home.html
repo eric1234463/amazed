@@ -1,14 +1,29 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Records</ion-title>
-  </ion-navbar>
+	<ion-navbar color="primary">
+		<ion-title>Records</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row (click)="recordEntryInfoClick()">
-      <ion-col col-3 style="text-align: center">{{user.record.month}} <br> {{user.record.day}}</ion-col>
-      <ion-col>{{user.record.topic}}<br> {{user.record.doctor}} - <span style="text-align: right">{{user.record.hospital}}</span></ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="background">
+	<ion-grid>
+		<ion-row (click)="recordEntryInfoClick()" class="item-row" *ngFor="let record of records | async">
+			<div class="opacity-row"></div>
+			<ion-col col-2 ion-text color="light" class="date-col">
+				<p class="date">{{record.month}}</p>
+				<p class="date">{{record.day}}</p>
+			</ion-col>
+			<ion-col col-2 style="text-align: center">
+				<img class='doctor-icon' src="assets/doctor.png"/>
+				<p class="item-doctor">{{record.doctor}}</p>
+			</ion-col>
+			<ion-col col-8 ion-text color="light">
+				<p class="item-header">{{record.topic}}</p>
+				<p class="item-hospital">{{record.hospital}}</p>
+				<p class="item-location"><ion-icon name="map"></ion-icon> Room 2707, IFC , Central</p>
+				<p class="item-location"><ion-icon name="time"></ion-icon> 17:00</p>
+
+				<rating [(ngModel)]="record.rating" readOnly="false" max="5"></rating>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>

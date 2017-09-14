@@ -24,18 +24,86 @@ $colors: (
         secondary: #32db64,
         danger: #f53d3d,
         light: #f4f4f4,
-        dark: #222
+        dark: #222,
+        grey: #808080
 );
 
 .toolbar-title-ios {
   color: color($colors, light) !important;
 }
-.toolbar-ios-primary .toolbar-background-ios{
-  background: linear-gradient(to top left, #33ccff 0%, #9999ff 100%)!important;
+
+.toolbar-ios-primary .toolbar-background-ios {
+  background: linear-gradient(to right, #33ccff 0%, #9999ff 100%) !important;
 }
 
-$background-color:linear-gradient(to top left, #33ccff 0%, #9999ff 100%);
-$tabs-background: linear-gradient(to top left, #33ccff 0%, #9999ff 100%);
+.item-row {
+  height: 130px;
+}
+.opacity-row{
+  height: 130px;
+  width:100%;
+  position: absolute;
+  background: color($colors, light) !important;
+  opacity: 0.2;
+}
+.item-header{
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.9rem;
+}
+.date{
+  font-weight: bold;
+  font-size: 2.1rem;
+  text-align: center;
+  margin: 5px;
+}
+.date-col{
+  margin: 20px 0 !important;
+}
+
+.item-doctor{
+  font-size: 1.7rem;
+  font-weight:bold;
+  margin: 5px 0 0 0;
+  color: color($colors, light) !important;
+}
+.item-hospital{
+  font-size: 1.7rem;
+  margin: 5px 0 0 0;
+  color: color($colors, light) !important;
+}
+.item-location{
+  margin: 0;
+  color: color($colors, light) !important;
+}
+.background {
+  background: linear-gradient(to right, #33ccff 0%, #9999ff 100%);
+}
+
+.doctor-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.grid{
+  padding:0px!important;
+}
+ul {
+  padding: 0px;
+  margin: 0px;
+
+  &.rating li {
+    padding: 0px !important;
+    background: none;
+    color: color($colors, light) !important;;
+
+    ion-icon {
+      font-size: 14px;
+    }
+  }
+}
+
+$tabs-background: linear-gradient(to right, #33ccff 0%, #9999ff 100%);
 $tabs-tab-color-inactive: color($colors, light, 0.7);
 $tabs-tab-color-active: color($colors, light);
 
