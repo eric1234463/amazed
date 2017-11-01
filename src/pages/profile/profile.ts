@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController,IonicPage} from 'ionic-angular';
 import {UserService, User} from '../../services/user';
 import {EditPage} from './editProfile/edit';
-
+@IonicPage({
+	name: 'profile',
+	segment: 'profile'
+})
 @Component({selector: 'page-profile', templateUrl: 'profile.html'})
 export class ProfilePage {
     public user:User

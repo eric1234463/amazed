@@ -37,17 +37,11 @@ $colors: (
 }
 
 .item-row {
-  height: 140px;
+  background-color: rgba(204, 255, 255, 0.4);
+  padding: 10px 0 0 0;
+  border-bottom: outset 2px #9999ff;
 }
 
-.opacity-row {
-  height: 140px;
-  border-bottom: outset 2px;
-  width: 100%;
-  position: absolute;
-  background: color($colors, light) !important;
-  opacity: 0.2;
-}
 
 .item-header {
   margin: 0;

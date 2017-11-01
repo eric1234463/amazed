@@ -7,7 +7,6 @@
 <ion-content class="background">
 	<ion-grid>
 		<ion-row (click)="recordEntryInfoClick()" class="item-row" *ngFor="let record of records | async">
-			<div class="opacity-row"></div>
 			<ion-col col-2 ion-text color="light" class="date-col">
 				<p class="date">{{record.month}}</p>
 				<p class="date">{{record.day}}</p>

@@ -1,18 +1,27 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {RecordEntryInfoPage} from './recordentryinfo/recordentryinfo';
-import {UserService, User} from '../../services/user';
-import { AngularFireDatabase ,FirebaseListObservable } from 'angularfire2/database';
+import {NavController , IonicPage} from 'ionic-angular';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
+export interface Records {
+	id:number;
+	doctorID:number;
+	hospitalID:number
+	day:string;
+	month:string;
+	title:string;
+}
+@IonicPage({
+	name: 'home',
+	segment: 'home'
+})
 @Component({selector: 'page-home', templateUrl: 'home.html'})
+
 export class HomePage {
-    public records : FirebaseListObservable<any[]>;
-    constructor(public navCtrl : NavController, public userService : UserService, public db: AngularFireDatabase) {
-		this.records = this.db.list('/patient/-KtuIItlzBQgI3GrJnG3/records');
+    public recordsCollection : AngularFirestoreCollection<Records>;
+	public records : Observable<Records[]>;
+    constructor(public navCtrl : NavController, public afs: AngularFirestore) {
+	    this.recordsCollection = afs.collection<Records>('records');
+	    this.records = this.recordsCollection.valueChanges();
     }
-
-    recordEntryInfoClick() {
-
-    }
-
 }
