@@ -29,6 +29,7 @@
         "angular2-qrscanner": "^0.1.7",
         "angularfire2": "^5.0.0-rc.3",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
@@ -62,7 +63,8 @@
             "cordova-plugin-nativestorage": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
