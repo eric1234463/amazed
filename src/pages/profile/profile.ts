@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController,IonicPage} from 'ionic-angular';
 import {UserService, User} from '../../services/user';
-import {EditPage} from './editProfile/edit';
 @IonicPage({
 	name: 'profile',
 	segment: 'profile'
@@ -16,7 +15,7 @@ export class ProfilePage {
     }
 
     edit(){
-        this.navCtrl.push(EditPage);
+        this.navCtrl.push('profile-edit');
     }
 
 }

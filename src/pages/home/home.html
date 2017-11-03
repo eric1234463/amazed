@@ -6,8 +6,8 @@
 
 <ion-content class="background">
 	<ion-grid>
-		<ion-row (click)="recordEntryInfoClick()" class="item-row" *ngFor="let record of records | async">
-			<ion-col col-2 ion-text color="light" class="date-col">
+		<ion-row class="item-row" *ngFor="let record of records | async">
+			<ion-col col-2 ion-text color="primary" class="date-col">
 				<p class="date">{{record.month}}</p>
 				<p class="date">{{record.day}}</p>
 			</ion-col>
@@ -17,8 +17,8 @@
 				</div>
 				<p class="item-doctor">{{record.doctor}}</p>
 			</ion-col>
-			<ion-col col-7 ion-text color="light">
-				<p class="item-header">{{record.topic}}</p>
+			<ion-col col-7>
+				<p class="item-header" ion-text color="primary">{{record.title}}</p>
 				<p class="item-hospital">{{record.hospital}}</p>
 				<p class="item-has-icon">
 					<ion-icon name="map" class="inline-icon"></ion-icon>

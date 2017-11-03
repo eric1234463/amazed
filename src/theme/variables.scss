@@ -25,21 +25,13 @@ $colors: (
         danger: #f53d3d,
         light: #f4f4f4,
         dark: #222,
-        grey: #808080
+        grey: #f7f7f7
 );
 
-.toolbar-title-ios {
-  color: color($colors, light) !important;
-}
-
-.toolbar-ios-primary .toolbar-background-ios {
-  background: linear-gradient(to right, #33ccff 0%, #9999ff 100%) !important;
-}
-
 .item-row {
-  background-color: rgba(204, 255, 255, 0.4);
   padding: 10px 0 0 0;
-  border-bottom: outset 2px #9999ff;
+  background: #fff;
+  border-bottom: outset 1px #dfe3ee;
 }
 
 
@@ -74,13 +66,11 @@ $colors: (
   font-size: 16px;
   font-weight: bold;
   margin: 5px 0 0 0;
-  color: color($colors, light) !important;
 }
 
 .item-hospital {
   font-size: 14px;
   margin: 5px 0 0 0;
-  color: color($colors, light) !important;
 }
 
 .item-location {
@@ -89,7 +79,7 @@ $colors: (
 }
 
 .background {
-  background: linear-gradient(to right, #33ccff 0%, #9999ff 100%);
+  background: color($colors,grey)!important;
 }
 
 .doctor-icon-outer {
@@ -114,7 +104,7 @@ ul {
   &.rating li {
     padding: 0px !important;
     background: none;
-    color: color($colors, light) !important;;
+    color: color($colors, primary) !important;;
 
     ion-icon {
       font-size: 14px;
@@ -122,9 +112,9 @@ ul {
   }
 }
 
-$tabs-background: linear-gradient(to right, #33ccff 0%, #9999ff 100%);
-$tabs-tab-color-inactive: color($colors, light, 0.7);
-$tabs-tab-color-active: color($colors, light);
+$tabs-background: #fff;
+$tabs-tab-color-inactive: color($colors, primary, 0.7);
+$tabs-tab-color-active: color($colors, primary);
 
 // App iOS Variables
 // --------------------------------------------------

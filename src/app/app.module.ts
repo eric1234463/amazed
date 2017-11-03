@@ -10,11 +10,11 @@ import { environment } from '../environments/environment';
 import { MomentModule } from 'angular2-moment';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
-
 import {StatusBar} from '@ionic-native/status-bar';
 import {NativeStorage} from '@ionic-native/native-storage';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {UserService} from '../services/user';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
 	declarations: [
@@ -43,6 +43,7 @@ import {UserService} from '../services/user';
 		StatusBar,
 		UserService,
 		NativeStorage,
+		BarcodeScanner,
 		SplashScreen, {
 			provide: ErrorHandler,
 			useClass: IonicErrorHandler
