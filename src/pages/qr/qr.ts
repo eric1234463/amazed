@@ -34,10 +34,10 @@ export class GeneratrorPage {
 			this.doctorDoc = this.afs.doc('doctor/'+this.doctorID);
 			this.doctor = this.doctorDoc.valueChanges();
 			this.doctor.subscribe(doctor => {
-				doctor.visited = true;
 				this.currentDoctor = doctor;
-				this.doctorDoc.update(doctor);
-			})
+			});
+			this.currentDoctor.visited = true;
+			this.doctorDoc.update(this.currentDoctor);
 		}, (err) => {
 			// An error occurred
 		});
