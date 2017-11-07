@@ -21,7 +21,12 @@ export class GeneratrorPage {
 	public doctorID:String;
 	public doctorDoc: AngularFirestoreDocument<Doctor>;
 	public doctor: Observable<Doctor>;
+	public currentDoctor : Doctor;
 	constructor(public navCtrl: NavController, public userService: UserService,public barcodeScanner : BarcodeScanner, public afs: AngularFirestore) {
+
+	}
+
+	qrScan(){
 		this.barcodeScanner.scan({
 			formats:'QR_CODE'
 		}).then((barcodeData) => {
@@ -30,10 +35,16 @@ export class GeneratrorPage {
 			this.doctor = this.doctorDoc.valueChanges();
 			this.doctor.subscribe(doctor => {
 				doctor.visited = true;
+				this.currentDoctor = doctor;
 				this.doctorDoc.update(doctor);
 			})
 		}, (err) => {
 			// An error occurred
 		});
+	}
+
+	cancel(){
+		this.currentDoctor.visited = false
+		this.doctorDoc.update(this.currentDoctor);
 	}
 }

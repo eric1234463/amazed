@@ -1,14 +1,19 @@
 <ion-header>
-    <ion-navbar color="primary">
-        <ion-title>
-            Generator
-        </ion-title>
-    </ion-navbar>
+	<ion-navbar color="primary">
+		<ion-title>
+			Generator
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding class="background">
-    <div style="text-align:center">
-        <p>Scan to See Record!</p>
-        <p>{{result}}</p>
-    </div>
+	<div *ngIf="(doctor | async)?.visited != true">
+		<p style="text-align:center">Scan to See Record!</p>
+		<button ion-button block (click)="qrScan()">Scan QR Code</button>
+	</div>
+	<div *ngIf="(doctor | async)?.visited == true">
+		<img class='doctor-icon' src="assets/doctor.png"/>
+		<p>{{ (doctor | async)?.name }}</p>
+		<button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
+	</div>
 </ion-content>
