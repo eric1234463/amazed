@@ -11,7 +11,7 @@ import { MomentModule } from 'angular2-moment';
 	imports: [
 		IonicPageModule.forChild(HomePage),
 		Ionic2RatingModule,
-	MomentModule
+	MomentModule,
 	],
 })
 export class HomePageModule {}

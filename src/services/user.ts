@@ -21,10 +21,10 @@ export class UserService {
     public currentUser : User;
     constructor(public nativeStorage : NativeStorage,public db: AngularFireDatabase) {
         this.currentUser = new User;
-        // this
-        //     .nativeStorage
-        //     .getItem('user')
-        //     .then(data => this.currentUser = data, error => console.error(error));
+        this
+            .nativeStorage
+            .getItem('user')
+            .then(data => this.currentUser = data, error => console.error(error));
     }
 
     public getRecords(){

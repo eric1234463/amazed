@@ -2,21 +2,36 @@ import {Component} from '@angular/core';
 import {NavController, IonicPage} from 'ionic-angular';
 import {UserService} from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+
+interface Doctor {
+	name: string;
+	location: string;
+	visited: boolean;
+}
 
 @IonicPage({
 	name: 'qr',
 	segment: 'qr'
 })
+
 @Component({templateUrl: 'qr.html'})
 export class GeneratrorPage {
-	public result:String;
-
-	constructor(public navCtrl: NavController, public userService: UserService,public barcodeScanner : BarcodeScanner) {
+	public doctorID:String;
+	public doctorDoc: AngularFirestoreDocument<Doctor>;
+	public doctor: Observable<Doctor>;
+	constructor(public navCtrl: NavController, public userService: UserService,public barcodeScanner : BarcodeScanner, public afs: AngularFirestore) {
 		this.barcodeScanner.scan({
 			formats:'QR_CODE'
 		}).then((barcodeData) => {
-			this.result = barcodeData.text;
-			// Success! Barcode data is here
+			this.doctorID = barcodeData.text;
+			this.doctorDoc = this.afs.doc('doctor/'+this.doctorID);
+			this.doctor = this.doctorDoc.valueChanges();
+			this.doctor.subscribe(doctor => {
+				doctor.visited = true;
+				this.doctorDoc.update(doctor);
+			})
 		}, (err) => {
 			// An error occurred
 		});

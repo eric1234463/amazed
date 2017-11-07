@@ -7,11 +7,11 @@ import {UserService, User} from '../../services/user';
 })
 @Component({selector: 'page-profile', templateUrl: 'profile.html'})
 export class ProfilePage {
-    public user:User
+    public user:User;
     constructor(public navCtrl : NavController,public userService:UserService) {
-        
-        this.user = this.userService.currentUser;
-        console.log(this.user);
+
+	    this.user = this.userService.currentUser;
+
     }
 
     edit(){

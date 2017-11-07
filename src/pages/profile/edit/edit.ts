@@ -3,7 +3,7 @@ import {NavController, IonicPage} from 'ionic-angular';
 import {UserService, User} from '../../../services/user';
 
 @IonicPage({
-	name: 'profit-edit',
+	name: 'profile-edit',
 	segment: 'profile/edit'
 })
 @Component(
