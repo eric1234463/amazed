@@ -14,6 +14,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {NativeStorage} from '@ionic-native/native-storage';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {UserService} from '../services/user';
+import { RecordService } from '../services/record';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 		UserService,
 		NativeStorage,
 		BarcodeScanner,
+		RecordService,
 		SplashScreen, {
 			provide: ErrorHandler,
 			useClass: IonicErrorHandler

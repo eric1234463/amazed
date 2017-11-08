@@ -4,11 +4,13 @@ import {UserService} from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { Record ,RecordService } from '../../services/record';
 
 interface Doctor {
 	name: string;
 	location: string;
 	visited: boolean;
+	records: Record[];
 }
 
 @IonicPage({
@@ -22,7 +24,7 @@ export class GeneratrorPage {
 	public doctorDoc: AngularFirestoreDocument<Doctor>;
 	public doctor: Observable<Doctor>;
 	public currentDoctor : Doctor;
-	constructor(public navCtrl: NavController, public userService: UserService,public barcodeScanner : BarcodeScanner, public afs: AngularFirestore) {
+	constructor(public navCtrl: NavController, public userService: UserService,public barcodeScanner : BarcodeScanner, public afs: AngularFirestore, public recordService :RecordService) {
 
 	}
 
@@ -36,6 +38,7 @@ export class GeneratrorPage {
 			this.doctor.subscribe(doctor => {
 				this.currentDoctor = doctor;
 			});
+			this.currentDoctor.records = this.recordService.getCurrentRecords();
 			this.currentDoctor.visited = true;
 			this.doctorDoc.update(this.currentDoctor);
 		}, (err) => {
@@ -45,6 +48,7 @@ export class GeneratrorPage {
 
 	cancel(){
 		this.currentDoctor.visited = false;
-		this.doctorDoc.update(this.currentDoctor);
+		this.currentDoctor.records = null;
+		this.doctorDoc.set(this.currentDoctor);
 	}
 }
