@@ -4,14 +4,9 @@ import {UserService} from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Record ,RecordService } from '../../services/record';
+import { Doctor ,Record ,RecordService } from '../../services/record';
 
-interface Doctor {
-	name: string;
-	location: string;
-	visited: boolean;
-	records: Record[];
-}
+
 
 @IonicPage({
 	name: 'qr',

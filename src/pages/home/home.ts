@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController , IonicPage } from 'ionic-angular';
 import {NativeStorage} from '@ionic-native/native-storage';
-import { Patient, RecordService } from '../../services/record';
+import { Record, RecordService } from '../../services/record';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage({
@@ -11,11 +11,17 @@ import { Observable } from 'rxjs/Observable';
 @Component({selector: 'page-home', templateUrl: 'home.html'})
 
 export class HomePage {
-	public patient : Observable<Patient>;
+	public records : Record[];
     constructor(public navCtrl : NavController, public nativeStorage: NativeStorage,public recordService : RecordService) {
-	    this.patient = this.recordService.initRecords();
+	    this.recordService.initRecords().then(success => {
+	    	console.log(success);
+	    	this.records = this.recordService.currentRecords;
+	    })
 	}
 	goToDetail(record){
-    	console.log(record);
+    	// delete record.doctor;
+    	// record.time = "2";
+    	// this.recordService.addRecords(record);
+    	// console.log(record);
 	}
 }
