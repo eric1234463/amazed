@@ -44,7 +44,7 @@ export class GeneratrorPage {
 	}
 
 	cancel(){
-		this.currentDoctor.visited = false
+		this.currentDoctor.visited = false;
 		this.doctorDoc.update(this.currentDoctor);
 	}
 }
