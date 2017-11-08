@@ -1,3 +1,45 @@
 page-home {
+    .date {
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+        margin: 5px;
+      }
+      
+      .date-col {
+        margin: 10px 0 !important;
+      }
+      
+      .inline-icon {
+        margin: 0 5px;
+        font-size: 18px;
+      }
+      
+      .item-has-icon {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+      
+      .item-doctor {
+        font-size: 12px;
+        font-weight: bold;
+        margin: 8px 0 ;
+      }
+      
+      .item-location {
+        margin: 0;
+        color: color($colors, light) !important;
+      }
+
+      .doctor-icon-outer {
+        width: 50px;
+        margin: 0 auto;
+      }
+      
+      .doctor-icon {
+        display: block;
+        width: 50px;
+        border-radius: 50px;
+      }
 
 }

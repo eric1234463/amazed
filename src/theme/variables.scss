@@ -21,7 +21,7 @@ $font-path: "../assets/fonts";
 
 $colors: (
         primary: #01579B,
-        secondary: #32db64,
+        secondary: #64b5f6,
         danger: #f53d3d,
         light: #f4f4f4,
         dark: #222,
@@ -41,56 +41,10 @@ $colors: (
   font-size: 1.9rem;
 }
 
-.date {
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  margin: 5px;
-}
 
-.date-col {
-  margin: 20px 0 !important;
-}
-
-.inline-icon {
-  margin: 0 5px;
-  font-size: 18px;
-}
-
-.item-has-icon {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-.item-doctor {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 5px 0 0 0;
-}
-
-.item-hospital {
-  font-size: 14px;
-  margin: 5px 0 0 0;
-}
-
-.item-location {
-  margin: 0;
-  color: color($colors, light) !important;
-}
 
 .background {
   background: color($colors,grey)!important;
-}
-
-.doctor-icon-outer {
-  max-width: 92.5px;
-  max-height: 92.5px;
-}
-
-.doctor-icon {
-  display: block;
-  height: inherit;
-  border-radius: 50px;
 }
 
 .grid {
@@ -104,7 +58,7 @@ ul {
   &.rating li {
     padding: 0px !important;
     background: none;
-    color: color($colors, primary) !important;;
+    color: color($colors, secondary) !important;;
 
     ion-icon {
       font-size: 14px;

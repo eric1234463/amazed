@@ -7,24 +7,23 @@
 <ion-content class="background">
 	<ion-grid>
 		<ion-row class="item-row" *ngFor="let record of records | async" (click)="goToDetail(record)">
-			<ion-col col-2 ion-text color="primary" class="date-col">
-				<p class="date">{{record.month}}</p>
-				<p class="date">{{record.day}}</p>
+			<ion-col col-3 ion-text color="secondary" class="date-col">
+				<p class="date">{{record.visitDate | amDateFormat:'MMM'}}</p>
+				<p class="date">{{record.visitDate | amDateFormat:'DD'}}</p>
 			</ion-col>
 			<ion-col col-3 style="text-align: center">
 				<div class="doctor-icon-outer">
 					<img class='doctor-icon' src="assets/doctor.png"/>
 				</div>
-				<p class="item-doctor">{{record.doctor.name}}</p>
+				<p class="item-doctor" ion-text color="secondary">{{record.doctor.name}}</p>
 			</ion-col>
-			<ion-col col-7 class="padding-0-5">
-				<p class="item-header" ion-text color="primary">{{record.title}}</p>
-				<p class="item-hospital">{{record.hospital}}</p>
+			<ion-col col-6 class="padding-10">
+				<p class="item-header" ion-text color="secondary">{{record.title}}</p>
 				<p class="item-has-icon">
 					<ion-icon name="map" class="inline-icon"></ion-icon>
 					{{record.doctor.location}}
 				</p>
-				<rating [(ngModel)]="record.rating" readOnly="false" max="5"></rating>
+				<rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
