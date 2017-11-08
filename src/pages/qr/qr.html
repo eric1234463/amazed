@@ -14,6 +14,7 @@
 	<div *ngIf="(doctor | async)?.visited == true">
 		<img class='doctor-icon' src="assets/doctor.png"/>
 		<p>{{ (doctor | async)?.name }}</p>
+		<p>{{ (doctor | async)?.location }}</p>
 		<button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
 	</div>
 </ion-content>

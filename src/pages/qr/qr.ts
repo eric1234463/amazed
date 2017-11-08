@@ -4,7 +4,7 @@ import {UserService} from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Doctor ,Record ,RecordService } from '../../services/record';
+import { Doctor ,RecordService } from '../../services/record';
 
 
 

@@ -11,12 +11,13 @@ import { Observable } from 'rxjs/Observable';
 @Component({selector: 'page-home', templateUrl: 'home.html'})
 
 export class HomePage {
-	public records : Record[];
+	public records : Observable<Record[]>;
     constructor(public navCtrl : NavController, public nativeStorage: NativeStorage,public recordService : RecordService) {
-	    this.recordService.initRecords().then(success => {
-	    	console.log(success);
-	    	this.records = this.recordService.currentRecords;
+	    this.recordService.initRecords().then(records => {
+			console.log(this.records);
+	    	this.records = records;
 	    })
+
 	}
 	goToDetail(record){
     	// delete record.doctor;

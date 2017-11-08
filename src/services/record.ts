@@ -27,8 +27,8 @@ export interface Patient {
 export class RecordService {
 	public doctorDoc: AngularFirestoreDocument<Doctor>;
 	public recordCollection: AngularFirestoreCollection<Record>;
-	private doctor: Observable<Doctor>;
-	private records: Observable<Record[]>;
+	public doctor: Observable<Doctor>;
+	public records: Observable<Record[]>;
 	public currentRecords: Record[];
 
 	constructor(public afs: AngularFirestore) {
@@ -36,18 +36,13 @@ export class RecordService {
 	}
 
 	public initRecords() {
-		return new Promise((resolve, reject) => {
+		return new Promise<Observable<Record[]>>((resolve, reject) => {
 			this.recordCollection = this.afs.collection<Record>('patient/yE5exzj4fGgvFrVCNluomceR96a2/record');
 			this.records = this.recordCollection.valueChanges();
-			this.records.subscribe(records => {
-				records.forEach(record => {
-					this.doctorDoc = this.afs.doc<Doctor>('doctor/' + record.doctorID);
-					this.doctor = this.doctorDoc.valueChanges();
-					record.doctor = this.doctor;
-				});
+			this.records.subscribe(records=>{
 				this.currentRecords = records;
-				resolve(records);
-			});
+			})
+			resolve(this.records);
 		});
 	}
 
