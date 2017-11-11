@@ -31,4 +31,12 @@
 .padding-10{
   padding:10px;
 }
+.border-3{
+  border-style: groove;
+  border-width: 1px 0px;
+  border-color: color($colors,grey)!important;
+}
   
+.f-14{
+  font-size: 14px;
+}

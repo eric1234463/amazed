@@ -3,6 +3,19 @@
     "no-duplicate-variable": true,
     "no-unused-variable": [
       true
+    ],
+    "indent": [
+      true,
+      "tabs",
+      4
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
     ]
   },
   "rulesDirectory": [
