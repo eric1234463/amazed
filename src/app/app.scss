@@ -16,34 +16,37 @@
 // automatically applied to the <body> element in the app.
 
 .margin-5 {
-  margin:5px;
+    margin:5px;
 }
 .margin-0-5{
-  margin:0 5px;
+    margin:0 5px;
 }
 
 .padding-25{
-  padding: 25px;
+    padding: 25px;
 }
 
 .padding-5{
-  padding:5px;
+    padding:5px;
+}
+.padding-8{
+    padding: 8px;
 }
 .padding-0-5{
-  padding:0 5px;
+    padding:0 5px;
 }
 .padding-0-10{
-  padding: 0 10px;
+    padding: 0 10px;
 }
 .padding-10{
-  padding:10px;
+    padding:10px;
 }
 .border-2{
-  border-style: solid;
-  border-width: 2px 0px;
-  border-color: color($colors,grey)!important;
+    border-style: solid;
+    border-width: 2px 0px;
+    border-color: color($colors,grey)!important;
 }
-  
+
 .f-14{
-  font-size: 14px;
+    font-size: 14px;
 }

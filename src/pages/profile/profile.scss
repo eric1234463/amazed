@@ -1,6 +1,23 @@
 page-profile {
-    .icon{
-        border-radius: 50%;
+    .cover{
         width: 100%;
+        height: 160px;
+        background-color: color($colors, secondary);
+        top:0;
+        text-align: center;
+        color: #fff;
+    }
+    .user-icon{
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+    }
+    .user-name{
+        font-size: 18px;
+        font-weight: bold;
+        margin:10px;
+    }
+    .icon-container{
+        padding-top: 20px
     }
 }

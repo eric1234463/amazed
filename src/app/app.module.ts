@@ -17,7 +17,6 @@ import { UserService } from '../services/user';
 import { RecordService } from '../services/record';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Facebook } from '@ionic-native/facebook';
-
 @NgModule({
     declarations: [
         MyApp,

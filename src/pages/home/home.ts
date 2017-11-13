@@ -4,12 +4,14 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Record, RecordService } from '../../services/record';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-
 @IonicPage({
     name: 'home',
     segment: 'home'
 })
-@Component({ selector: 'page-home', templateUrl: 'home.html' })
+@Component({
+    selector: 'page-home',
+    templateUrl: 'home.html'
+})
 
 export class HomePage {
     public records: Observable<Record[]>;
@@ -18,8 +20,6 @@ export class HomePage {
         this.recordService.initRecords().then(records => {
             this.records = records;
         })
-
-
     }
 
 

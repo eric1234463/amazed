@@ -21,8 +21,8 @@ export class LoginPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserService) {
     }
 
-    googleLogin() {
-        this.userService.googleLogin().then(success => {
+    facebookLogin() {
+        this.userService.facebookLogin().then(success => {
             this.navCtrl.push(TabsPage);
         });
     }

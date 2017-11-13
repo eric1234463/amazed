@@ -26,31 +26,14 @@ $colors: (
         light: #f4f4f4,
         dark: #222,
         grey: #f7f7f7,
-        airbnb:#555f61
+        airbnb:#555f61,
+        star :#FFC107,
 );
-
-.item-row {
-  padding: 10px 0 0 0;
-  background: #fff;
-  border-bottom: outset 1px #dfe3ee;
-}
-
-
-.item-header {
-  margin: 0;
-  font-weight: bold;
-  font-size: 1.9rem;
-}
-
-
 
 .background {
   background: color($colors,grey)!important;
 }
 
-.grid {
-  padding: 0px !important;
-}
 
 ul {
   padding: 0px;
@@ -59,7 +42,7 @@ ul {
   &.rating li {
     padding: 0px !important;
     background: none;
-    color: color($colors, secondary) !important;;
+    color: color($colors, star) !important;;
 
     ion-icon {
       font-size: 14px;

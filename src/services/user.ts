@@ -19,7 +19,6 @@ export interface User {
 @Injectable()
 export class UserService {
     public user: Observable<User>;
-    public currentUser: User;
     constructor(private afAuth: AngularFireAuth,
         private afs: AngularFirestore,
         public platform: Platform,
@@ -35,16 +34,23 @@ export class UserService {
                 }
             })
     }
-    googleLogin() {
+    facebookLogin() {
         return new Promise((resolve, reject) => {
-            if (this.platform.is('cordova')) {
-                return this.fb.login(['email', 'public_profile']).then(res => {
+            if (!this.platform.is('mobileweb')) {
+                this.fb.login(['email', 'public_profile']).then(res => {
+                    console.log(res);
                     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-                    resolve(firebase.auth().signInWithCredential(facebookCredential));
+                    this.afAuth.auth.signInWithCredential(facebookCredential).then((user) => {
+                        this.updateUserData(user);
+                        resolve(user);
+                    }).catch((error) => {
+                        console.log(error);
+                        reject(error);
+                    })
                 })
             }
             else {
-                return this.afAuth.auth
+                this.afAuth.auth
                     .signInWithPopup(new firebase.auth.FacebookAuthProvider())
                     .then(res => {
                         console.log(res);
@@ -53,8 +59,10 @@ export class UserService {
             }
         });
     }
-
-    private updateUserData(user) {
+    logout() {
+        this.afAuth.auth.signOut();
+    }
+    updateUserData(user) {
         // Sets user data to firestore on login
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`patient/${user.uid}`);
         const data: User = {
@@ -67,7 +75,7 @@ export class UserService {
         }
         return userRef.set(data)
     }
-    public getUserID() {
+    getUserID() {
         return new Promise<String>((resolve, reject) => {
             this.user.subscribe(user => {
                 resolve(user.uid);
