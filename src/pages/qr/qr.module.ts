@@ -3,11 +3,11 @@ import { IonicPageModule } from 'ionic-angular';
 import { GeneratrorPage } from './qr';
 
 @NgModule({
-	declarations: [
-		GeneratrorPage,
-	],
-	imports: [
-		IonicPageModule.forChild(GeneratrorPage),
-	],
+    declarations: [
+        GeneratrorPage,
+    ],
+    imports: [
+        IonicPageModule.forChild(GeneratrorPage),
+    ],
 })
-export class QrPageModule {}
+export class QrPageModule { }

@@ -1,30 +1,29 @@
 <ion-header>
-	<ion-navbar color="primary">
-		<ion-title>Records</ion-title>
-	</ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>Records</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content class="background">
-	<ion-grid>
-		<ion-row class="item-row" *ngFor="let record of records | async" (click)="goToDetail(record)">
-			<ion-col col-3 ion-text color="secondary" class="date-col">
-				<p class="date">{{record.visitDate | amDateFormat:'MMM'}}</p>
-				<p class="date">{{record.visitDate | amDateFormat:'DD'}}</p>
-			</ion-col>
-			<ion-col col-3 style="text-align: center">
-				<div class="doctor-icon-outer">
-					<img class='doctor-icon' src="{{record.doctor.icon}}" />
-				</div>
-				<p class="item-doctor" ion-text color="secondary">{{record.doctor.name}}</p>
-			</ion-col>
-			<ion-col col-6 class="padding-10">
-				<p class="item-header" ion-text color="secondary">{{record.title}}</p>
-				<p class="item-has-icon">
-					<ion-icon name="map" class="inline-icon"></ion-icon>
-					{{record.doctor.location}}
-				</p>
-				<rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+    <ion-grid>
+        <ion-row class="item-row" *ngFor="let record of records | async" (click)="goToDetail(record)">
+            <ion-col col-3 ion-text color="secondary" class="date-col">
+                <p class="date">{{record.visitDate | amDateFormat:'MMM'}}</p>
+                <p class="date">{{record.visitDate | amDateFormat:'DD'}}</p>
+            </ion-col>
+            <ion-col col-3 style="text-align: center" *ngIf="(record.doctorID | doc | async) as doctor">
+                <div class="doctor-icon-outer">
+                    <img class='doctor-icon' src="{{doctor.icon}}" />
+                </div>
+                <p class="item-doctor" ion-text color="secondary">{{doctor.name}}</p>
+            </ion-col>
+            <ion-col col-6 class="padding-10">
+                <p class="item-header" ion-text color="secondary">{{record.title}}</p>
+                <p class="item-has-icon">
+                    <ion-icon name="map" class="inline-icon"></ion-icon>
+                </p>
+                <rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

@@ -21,24 +21,35 @@
             </ion-row>
         </ion-grid>
     </div>
-    <div class="padding-10" ion-text color="airbnb">
-        <ion-grid class="border-3 padding-10">
-            <ion-row class="f-14">
-                <ion-col col-3>
-                    <ion-icon name="calendar" class="icon"></ion-icon>
+    <div class="padding-10">
+        <h2 ion-text color="airbnb" class="description">{{record.description}}</h2>
+        <ion-grid class="border-2 padding-5">
+            <ion-row>
+                <ion-col col-1 ion-text color="secondary">
+                    <i class="grid-icon icon-moon icon-calendar"></i>
                 </ion-col>
-                <ion-col>
-                    <h2>Visit Date</h2>
-                    <p>{{record.visitDate | amDateFormat:'DD MMM YYYY'}}</p>
+                <ion-col col-10 class="padding-0-10">
+                    <h6 ion-text color="secondary">Visit Date</h6>
+                    <p class="f-14" ion-text color="airbnb">{{record.visitDate | amDateFormat:'DD MMM YYYY'}}</p>
                 </ion-col>
             </ion-row>
-            <ion-row class="f-14">
-                <ion-icon name="calendar" class="icon"></ion-icon>
-                <span>{{record.visitDate | amDateFormat:'DD MMM YYYY'}}</span>
+            <ion-row>
+                <ion-col col-1 ion-text color="secondary">
+                    <i class="grid-icon icon-moon icon-calendar"></i>
+                </ion-col>
+                <ion-col col-10 class="padding-0-10">
+                    <h6 ion-text color="secondary">Start Date</h6>
+                    <p class="f-14" ion-text color="airbnb">{{record.startDate | amDateFormat:'DD MMM YYYY'}}</p>
+                </ion-col>
             </ion-row>
-            <ion-row class="f-14">
-                <ion-icon name="calendar" class="icon"></ion-icon>
-                <span>{{record.visitDate | amDateFormat:'DD MMM YYYY'}}</span>
+            <ion-row>
+                <ion-col col-1 ion-text color="secondary">
+                    <i class="grid-icon icon-moon icon-calendar"></i>
+                </ion-col>
+                <ion-col col-10 class="padding-0-10">
+                    <h6 ion-text color="secondary">End Date</h6>
+                    <p class="f-14" ion-text color="airbnb">{{record.endDate | amDateFormat:'DD MMM YYYY'}}</p>
+                </ion-col>
             </ion-row>
         </ion-grid>
     </div>

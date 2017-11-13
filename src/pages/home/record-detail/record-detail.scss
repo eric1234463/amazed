@@ -14,12 +14,18 @@ page-record-detail{
     }
     .doctor-name{
         font-size: 18px;
-        font-weight: bold
+        font-weight: bold;
+        margin:10px;
     }
     .icon-container{
         padding-top: 20px
     }
-    .icon{
-        margin: 0 5px;
+    .grid-icon{
+        font-size: 24px;
+        position: absolute;
+        top:30px;
+    }
+    .description{
+        margin: 10px 0px;
     }
 }

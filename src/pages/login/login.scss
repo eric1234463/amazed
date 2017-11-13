@@ -1,0 +1,19 @@
+page-login {
+    .login-background{
+        background: color($colors,primary);
+    }
+    .google-button{
+        color: color($colors,primary);
+        background: color($colors,light);
+    }
+    h2 {
+        text-align: center;
+        color: color($colors,light);
+    }
+    p {
+        text-align: center;
+        color: color($colors,light);
+        font-size: 16px;
+    }
+
+}
