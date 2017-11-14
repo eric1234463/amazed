@@ -13,6 +13,9 @@ export interface User {
     uid: String;
     photoURL?: String;
     displayName?: String;
+    weight: number;
+    height: number;
+    bmi: number;
 };
 
 @Injectable()
@@ -71,6 +74,9 @@ export class UserService {
             photoURL: user.photoURL,
             hkid: 'A1234XX(8)',
             gender: 'M',
+            weight: user.weight || null,
+            height: user.height || null,
+            bmi: (user.weight / Math.pow(user.height / 100, 2)) || null
         }
         return userRef.set(data)
     }

@@ -16,6 +16,7 @@ export class EditPage {
     public user: User;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
+        this.user = this.userService.getUser();
     }
 
     cancel() {
@@ -23,6 +24,7 @@ export class EditPage {
     }
 
     save() {
+        this.userService.updateUserData(this.user);
         this.navCtrl.pop();
     }
 

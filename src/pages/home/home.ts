@@ -63,8 +63,9 @@ export class HomePage {
         // record.endDate = endDate;
         // record.rate = i;
         // console.log(record);
-        // this.recordCollection = this.afs.collection<Record>('record');
-        //this.recordService.addRecords(record);
+
+        //this.recordCollection = this.afs.collection<Record>('record');
+        //this.recordService.add(record);
         this.appCtrl.getRootNav().push('record-detail', {
             record: record
         })

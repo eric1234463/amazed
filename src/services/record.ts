@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
-import { UserService } from './user'
+import { UserService } from './user';
+import 'rxjs/add/operator/map';
+
+
 export interface Doctor {
     name: string;
     location: string;
@@ -37,12 +40,19 @@ export class RecordService {
 
     }
 
-    public initRecords() {
+    initRecords() {
         return new Promise<Observable<Record[]>>((resolve, reject) => {
             this.userService.getUserID().then(uid => {
+                this.recordCollection = this.afs.collection<Record>('record');
                 this.records = this.afs.collection<Record>('record', ref =>
                     ref.where('userID', '==', uid)
-                ).valueChanges();
+                ).snapshotChanges().map(actions => {
+                    return actions.map(a => {
+                        const data = a.payload.doc.data() as Record;
+                        const id = a.payload.doc.id;
+                        return { id, ...data };
+                    });
+                })
 
 
                 this.records.subscribe(records => {
@@ -54,16 +64,19 @@ export class RecordService {
         });
     }
 
-    public getCurrentRecords() {
+    getCurrentRecords() {
         return this.currentRecords;
     }
 
-    public getRecords() {
+    getRecords() {
         return this.records;
     }
 
-    public addRecords(record) {
+    add(record) {
         this.recordCollection.add(record);
     }
 
+    update(record: Record) {
+        this.afs.doc<Record>(`record/${record.id}`).update(record);
+    }
 }

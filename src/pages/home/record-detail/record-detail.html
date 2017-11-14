@@ -21,7 +21,7 @@
             </ion-row>
         </ion-grid>
     </div>
-    <div class="padding-10">
+    <div>
         <ion-grid>
             <ion-row class="icon-row mat-orange-500-border">
                 <ion-col col-2 class="icon-col mat-orange-500-bg">
@@ -66,7 +66,7 @@
                 <ion-col col-10 class="padding-0-10 ">
                     <h6 class="mat-teal-500-text">Factor</h6>
                     <p class="f-14 ">
-                        <span *ngFor="let fac of record.factor" class="record-tag" [ngClass]="fac.class">{{fac.name}}</span>
+                        <span *ngFor="let factor of record.factors" class="record-tag" [ngClass]="factor.class">{{factor.name}}</span>
                     </p>
                 </ion-col>
             </ion-row>
@@ -77,15 +77,28 @@
                 <ion-col col-10 class="padding-0-10 ">
                     <h6 class="mat-lime-500-text">Medicine</h6>
                     <p class="f-14 ">
-                        <span *ngFor="let med of record.medicine" class="record-tag" [ngClass]="med.class">{{med.name}}</span>
+                        <span *ngFor="let medicine of record.medicines" class="record-tag" [ngClass]="medicine.class">{{medicine.name}}</span>
                     </p>
                 </ion-col>
             </ion-row>
         </ion-grid>
     </div>
 </ion-content>
-<ion-footer>
-    <ion-toolbar color="primary">
-        <button ion-button>Rate this doctor</button>
+<ion-footer no-border>
+    <ion-toolbar>
+        <div class="margin-0-5">
+            <p class="margin-0">
+                {{record.description}}
+            </p>
+            <p class="margin-0">
+                <rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
+            </p>
+        </div>
+        <ion-buttons end>
+            <button ion-button icon-left color="primary" outline (click)="rate()">
+                <ion-icon name="star"></ion-icon>
+                Rate
+            </button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-footer>

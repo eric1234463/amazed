@@ -31,24 +31,53 @@
                 </ion-row>
             </ion-grid>
         </div>
-        <div class="padding-10">
+        <div>
             <ion-grid>
-                <ion-row class="icon-row" style="border-color:#FFC107">
-                    <ion-col col-2 class="icon-col" style="background-color:#FFC107">
-                        <i class="grid-icon material-icons">perm_scan_wifi</i>
+                <ion-row class="icon-row mat-lime-500-border">
+                    <ion-col col-2 class="icon-col mat-lime-500-bg">
+                        <i class="grid-icon fa fa-mars" *ngIf="user.gender == 'M'"></i>
+                        <i class="grid-icon fa fa-venus" *ngIf="user.gender == 'F'"></i>
                     </ion-col>
                     <ion-col col-10 class="padding-0-10">
-                        <h6 style="color:#FFC107">Gender</h6>
+                        <h6 class="mat-lime-500-text">Gender</h6>
                         <p class="f-14" ion-text color="airbnb">{{user.gender}}</p>
                     </ion-col>
                 </ion-row>
-                <ion-row class="icon-row" style="border-color:#FFC107">
-                    <ion-col col-2 class="icon-col" style="background-color:#FFC107">
-                        <i class="grid-icon icon-moon icon-pen"></i>
+                <ion-row class="icon-row mat-purple-500-border">
+                    <ion-col col-2 class="icon-col mat-purple-500-bg">
+                        <i class="grid-icon fa fa-id-card"></i>
                     </ion-col>
                     <ion-col col-10 class="padding-0-10">
-                        <h6 style="color:#FFC107">HKID</h6>
+                        <h6 class="mat-purple-500-text">HKID</h6>
                         <p class="f-14" ion-text color="airbnb">{{user.hkid}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-blue-500-border">
+                    <ion-col col-2 class="icon-col mat-blue-500-bg">
+                        <i class="grid-icon material-icons">accessibility</i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 class="mat-blue-500-text">Height</h6>
+                        <p class="f-14" ion-text color="airbnb">{{user.height}} CM</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-pink-500-border">
+                    <ion-col col-2 class="icon-col mat-pink-500-bg">
+                        <i class="grid-icon material-icons">accessibility</i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 class="mat-pink-500-text">Weight</h6>
+                        <p class="f-14" ion-text color="airbnb">{{user.weight}} Kg</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-teal-500-border">
+                    <ion-col col-2 class="icon-col mat-teal-500-bg">
+
+                        <i class="grid-icon material-icons">format_bold</i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 class="mat-teal-500-text">BMI</h6>
+                        <p class="f-14" ion-text color="airbnb">{{user.bmi}} </p>
                     </ion-col>
                 </ion-row>
             </ion-grid>

@@ -17,10 +17,12 @@ import { UserService } from '../services/user';
 import { RecordService } from '../services/record';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Facebook } from '@ionic-native/facebook';
+import { RateComponent } from '../components/rate/rate';
 @NgModule({
     declarations: [
         MyApp,
-        TabsPage
+        TabsPage,
+        RateComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +40,8 @@ import { Facebook } from '@ionic-native/facebook';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        TabsPage
+        TabsPage,
+        RateComponent
     ],
     providers: [
         StatusBar,

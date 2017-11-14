@@ -15,6 +15,39 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.ion-md-profile-outline:before,
+.ion-ios-profile-outline:before{
+    content: "\f2c0";
+    font-family: FontAwesome;
+}
+.ion-md-profile:before,
+.ion-ios-profile:before{
+    content: "\f007";
+    font-family: FontAwesome;
+}
+.ion-md-qr-code-outline:before,
+.ion-ios-qr-code-outline:before{
+    content: "\f029";
+    font-family: FontAwesome;
+}
+.ion-md-qr-code:before,
+.ion-ios-qr-code:before{
+    content: "\f029";
+    font-family: FontAwesome;
+}
+.ion-md-record-outline:before,
+.ion-ios-record-outline:before{
+    content: "\f2c3";
+    font-family: FontAwesome;
+}
+.ion-md-record:before,
+.ion-ios-record:before{
+    content: "\f2c2";
+    font-family: FontAwesome;
+}
+.margin-0 {
+    margin: 0px;
+}
 .margin-5 {
     margin:5px;
 }
@@ -49,6 +82,7 @@
 
 .f-14{
     font-size: 14px;
+    font-weight: bold;
 }
 
 .grid-icon{
