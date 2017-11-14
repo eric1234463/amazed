@@ -53,7 +53,7 @@ export class GeneratrorPage {
                     alert.present();
                 });
             });
-        }, (err) => {
+        }).catch(() => {
             let alert = this.alertCtrl.create({
                 title: 'Scanning Error',
                 subTitle: 'Please try to scan again!',
