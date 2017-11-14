@@ -33,8 +33,12 @@ $colors: (
 .background {
   background: color($colors,grey)!important;
 }
-
-
+.mat-orange-500-bg{
+    background-color: #ff9800 !important
+}
+.mat-cyan-500-bg{
+    background-color: #00bcd4 !important
+}
 ul {
   padding: 0px;
   margin: 0px;

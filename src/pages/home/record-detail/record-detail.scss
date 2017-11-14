@@ -31,13 +31,19 @@ page-record-detail{
     }
     .icon-col {
         color: #fff;
-        border-radius: 5px;
+        border-radius: 0px 5px 5px 0;
         padding: 0px;
     }
     .icon-row {
-        border-radius: 0px 5px 5px 0;
+        border-radius: 5px;
         border-width: 2px;
         border-style: solid;
         margin-bottom: 5px;
+    }
+    .record-tag{
+        margin: 4px;
+        padding: 4px 8px;
+        color: #fff;
+        border-radius: 4px;
     }
 }
