@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Record, RecordService } from '../../services/record';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +16,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 export class HomePage {
     public records: Observable<Record[]>;
     public recordCollection: AngularFirestoreCollection<Record>;
-    constructor(public navCtrl: NavController, public nativeStorage: NativeStorage, public recordService: RecordService, public afs: AngularFirestore) {
+    constructor(public nativeStorage: NativeStorage, public recordService: RecordService, public afs: AngularFirestore, public appCtrl: App) {
         this.recordService.initRecords().then(records => {
             this.records = records;
         })
@@ -65,7 +65,7 @@ export class HomePage {
         // console.log(record);
         // this.recordCollection = this.afs.collection<Record>('record');
         //this.recordService.addRecords(record);
-        this.navCtrl.push('record-detail', {
+        this.appCtrl.getRootNav().push('record-detail', {
             record: record
         })
     }

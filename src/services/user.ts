@@ -11,7 +11,6 @@ export interface User {
     hkid: String;
     gender: String;
     uid: String;
-    email: String;
     photoURL?: String;
     displayName?: String;
 };
@@ -19,6 +18,7 @@ export interface User {
 @Injectable()
 export class UserService {
     public user: Observable<User>;
+    public currentUser: User;
     constructor(private afAuth: AngularFireAuth,
         private afs: AngularFirestore,
         public platform: Platform,
@@ -32,7 +32,7 @@ export class UserService {
                 } else {
                     return Observable.of(null)
                 }
-            })
+            });
     }
     facebookLogin() {
         return new Promise((resolve, reject) => {
@@ -67,7 +67,6 @@ export class UserService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`patient/${user.uid}`);
         const data: User = {
             uid: user.uid,
-            email: user.email,
             displayName: user.displayName,
             photoURL: user.photoURL,
             hkid: 'A1234XX(8)',
@@ -76,10 +75,15 @@ export class UserService {
         return userRef.set(data)
     }
     getUserID() {
-        return new Promise<String>((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             this.user.subscribe(user => {
+                this.currentUser = user;
                 resolve(user.uid);
             })
         })
+
+    }
+    getUser() {
+        return this.currentUser;
     }
 }

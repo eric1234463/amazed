@@ -16,18 +16,40 @@
     </ion-toolbar>
 </ion-header>
 <ion-content class="background">
-    <div *ngIf="(userDoc | async) as user">
+    <div *ngIf="user">
         <div class="cover">
             <ion-grid>
                 <ion-row>
                     <ion-col col-3></ion-col>
                     <ion-col col-6>
                         <div class="icon-container">
-                            <img [src]="user.icon" class="user-icon" />
+                            <img [src]="user.photoURL" class="user-icon" />
                         </div>
-                        <p class="user-name">{{user.displayName}}</p>
+                        <p class="user-name">{{ user.displayName}}</p>
                     </ion-col>
                     <ion-col col-3></ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div class="padding-10">
+            <ion-grid>
+                <ion-row class="icon-row" style="border-color:#FFC107">
+                    <ion-col col-2 class="icon-col" style="background-color:#FFC107">
+                        <i class="grid-icon material-icons">perm_scan_wifi</i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 style="color:#FFC107">Gender</h6>
+                        <p class="f-14" ion-text color="airbnb">{{user.gender}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row" style="border-color:#FFC107">
+                    <ion-col col-2 class="icon-col" style="background-color:#FFC107">
+                        <i class="grid-icon icon-moon icon-pen"></i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 style="color:#FFC107">HKID</h6>
+                        <p class="f-14" ion-text color="airbnb">{{user.hkid}}</p>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </div>
