@@ -22,6 +22,7 @@ export interface User {
 export class UserService {
     public user: Observable<User>;
     public currentUser: User;
+    public userSync = false;
     constructor(private afAuth: AngularFireAuth,
         private afs: AngularFirestore,
         public platform: Platform,
@@ -90,6 +91,16 @@ export class UserService {
 
     }
     getUser() {
-        return this.currentUser;
+        return new Promise<User>((resolve, reject) => {
+            if (this.userSync == false) {
+                this.user.subscribe(user => {
+                    this.currentUser = user;
+                    this.userSync = true;
+                    resolve(user);
+                })
+            } else {
+                resolve(this.currentUser);
+            }
+        })
     }
 }

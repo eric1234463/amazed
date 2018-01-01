@@ -91,11 +91,11 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
     </plugin>
     <allow-navigation href="http://175.159.236.10:8101" />
-    <engine name="ios" spec="~4.5.3" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="292006121312524" />
         <variable name="APP_NAME" value="HERE" />
     </plugin>
     <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
+    <engine name="ios" spec="~4.5.3" />
 </widget>

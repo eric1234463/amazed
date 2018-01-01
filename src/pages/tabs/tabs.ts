@@ -6,10 +6,11 @@ import { Tabs } from 'ionic-angular';
 export class TabsPage {
     @ViewChild('myTabs') tabRef: Tabs;
 
-    tab1Root: any = 'home'
-    tab2Root: any = 'qr';
-    tab3Root: any = 'profile';
-
+    tab1Root: any = 'feed'
+    tab2Root: any = 'home';
+    tab3Root: any = 'qr';
+    tab4Root: any = 'notification';
+    tab5Root: any = 'profile';
     constructor() {
 
     }

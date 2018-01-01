@@ -16,7 +16,9 @@ export class EditPage {
     public user: User;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
-        this.user = this.userService.getUser();
+        this.userService.getUser().then(user => {
+            this.user = user;
+        })
     }
 
     cancel() {

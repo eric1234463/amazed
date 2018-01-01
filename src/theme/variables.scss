@@ -155,7 +155,13 @@ ul {
     }
   }
 }
-
+.toolbar-title{
+    color: color($colors, primary) !important;
+}
+ion-title {
+    background: #fff;
+    border-bottom: 0.55px solid rgba(0, 0, 0, 0.3)
+}
 $tabs-background: #fff;
 $tabs-tab-color-inactive: color($colors, primary, 0.7);
 $tabs-tab-color-active: color($colors, primary);

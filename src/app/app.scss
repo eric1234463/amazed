@@ -15,6 +15,28 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.ion-md-notification-outline:before,
+.ion-ios-notification-outline:before{
+    content: "\f0a2";
+    font-family: FontAwesome;
+}
+.ion-md-notification:before,
+.ion-ios-notification:before{
+    content: "\f0f3";
+    font-family: FontAwesome;
+}
+
+.ion-md-feed-outline:before,
+.ion-ios-feed-outline:before{
+    content: "\f2d1";
+    font-family: FontAwesome;
+}
+.ion-md-feed:before,
+.ion-ios-feed:before{
+    content: "\f2d0";
+    font-family: FontAwesome;
+}
+
 .ion-md-profile-outline:before,
 .ion-ios-profile-outline:before{
     content: "\f2c0";

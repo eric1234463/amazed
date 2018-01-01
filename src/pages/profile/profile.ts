@@ -11,7 +11,9 @@ import { Observable } from 'rxjs/Observable';
 export class ProfilePage {
     public user: User;
     constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController) {
-        this.user = this.userService.getUser();
+        this.userService.getUser().then(user => {
+            this.user = user;
+        })
     }
 
     edit() {
