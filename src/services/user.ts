@@ -31,6 +31,7 @@ export class UserService {
         this.user = this.afAuth.authState
             .switchMap(user => {
                 if (user) {
+                    console.log(user);
                     this.user = this.afs.doc<User>(`patient/${user.uid}`).valueChanges();
                     return this.user;
                 } else {
@@ -81,15 +82,7 @@ export class UserService {
         }
         return userRef.set(data)
     }
-    getUserID() {
-        return new Promise((resolve, reject) => {
-            this.user.subscribe(user => {
-                this.currentUser = user;
-                resolve(user.uid);
-            })
-        })
 
-    }
     getUser() {
         return new Promise<User>((resolve, reject) => {
             if (this.userSync == false) {

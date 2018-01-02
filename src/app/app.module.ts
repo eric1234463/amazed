@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserService } from '../services/user';
+import { FeedService } from '../services/feed';
 import { RecordService } from '../services/record';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Facebook } from '@ionic-native/facebook';
@@ -45,10 +46,11 @@ import { RateComponent } from '../components/rate/rate';
     ],
     providers: [
         StatusBar,
-        UserService,
         NativeStorage,
         BarcodeScanner,
         RecordService,
+        FeedService,
+        UserService,
         Facebook,
         SplashScreen, {
             provide: ErrorHandler,

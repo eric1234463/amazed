@@ -42,10 +42,10 @@ export class RecordService {
 
     initRecords() {
         return new Promise<Observable<Record[]>>((resolve, reject) => {
-            this.userService.getUserID().then(uid => {
+            this.userService.getUser().then(user => {
                 this.recordCollection = this.afs.collection<Record>('record');
                 this.records = this.afs.collection<Record>('record', ref =>
-                    ref.where('userID', '==', uid)
+                    ref.where('userID', '==', user.uid)
                 ).snapshotChanges().map(actions => {
                     return actions.map(a => {
                         const data = a.payload.doc.data() as Record;

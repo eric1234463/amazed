@@ -13,7 +13,7 @@
             </ion-col>
             <ion-col col-3 style="text-align: center" *ngIf="(record.doctorID | doc | async) as doctor">
                 <div class="doctor-icon-outer">
-                    <img class='doctor-icon' src="{{doctor.icon}}" />
+                    <img class='doctor-icon' [src]="doctor.photoURL" />
                 </div>
                 <p class="item-doctor" ion-text color="secondary">{{doctor.name}}</p>
             </ion-col>

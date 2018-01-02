@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { UserService, User } from '../../services/user';
+import { FeedService, Feed } from '../../services/feed';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -18,14 +18,18 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'feed.html',
 })
 export class FeedPage {
-    public today = new Date();
-    public user: User;
+    public feeds: Observable<Feed[]>;;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public userService: UserService) {
-         this.userService.getUser().then(user=>{
-            this.user = user;
+    constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService) {
+        this.feedService.init().then(feeds=>{
+            this.feeds = feeds;
+            console.log(feeds);
         });
 
+    }
+
+    goToDetail(feed){
+        this.feedService.addfeed(feed);
     }
 
 }
