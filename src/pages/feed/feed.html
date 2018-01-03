@@ -26,10 +26,13 @@
             <ion-row class="feed-box" *ngIf="(feed.doctorID | doc | async) as doctor">
                 <ion-col col-8>
                     <h2>{{ feed.title}}</h2>
-                    <h6>{{ doctor.name }}</h6>
+                    <h6><i class="fa fa-user-circle-o" aria-hidden="true">    </i> {{ doctor.name }}</h6>
+                    <h6><i class="fa fa-clock-o" aria-hidden="true"></i>    {{ feed.createDt | amTimeAgo }}</h6>
                 </ion-col>
                 <ion-col col-4>
-                    <img [src]="doctor.photoURL" class="doctor-icon">
+                    <div class="feed-box-icon">
+                        <img [src]="doctor.photoURL" class="doctor-icon">
+                    </div>
                 </ion-col>
 
             </ion-row>

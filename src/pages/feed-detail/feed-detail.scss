@@ -1,0 +1,42 @@
+page-feed-detail {
+    .feed-bg{
+        width: 100%;
+        height: 30vh;
+        background-repeat: no-repeat;
+        background-position: center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .feed-title{
+        margin: 4px 8px;
+        width: 60vw;
+        color: #fff;
+        top: 70px;
+        position: relative;
+    }
+    .feed-doctor-name{
+        width: 40vw;
+        margin: 4px 8px;
+        color: #fff;
+        position: relative;
+        top: 60px;
+        font-weight: bold;
+    }
+    .feed-content-box{
+        color: #fff;
+    }
+    .feed-content{
+        margin: 0;
+        padding: 12px;
+        font-size: 18px;
+        line-height: 200%;
+
+    }
+    ion-content{
+        background-color: color($colors, secondary)!important;
+        margin: 0;
+        padding: 0;
+    }
+}

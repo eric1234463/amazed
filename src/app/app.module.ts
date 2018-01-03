@@ -29,7 +29,8 @@ import { RateComponent } from '../components/rate/rate';
         BrowserModule,
         IonicModule.forRoot(MyApp
             , {
-                mode: 'ios'
+                mode: 'ios',
+                tabsHideOnSubPages:"true"
             }),
         Ionic2RatingModule,
         MomentModule,

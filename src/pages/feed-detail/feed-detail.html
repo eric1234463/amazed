@@ -1,0 +1,27 @@
+<!--
+  Generated template for the FeedDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div *ngIf="(feed | async) as feed">
+        <div class="feed-bg" [ngStyle]="{'background-image': 'url(' + feed.photoURL + ')'}">
+            <div *ngIf="(feed.doctorID | doc | async) as doctor">
+                <h6 class="feed-doctor-name"> {{ doctor.name }} </h6>
+            </div>
+            <h1 class="feed-title">{{feed.title}}</h1>
+        </div>
+        <div class="feed-content-box">
+            <p class="feed-content">{{feed.content}}</p>
+
+        </div>
+    </div>
+
+</ion-content>

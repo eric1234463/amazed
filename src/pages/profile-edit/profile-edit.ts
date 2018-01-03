@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { UserService, User } from '../../../services/user';
+import { UserService, User } from '../../services/user';
 
 @IonicPage({
     name: 'profile-edit',
@@ -8,21 +8,17 @@ import { UserService, User } from '../../../services/user';
 })
 @Component(
     {
-        selector: 'page-edit',
-        templateUrl: 'edit.html'
+        selector: 'page-profile-edit',
+        templateUrl: 'profile-edit.html'
     }
 )
-export class EditPage {
+export class ProfileEditPage {
     public user: User;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
         this.userService.getUser().then(user => {
             this.user = user;
         })
-    }
-
-    cancel() {
-        this.navCtrl.pop();
     }
 
     save() {

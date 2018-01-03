@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Nav} from 'ionic-angular';
 import { FeedService, Feed } from '../../services/feed';
 import { Observable } from 'rxjs/Observable';
 
@@ -18,7 +18,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'feed.html',
 })
 export class FeedPage {
-    public feeds: Observable<Feed[]>;;
+    public feeds: Observable<Feed[]>;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService) {
         this.feedService.init().then(feeds=>{
@@ -29,7 +29,10 @@ export class FeedPage {
     }
 
     goToDetail(feed){
-        this.feedService.addfeed(feed);
+        //this.feedService.addfeed(feed);
+        this.navCtrl.push('feed-detail',{
+            id: feed.id
+        });
     }
 
 }

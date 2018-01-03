@@ -35,4 +35,7 @@ export class FeedService {
     addfeed(feed){
         this.feedCollection.add(feed);
     }
+    getFeedById(id){
+        return this.afs.doc<Feed>(`feed/${id}`).valueChanges()
+    }
 }

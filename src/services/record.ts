@@ -63,7 +63,9 @@ export class RecordService {
 
         });
     }
-
+    getRecordByID(id){
+        return this.afs.doc<Record>(`record/${id}`);
+    }
     getCurrentRecords() {
         return this.currentRecords;
     }

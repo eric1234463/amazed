@@ -1,13 +1,10 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons start>
-            <button ion-button icon-only (click)="cancel()">
-                <ion-icon name="close"></ion-icon>
-            </button>
-        </ion-buttons>
-        <ion-title>
-            {{user.username }}
-        </ion-title>
+        <ion-navbar>
+            <ion-title>
+                {{user.username }}
+            </ion-title>
+        </ion-navbar>
         <ion-buttons end>
             <button ion-button icon-only (click)="save()">
                 <ion-icon name="checkmark"></ion-icon>
