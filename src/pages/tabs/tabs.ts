@@ -9,7 +9,7 @@ export class TabsPage {
     tab1Root: any = 'feed'
     tab2Root: any = 'record';
     tab3Root: any = 'qr';
-    tab4Root: any = 'notification';
+    tab4Root: any = 'explore';
     tab5Root: any = 'more';
     constructor() {
 

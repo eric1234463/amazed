@@ -17,6 +17,7 @@ import { UserService } from '../services/user';
 import { FeedService } from '../services/feed';
 import { RecordService } from '../services/record';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { GoogleMaps } from '@ionic-native/google-maps';
 import { Facebook } from '@ionic-native/facebook';
 import { RateComponent } from '../components/rate/rate';
 @NgModule({
@@ -53,6 +54,7 @@ import { RateComponent } from '../components/rate/rate';
         FeedService,
         UserService,
         Facebook,
+        GoogleMaps,
         SplashScreen, {
             provide: ErrorHandler,
             useClass: IonicErrorHandler
