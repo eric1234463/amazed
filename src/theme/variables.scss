@@ -26,7 +26,7 @@ $colors: (
         light: #f4f4f4,
         dark: #222,
         grey: #f7f7f7,
-        airbnb:#555f61,
+        airbnb:#839196,
         star :#FFC107,
 );
 
@@ -158,10 +158,11 @@ ul {
 .toolbar-title{
     color: color($colors, primary) !important;
 }
-ion-title {
+ion-header {
     background: #fff;
     border-bottom: 0.55px solid rgba(0, 0, 0, 0.3)
 }
+$toolbar-background:#fff;
 $tabs-background: #fff;
 $tabs-tab-color-inactive: color($colors, primary, 0.7);
 $tabs-tab-color-active: color($colors, primary);

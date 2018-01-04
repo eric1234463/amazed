@@ -1,7 +1,7 @@
 page-feed-detail {
     .feed-bg{
         width: 100%;
-        height: 30vh;
+        height: 40vh;
         background-repeat: no-repeat;
         background-position: center center fixed;
         -webkit-background-size: cover;
@@ -15,6 +15,8 @@ page-feed-detail {
         color: #fff;
         top: 70px;
         position: relative;
+        max-height: 90px;
+        overflow: hidden;
     }
     .feed-doctor-name{
         width: 40vw;

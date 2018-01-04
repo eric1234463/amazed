@@ -1,0 +1,21 @@
+page-more {
+    .list-item{
+        border-bottom: 0.55px solid #01579B;
+        padding: 10px;
+        margin: 10px;
+    }
+    .item-name{
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0;
+        color: color($colors,primary)!important;
+    }
+    .item-icon{
+        color: color($colors,primary)!important;
+        font-size: 29px;
+    }
+    .item-profile-link{
+        color: color($colors,airbnb)!important;
+        font-size: 16px;
+    }
+}

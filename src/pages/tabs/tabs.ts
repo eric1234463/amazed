@@ -10,7 +10,7 @@ export class TabsPage {
     tab2Root: any = 'record';
     tab3Root: any = 'qr';
     tab4Root: any = 'notification';
-    tab5Root: any = 'profile';
+    tab5Root: any = 'more';
     constructor() {
 
     }

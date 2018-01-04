@@ -19,26 +19,4 @@ export class ProfilePage {
     edit() {
         this.navCtrl.push('profile-edit');
     }
-    logout() {
-        let alert = this.alertCtrl.create({
-            title: 'Confirm Logout',
-            message: 'Do you want to logout this Account?',
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: () => {
-                        console.log('Cancel clicked');
-                    }
-                }, {
-                    text: 'Logout',
-                    handler: () => {
-                        this.userService.logout();
-                    }
-                }
-            ]
-
-        });
-        alert.present();
-    }
 }
