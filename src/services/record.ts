@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { UserService } from './user';
 import 'rxjs/add/operator/map';
 
@@ -36,6 +36,7 @@ export class RecordService {
     public doctor: Observable<Doctor>;
     public records: Observable<Record[]>;
     public currentRecords: Record[];
+    public recordSync = false;
     constructor(public afs: AngularFirestore, public userService: UserService) {
 
     }
@@ -63,7 +64,7 @@ export class RecordService {
 
         });
     }
-    getRecordByID(id){
+    getRecordByID(id) {
         return this.afs.doc<Record>(`record/${id}`);
     }
     getCurrentRecords() {

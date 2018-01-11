@@ -19,6 +19,7 @@ export class GeneratrorPage {
     public doctorDoc: AngularFirestoreDocument<Doctor>;
     public doctor: Observable<Doctor>;
     public currentDoctor: Doctor;
+    public connected = false;
     constructor(public navCtrl: NavController, public userService: UserService, public barcodeScanner: BarcodeScanner, public afs: AngularFirestore, public recordService: RecordService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
     }
@@ -42,6 +43,7 @@ export class GeneratrorPage {
                     resolve(this.currentDoctor);
                 });
             }).then(success => {
+                this.connected = true;
                 this.doctorDoc.update(this.currentDoctor).then(success => {
                     loading.dismiss();
                 }).catch(error => {
@@ -64,6 +66,7 @@ export class GeneratrorPage {
     }
 
     cancel() {
+        this.connected = false;
         this.currentDoctor.visited = false;
         this.currentDoctor.records = null;
         this.doctorDoc.set(this.currentDoctor);

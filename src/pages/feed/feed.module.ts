@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { FeedPage } from './feed';
 import { MomentModule } from 'angular2-moment';
 import { DocModule } from '../../pipes/doc/doc.module'
+import { IonicImageLoader } from 'ionic-image-loader';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { DocModule } from '../../pipes/doc/doc.module'
   imports: [
     IonicPageModule.forChild(FeedPage),
     DocModule,
-    MomentModule
+    MomentModule,
+    IonicImageLoader
   ],
 })
 export class FeedPageModule {}

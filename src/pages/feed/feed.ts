@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , Nav} from 'ionic-angular';
 import { FeedService, Feed } from '../../services/feed';
 import { Observable } from 'rxjs/Observable';
+import { ImageLoaderConfig } from 'ionic-image-loader';
 
 /**
  * Generated class for the FeedPage page.
@@ -20,7 +21,9 @@ import { Observable } from 'rxjs/Observable';
 export class FeedPage {
     public feeds: Observable<Feed[]>;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig) {
+        this.imageLoaderConfig.setBackgroundSize('cover');
+        this.imageLoaderConfig.enableSpinner(true);
         this.feedService.init().then(feeds=>{
             this.feeds = feeds;
             console.log(feeds);

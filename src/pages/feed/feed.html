@@ -17,10 +17,10 @@
         <div *ngFor="let feed of feeds | async" class="feed-container">
             <ion-row>
                 <ion-col col-12 (click)="goToDetail(feed)">
-                    <div class="feed_bg" [ngStyle]="{'background-image': 'url(' + feed.photoURL + ')'}">
+                    <img-loader class="feed_bg" [src]="feed.photoURL">
                         <div class="feed-box-cover">
                         </div>
-                    </div>
+                    </img-loader>
                 </ion-col>
             </ion-row>
             <ion-row class="feed-box" *ngIf="(feed.doctorID | doc | async) as doctor">
@@ -31,7 +31,7 @@
                 </ion-col>
                 <ion-col col-4>
                     <div class="feed-box-icon">
-                        <img [src]="doctor.photoURL" class="doctor-icon">
+                        <img-loader [src]="doctor.photoURL" class="doctor-icon"></img-loader>
                     </div>
                 </ion-col>
 

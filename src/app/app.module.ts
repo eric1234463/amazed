@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicImageLoader } from 'ionic-image-loader';
 import { UserService } from '../services/user';
 import { FeedService } from '../services/feed';
 import { RecordService } from '../services/record';
@@ -28,6 +29,7 @@ import { RateComponent } from '../components/rate/rate';
     ],
     imports: [
         BrowserModule,
+        IonicImageLoader.forRoot(),
         IonicModule.forRoot(MyApp
             , {
                 mode: 'ios',

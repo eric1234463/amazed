@@ -95,7 +95,6 @@
         <variable name="APP_ID" value="292006121312524" />
         <variable name="APP_NAME" value="HERE" />
     </plugin>
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
     <engine name="ios" spec="~4.5.3" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
@@ -104,4 +103,5 @@
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Show your location on the map" />
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
     </plugin>
+    <engine name="android" spec="~6.3.0" />
 </widget>
