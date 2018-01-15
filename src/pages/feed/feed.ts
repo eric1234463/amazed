@@ -19,14 +19,14 @@ import { ImageLoaderConfig } from 'ionic-image-loader';
     templateUrl: 'feed.html',
 })
 export class FeedPage {
-    public feeds: Observable<Feed[]>;
+    public feeds: Feed[];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig) {
         this.imageLoaderConfig.setBackgroundSize('cover');
         this.imageLoaderConfig.enableSpinner(true);
-        this.feedService.init().then(feeds=>{
-            this.feeds = feeds;
+        this.feedService.getFeeds().then(feeds => {
             console.log(feeds);
+            this.feeds = feeds;
         });
 
     }

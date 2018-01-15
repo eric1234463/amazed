@@ -14,11 +14,12 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 })
 
 export class RecordPage {
-    public records: Observable<Record[]>;
+    public records: Record[];
     public recordCollection: AngularFirestoreCollection<Record>;
     constructor(public nativeStorage: NativeStorage, public recordService: RecordService, public afs: AngularFirestore, public navCtrl: NavController) {
         this.recordService.initRecords().then(records => {
             this.records = records;
+            console.log(records);
         })
     }
 
@@ -67,7 +68,6 @@ export class RecordPage {
         //this.recordCollection = this.afs.collection<Record>('record');
         //this.recordService.add(record);
         this.navCtrl.push('record-detail', {
-            record: record,
             id: record.id
         })
     }

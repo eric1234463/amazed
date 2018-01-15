@@ -11,16 +11,15 @@
 
 
 <ion-content>
-    <div *ngIf="(feed | async) as feed">
-        <div class="feed-bg" [ngStyle]="{'background-image': 'url(' + feed.photoURL + ')'}">
-            <div *ngIf="(feed.doctorID | doc | async) as doctor">
-                <h6 class="feed-doctor-name"> {{ doctor.name }} </h6>
+    <div *ngIf="feed">
+        <img-loader class="feed_bg" [src]="feed.photoURL">
+            <div class="feed-box-cover">
             </div>
+            <h6 class="feed-doctor-name"> {{ feed.Doctor.displayName }} </h6>
             <h1 class="feed-title">{{feed.title}}</h1>
-        </div>
+        </img-loader>
         <div class="feed-content-box">
             <p class="feed-content">{{feed.content}}</p>
-
         </div>
     </div>
 

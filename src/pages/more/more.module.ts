@@ -9,5 +9,6 @@ import { MorePage } from './more';
   imports: [
     IonicPageModule.forChild(MorePage),
   ],
+
 })
 export class MorePageModule {}

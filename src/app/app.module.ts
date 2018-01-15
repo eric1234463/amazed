@@ -1,4 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Ionic2RatingModule } from 'ionic2-rating';
@@ -33,9 +35,11 @@ import { RateComponent } from '../components/rate/rate';
         IonicModule.forRoot(MyApp
             , {
                 mode: 'ios',
-                tabsHideOnSubPages:"true"
+                tabsHideOnSubPages: 'true'
             }),
         Ionic2RatingModule,
+        HttpModule,
+        HttpClientModule,
         MomentModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule, // imports firebase/database, only needed for database features

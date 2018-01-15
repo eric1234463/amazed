@@ -1,15 +1,18 @@
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Injectable, OnInit } from '@angular/core';
-import { UserService } from './user';
+import { Injectable } from '@angular/core';
+import { UserService, Patient } from './user';
+import { HttpClient } from '@angular/common/http';
+
 import 'rxjs/add/operator/map';
 
 
 export interface Doctor {
-    name: string;
+    displayName: string;
+    photoURL: string;
     location: string;
-    visited: boolean;
-    records: any[];
+    records: Record[];
+    visited: Boolean;
 }
 
 export interface Record {
@@ -22,11 +25,12 @@ export interface Record {
     rate: number;
     title: string;
     description: string;
+    Doctor: Doctor;
+    Patient: Patient;
 }
 
 export interface Patient {
-    name: string;
-    records: Record[]
+
 }
 
 @Injectable()
@@ -37,35 +41,25 @@ export class RecordService {
     public records: Observable<Record[]>;
     public currentRecords: Record[];
     public recordSync = false;
-    constructor(public afs: AngularFirestore, public userService: UserService) {
+    constructor(public afs: AngularFirestore, public userService: UserService, public http: HttpClient) {
 
     }
 
     initRecords() {
-        return new Promise<Observable<Record[]>>((resolve, reject) => {
+        return new Promise<Record[]>((resolve, reject) => {
             this.userService.getUser().then(user => {
-                this.recordCollection = this.afs.collection<Record>('record');
-                this.records = this.afs.collection<Record>('record', ref =>
-                    ref.where('userID', '==', user.uid)
-                ).snapshotChanges().map(actions => {
-                    return actions.map(a => {
-                        const data = a.payload.doc.data() as Record;
-                        const id = a.payload.doc.id;
-                        return { id, ...data };
-                    });
-                })
-
-
-                this.records.subscribe(records => {
-                    this.currentRecords = records;
-                })
-                resolve(this.records);
+                this.http.get<Record[]>(`https://herefyp.herokuapp.com/api/record?userId=${user.id}`).subscribe(records => {
+                    resolve(records);
+                });
             })
-
         });
     }
     getRecordByID(id) {
-        return this.afs.doc<Record>(`record/${id}`);
+        return new Promise<Record>((resolve, reject) => {
+            this.http.get<Record>(`https://herefyp.herokuapp.com/api/record/${id}`).subscribe(records => {
+                resolve(records);
+            });
+        });
     }
     getCurrentRecords() {
         return this.currentRecords;

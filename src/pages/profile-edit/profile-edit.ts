@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { UserService, User } from '../../services/user';
+import { UserService, Patient } from '../../services/user';
 
 @IonicPage({
     name: 'profile-edit',
@@ -13,7 +13,7 @@ import { UserService, User } from '../../services/user';
     }
 )
 export class ProfileEditPage {
-    public user: User;
+    public user: Patient;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
         this.userService.getUser().then(user => {

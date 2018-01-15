@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 import { NavController, IonicPage, AlertController } from 'ionic-angular';
-import { UserService, User } from '../../services/user';
+import { UserService, Patient } from '../../services/user';
 import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the MorePage page.
@@ -18,14 +19,14 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'more.html',
 })
 export class MorePage {
-    public user: User;
-    constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController) {
-        this.userService.getUser().then(user => {
-            this.user = user;
-        })
+    public user: Patient;
+    constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController, public http : Http) {
+        this.userService.getUser().then(user=>{
+            this.user = user
+        });
     }
 
-    goToProfile(){
+    goToProfile() {
         this.navCtrl.push('profile');
     }
 

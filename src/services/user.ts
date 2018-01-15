@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
 import { Platform } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 
-export interface User {
+export interface Patient {
+    id: number;
     hkid: String;
     gender: String;
     uid: String;
@@ -20,28 +20,18 @@ export interface User {
 
 @Injectable()
 export class UserService {
-    public user: Observable<User>;
-    public currentUser: User;
-    public userSync = false;
+    public user: Patient;
+    public currentUser: Patient;
     constructor(private afAuth: AngularFireAuth,
-        private afs: AngularFirestore,
         public platform: Platform,
+        public http: HttpClient,
         public fb: Facebook) {
         //// Get auth data, then get firestore user document || null
-        this.user = this.afAuth.authState
-            .switchMap(user => {
-                if (user) {
-                    console.log(user);
-                    this.user = this.afs.doc<User>(`patient/${user.uid}`).valueChanges();
-                    return this.user;
-                } else {
-                    return Observable.of(null)
-                }
-            });
+
     }
     facebookLogin() {
         return new Promise((resolve, reject) => {
-            if (!this.platform.is('mobileweb')) {
+            if (this.platform.is('mobileweb')) {
                 this.fb.login(['email', 'public_profile']).then(res => {
                     console.log(res);
                     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
@@ -69,31 +59,32 @@ export class UserService {
     }
     updateUserData(user) {
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`patient/${user.uid}`);
-        const data: User = {
-            uid: user.uid,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            hkid: 'A1234XX(8)',
-            gender: 'M',
-            weight: user.weight || null,
-            height: user.height || null,
-            bmi: (user.weight / Math.pow(user.height / 100, 2)) || null
-        }
-        return userRef.set(data)
+        // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`patient/${user.uid}`);
+        // const data: User = {
+        //     uid: user.uid,
+        //     displayName: user.displayName,
+        //     photoURL: user.photoURL,
+        //     hkid: 'A1234XX(8)',
+        //     gender: 'M',
+        //     weight: user.weight || null,
+        //     height: user.height || null,
+        //     bmi: (user.weight / Math.pow(user.height / 100, 2)) || null
+        // }
+        // return userRef.set(data)
     }
 
     getUser() {
-        return new Promise<User>((resolve, reject) => {
-            if (this.userSync == false) {
-                this.user.subscribe(user => {
-                    this.currentUser = user;
-                    this.userSync = true;
-                    resolve(user);
-                })
-            } else {
-                resolve(this.currentUser);
-            }
+        return new Promise<Patient>((resolve, reject) => {
+            this.afAuth.authState
+                .subscribe(user => {
+                    const uid = user.uid;
+                    this.http.post<Patient>('https://herefyp.herokuapp.com/api/user/patientLogin', {
+                        uid: uid
+                    }).subscribe(currentUser  => {
+                        console.log(currentUser);
+                        resolve(currentUser);
+                    });
+                });
         })
     }
 }

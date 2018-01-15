@@ -9,12 +9,13 @@ import { Observable } from 'rxjs/Observable';
 })
 @Component({ selector: 'page-record-detail', templateUrl: 'record-detail.html' })
 export class RecordDetailPage {
-    public record: Observable<Record>;
+    public record: Record;
     public id: String;
     constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public recordService: RecordService) {
         this.id = this.navParams.get('id');
-        this.record = this.recordService.getRecordByID(this.id).valueChanges();
-        console.log(this.record);
+        this.recordService.getRecordByID(this.id).then(record=>{
+            this.record = record;
+        })
     }
     rate() {
         let popover = this.popoverCtrl.create(RateComponent, {
