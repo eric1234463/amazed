@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage, PopoverController } from 'ionic-angular';
-import { Record, RecordService} from '../../services/record';
+import { Record, RecordService } from '../../services/record';
 import { RateComponent } from '../../components/rate/rate'
-import { Observable } from 'rxjs/Observable';
 @IonicPage({
     name: 'record-detail',
     segment: 'record-detail/:id'
@@ -13,7 +12,7 @@ export class RecordDetailPage {
     public id: String;
     constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public recordService: RecordService) {
         this.id = this.navParams.get('id');
-        this.recordService.getRecordByID(this.id).then(record=>{
+        this.recordService.getRecordByID(this.id).then(record => {
             this.record = record;
         })
     }

@@ -31,7 +31,7 @@ export class UserService {
     }
     facebookLogin() {
         return new Promise((resolve, reject) => {
-            if (this.platform.is('mobileweb')) {
+            if (!this.platform.is('mobileweb')) {
                 this.fb.login(['email', 'public_profile']).then(res => {
                     console.log(res);
                     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
