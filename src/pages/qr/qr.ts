@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, LoadingController, AlertController } from 'ionic-angular';
-import { UserService } from '../../services/user';
+import { UserService, Patient } from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Doctor, RecordService } from '../../services/record';
+import { Doctor, RecordService, Record } from '../../services/record';
+import { Socket } from 'ng-socket-io';
+import { Loading } from 'ionic-angular/components/loading/loading';
 
 
 
@@ -20,7 +22,13 @@ export class GeneratrorPage {
     public doctor: Observable<Doctor>;
     public currentDoctor: Doctor;
     public connected = false;
-    constructor(public navCtrl: NavController, public userService: UserService, public barcodeScanner: BarcodeScanner, public afs: AngularFirestore, public recordService: RecordService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    public loading: Loading;
+    public patient: Patient;
+    constructor(public navCtrl: NavController, public socket: Socket, public userService: UserService, public barcodeScanner: BarcodeScanner, public afs: AngularFirestore, public recordService: RecordService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+        this.userService.getUser().then(patient => {
+            this.patient = patient
+        });
+        this.socket.connect();
 
     }
 
@@ -28,34 +36,21 @@ export class GeneratrorPage {
         this.barcodeScanner.scan({
             formats: 'QR_CODE'
         }).then((barcodeData) => {
-            let loading = this.loadingCtrl.create({
+            this.loading = this.loadingCtrl.create({
                 content: 'Waiting for connection...'
             });
-            loading.present();
             this.doctorID = barcodeData.text;
-            this.doctorDoc = this.afs.doc('doctor/' + this.doctorID);
-            this.doctor = this.doctorDoc.valueChanges();
-            new Promise((resolve, reject) => {
-                this.doctor.subscribe(doctor => {
-                    this.currentDoctor = doctor;
-                    this.currentDoctor.records = this.recordService.getCurrentRecords();
-                    this.currentDoctor.visited = true;
-                    resolve(this.currentDoctor);
-                });
-            }).then(success => {
-                this.connected = true;
-                this.doctorDoc.update(this.currentDoctor).then(success => {
-                    loading.dismiss();
-                }).catch(error => {
-                    let alert = this.alertCtrl.create({
-                        title: 'Connection Error',
-                        subTitle: 'Please try to scan again!',
-                        buttons: ['Understand']
-                    });
-                    alert.present();
-                });
+            this.loading.present();
+            this.socket.emit('subscribe', barcodeData.text);
+            this.socket.emit('connect doctor', {
+                room: barcodeData.text,
+                patient: this.patient.id
             });
+            this.connected = true;
+            this.loading.dismiss();
         }).catch(() => {
+            this.loading.dismiss();
+
             let alert = this.alertCtrl.create({
                 title: 'Scanning Error',
                 subTitle: 'Please try to scan again!',
@@ -66,9 +61,9 @@ export class GeneratrorPage {
     }
 
     cancel() {
+        this.socket.emit('cancel connection', {
+            room: this.doctorID
+        });
         this.connected = false;
-        this.currentDoctor.visited = false;
-        this.currentDoctor.records = null;
-        this.doctorDoc.set(this.currentDoctor);
     }
 }

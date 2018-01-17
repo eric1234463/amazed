@@ -23,6 +23,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Facebook } from '@ionic-native/facebook';
 import { RateComponent } from '../components/rate/rate';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'https://herefyp.herokuapp.com', options: {} };
+
 @NgModule({
     declarations: [
         MyApp,
@@ -37,6 +40,7 @@ import { RateComponent } from '../components/rate/rate';
                 mode: 'ios',
                 tabsHideOnSubPages: 'true'
             }),
+        SocketIoModule.forRoot(config),
         Ionic2RatingModule,
         HttpModule,
         HttpClientModule,

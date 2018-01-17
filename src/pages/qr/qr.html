@@ -11,12 +11,7 @@
         <p style="text-align:center">Scan to See Record!</p>
         <button ion-button block (click)="qrScan()">Scan QR Code</button>
     </div>
-    <div *ngIf="(doctor | async) as doctor">
-        <div *ngIf="doctor.visited == true">
-            <img class='doctor-icon' src="assets/doctor.png" />
-            <p>{{ doctor.name }}</p>
-            <p>{{ doctor.location }}</p>
-            <button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
-        </div>
+    <div *ngIf="connected == true">
+        <button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
     </div>
 </ion-content>

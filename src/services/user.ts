@@ -21,7 +21,6 @@ export interface Patient {
 @Injectable()
 export class UserService {
     public user: Patient;
-    public currentUser: Patient;
     constructor(private afAuth: AngularFireAuth,
         public platform: Platform,
         public http: HttpClient,

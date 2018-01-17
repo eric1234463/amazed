@@ -29,10 +29,6 @@ export interface Record {
     Patient: Patient;
 }
 
-export interface Patient {
-
-}
-
 @Injectable()
 export class RecordService {
     public doctorDoc: AngularFirestoreDocument<Doctor>;
