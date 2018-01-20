@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
-import { NavController, IonicPage, AlertController } from 'ionic-angular';
+import { NavController, IonicPage, AlertController, App } from 'ionic-angular';
 import { UserService, Patient } from '../../services/user';
-import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the MorePage page.
  *
@@ -20,8 +18,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MorePage {
     public user: Patient;
-    constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController, public http : Http) {
-        this.userService.getUser().then(user=>{
+    constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController, public app: App) {
+        this.userService.getUser().then(user => {
             this.user = user
         });
     }
@@ -45,6 +43,7 @@ export class MorePage {
                     text: 'Logout',
                     handler: () => {
                         this.userService.logout();
+                        this.app.getRootNav().setRoot('login');
                     }
                 }
             ]

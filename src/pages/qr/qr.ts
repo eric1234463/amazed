@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { UserService, Patient } from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
-import { Doctor, RecordService, Record } from '../../services/record';
+import { Doctor, RecordService } from '../../services/record';
 import { Socket } from 'ng-socket-io';
 import { Loading } from 'ionic-angular/components/loading/loading';
 
@@ -18,13 +16,10 @@ import { Loading } from 'ionic-angular/components/loading/loading';
 @Component({ templateUrl: 'qr.html' })
 export class GeneratrorPage {
     public doctorID: String;
-    public doctorDoc: AngularFirestoreDocument<Doctor>;
-    public doctor: Observable<Doctor>;
-    public currentDoctor: Doctor;
     public connected = false;
     public loading: Loading;
     public patient: Patient;
-    constructor(public navCtrl: NavController, public socket: Socket, public userService: UserService, public barcodeScanner: BarcodeScanner, public afs: AngularFirestore, public recordService: RecordService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public socket: Socket, public userService: UserService, public barcodeScanner: BarcodeScanner, public recordService: RecordService, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
         this.userService.getUser().then(patient => {
             this.patient = patient
         });

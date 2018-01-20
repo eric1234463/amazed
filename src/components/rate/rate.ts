@@ -28,7 +28,7 @@ export class RateComponent {
         this.viewCtrl.dismiss();
     }
     update() {
-        this.recordService.update(this.record);
+        //this.recordService.update(this.record);
         this.viewCtrl.dismiss()
     }
 

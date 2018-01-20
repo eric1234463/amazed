@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Record, RecordService } from '../../services/record';
-import { Observable } from 'rxjs/Observable';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+
 @IonicPage({
     name: 'record',
     segment: 'record'
@@ -15,8 +14,8 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 
 export class RecordPage {
     public records: Record[];
-    public recordCollection: AngularFirestoreCollection<Record>;
-    constructor(public nativeStorage: NativeStorage, public recordService: RecordService, public afs: AngularFirestore, public navCtrl: NavController) {
+
+    constructor(public nativeStorage: NativeStorage, public recordService: RecordService, public navCtrl: NavController) {
         this.recordService.initRecords().then(records => {
             this.records = records;
             console.log(records);

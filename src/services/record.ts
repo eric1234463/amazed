@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
 import { UserService, Patient } from './user';
 import { HttpClient } from '@angular/common/http';
@@ -31,13 +30,7 @@ export interface Record {
 
 @Injectable()
 export class RecordService {
-    public doctorDoc: AngularFirestoreDocument<Doctor>;
-    public recordCollection: AngularFirestoreCollection<Record>;
-    public doctor: Observable<Doctor>;
-    public records: Observable<Record[]>;
-    public currentRecords: Record[];
-    public recordSync = false;
-    constructor(public afs: AngularFirestore, public userService: UserService, public http: HttpClient) {
+    constructor(public userService: UserService, public http: HttpClient) {
 
     }
 
@@ -56,20 +49,5 @@ export class RecordService {
                 resolve(records);
             });
         });
-    }
-    getCurrentRecords() {
-        return this.currentRecords;
-    }
-
-    getRecords() {
-        return this.records;
-    }
-
-    add(record) {
-        this.recordCollection.add(record);
-    }
-
-    update(record: Record) {
-        this.afs.doc<Record>(`record/${record.id}`).update(record);
     }
 }
