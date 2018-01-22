@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FeedService, Feed } from '../../services/feed';
+import { FeedService, Feed, Clock } from '../../services/feed';
 import { ImageLoaderConfig } from 'ionic-image-loader';
+import moment from 'moment';
 /**
  * Generated class for the FeedPage page.
  *
@@ -16,15 +17,25 @@ import { ImageLoaderConfig } from 'ionic-image-loader';
     selector: 'page-feed',
     templateUrl: 'feed.html',
 })
-export class FeedPage {
+export class FeedPage implements OnInit {
     public feeds: Feed[];
     public content = 'status';
-    public lineChartData: Array<any> = [
-        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    ];
-    public lineChartLabels: Array<Date> = [];
+    // public lineChartData: Array<any> = [
+    //     { data: [new Date(), new Date()], label: 'Series A' },
+    // ];
+    public lineChartData: Clock[];
+    public lineChartLabels: Array<String> = [];
     public lineChartOptions: any = {
-        responsive: true
+        responsive: true,
+        scales: {
+            yAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'minute'
+                }
+            }]
+        }
+
     };
     public lineChartColors: Array<any> = [
         { // grey
@@ -39,6 +50,9 @@ export class FeedPage {
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig) {
+
+    }
+    ngOnInit() {
         this.imageLoaderConfig.setBackgroundSize('cover');
         this.imageLoaderConfig.enableSpinner(true);
         this.feedService.getFeeds().then(feeds => {
@@ -46,9 +60,22 @@ export class FeedPage {
             this.feeds = feeds;
         });
 
-        let today = new Date();
-        let in_a_week = new Date().setDate(today.getDate() + 7);
-        for (let date = in_a_week; date < today; date++) { }
+        for (let i = 7; i > 0; i--) {
+            let date = moment().subtract(i, 'd').format('DD');
+            this.lineChartLabels.push(date);
+        }
+        this.feedService.getClock().then(clocks => {
+            this.lineChartData = clocks;
+
+        });
+        this.feedService.getClock().then(clocks => {
+            this.lineChartData = clocks.map(clock => {
+                clock.data = clock.data.map(date => {
+                    return new Date(date);
+                })
+                return clock
+            })
+        });
     }
 
     goToDetail(feed) {

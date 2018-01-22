@@ -1,7 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';

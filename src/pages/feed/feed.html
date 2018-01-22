@@ -25,7 +25,7 @@
     </div>
     <div [ngSwitch]="content">
         <div *ngSwitchCase="'status'">
-            <canvas baseChart width="300" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+            <canvas *ngIf="lineChartData" baseChart width="300" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
                 [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
         </div>
         <ion-grid *ngSwitchCase="'feed'">

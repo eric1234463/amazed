@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { UserService, Patient } from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { Doctor, RecordService } from '../../services/record';
+import { RecordService } from '../../services/record';
 import { Socket } from 'ng-socket-io';
 import { Loading } from 'ionic-angular/components/loading/loading';
 
