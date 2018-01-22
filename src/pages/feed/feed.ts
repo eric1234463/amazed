@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FeedService, Feed, Clock } from '../../services/feed';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import moment from 'moment';
@@ -20,22 +20,10 @@ import moment from 'moment';
 export class FeedPage implements OnInit {
     public feeds: Feed[];
     public content = 'status';
-    // public lineChartData: Array<any> = [
-    //     { data: [new Date(), new Date()], label: 'Series A' },
-    // ];
     public lineChartData: Clock[];
     public lineChartLabels: Array<String> = [];
     public lineChartOptions: any = {
         responsive: true,
-        scales: {
-            yAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'minute'
-                }
-            }]
-        }
-
     };
     public lineChartColors: Array<any> = [
         { // grey
@@ -49,10 +37,15 @@ export class FeedPage implements OnInit {
     ];
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
-    constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig, public modalCtrl: ModalController) {
 
     }
     ngOnInit() {
+        this.feedService.getClock('WAKE', new Date()).then(res => {
+            this.modalCtrl.create('clock').present();
+        }).catch(error => {
+            console.log(error)
+        })
         this.imageLoaderConfig.setBackgroundSize('cover');
         this.imageLoaderConfig.enableSpinner(true);
         this.feedService.getFeeds().then(feeds => {
@@ -64,17 +57,9 @@ export class FeedPage implements OnInit {
             let date = moment().subtract(i, 'd').format('DD');
             this.lineChartLabels.push(date);
         }
-        this.feedService.getClock().then(clocks => {
+        this.feedService.getClocks().then(clocks => {
             this.lineChartData = clocks;
 
-        });
-        this.feedService.getClock().then(clocks => {
-            this.lineChartData = clocks.map(clock => {
-                clock.data = clock.data.map(date => {
-                    return new Date(date);
-                })
-                return clock
-            })
         });
     }
 

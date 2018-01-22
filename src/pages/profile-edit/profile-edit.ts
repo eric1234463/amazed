@@ -16,12 +16,16 @@ export class ProfileEditPage {
     public user: Patient;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
+
+    }
+    ionViewWillEnter(){
+        console.log(this.user);
         this.userService.getUser().then(user => {
             this.user = user;
         })
     }
-
     save() {
+        console.log(this.user);
         this.userService.updateUserData(this.user);
         this.navCtrl.pop();
     }

@@ -68,20 +68,16 @@ export class UserService {
     logout() {
         this.storage.remove('user');
     }
-    updateUserData(user) {
-        // Sets user data to firestore on login
-        // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`patient/${user.uid}`);
-        // const data: User = {
-        //     uid: user.uid,
-        //     displayName: user.displayName,
-        //     photoURL: user.photoURL,
-        //     hkid: 'A1234XX(8)',
-        //     gender: 'M',
-        //     weight: user.weight || null,
-        //     height: user.height || null,
-        //     bmi: (user.weight / Math.pow(user.height / 100, 2)) || null
-        // }
-        // return userRef.set(data)
+    updateUserData(user: Patient) {
+        this.http.put('https://herefyp.herokuapp.com/api/patient', {
+            hkid: user.hkid,
+            gender: user.gender,
+            height: user.height,
+            weight: user.weight,
+            patientId: user.id
+        }).subscribe(currentUser => {
+            this.storage.set('user', user);
+        })
     }
 
     getUser() {

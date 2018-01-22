@@ -15,6 +15,9 @@ export interface Clock {
     data: Date[];
     label: String;
 }
+export interface HttpResponse {
+    status: Boolean;
+}
 @Injectable()
 export class FeedService {
     constructor(public http: HttpClient, public userService: UserService) {
@@ -36,7 +39,7 @@ export class FeedService {
             });
         });
     }
-    getClock() {
+    getClocks() {
         return new Promise<Clock[]>((resolve, reject) => {
             const currentDate = moment().format('YYYY-MM-DD');
             const days7Ago = moment().subtract(7, 'd').format('YYYY-MM-DD');
@@ -45,6 +48,45 @@ export class FeedService {
                     .subscribe(clocks => {
                         resolve(clocks);
                     });
+            })
+        });
+    }
+
+    getClock(type, date) {
+        return new Promise((resolve, reject) => {
+            this.userService.getUser().then(user => {
+                this.http.get<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?type=${type}&patientId=${user.id}&date=${date}`).subscribe(res => {
+                    if (res.status) {
+                        reject(res);
+                    } else {
+                        resolve(res);
+                    }
+                })
+
+            })
+        });
+    }
+    createClock(type, date) {
+        let momentDate = moment();
+        if (type == 'SLEEP') {
+            let hour = parseInt(date.split(':')[0]);
+            momentDate = moment().subtract(1, 'days');
+            momentDate.set('hour', hour);
+        }
+        return new Promise((resolve, reject) => {
+            this.userService.getUser().then(user => {
+                this.http.post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock`, {
+                    type: type,
+                    patientId: user.id,
+                    date: momentDate
+                }).subscribe(res => {
+                    if (res.status) {
+                        resolve(res);
+                    } else {
+                        reject(res);
+                    }
+                })
+
             })
         });
     }

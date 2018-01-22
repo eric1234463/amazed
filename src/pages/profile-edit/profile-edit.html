@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-navbar>
-            <ion-title>
+            <ion-title *ngIf="user">
                 {{user.username }}
             </ion-title>
         </ion-navbar>
@@ -13,7 +13,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="user">
     <ion-item-group>
         <ion-item-divider color="primary">Personal Information</ion-item-divider>
         <ion-item>
@@ -27,8 +27,8 @@
                 Gender
             </ion-label>
             <ion-select [(ngModel)]='user.gender' multiple="false">
-                <ion-option [value]="M">Men</ion-option>
-                <ion-option [value]="F">Female</ion-option>
+                <ion-option [value]="M">M</ion-option>
+                <ion-option [value]="F">F</ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
