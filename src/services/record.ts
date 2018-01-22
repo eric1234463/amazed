@@ -1,8 +1,6 @@
-import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { UserService, Patient } from './user';
 import { HttpClient } from '@angular/common/http';
-
 import 'rxjs/add/operator/map';
 
 
@@ -34,7 +32,7 @@ export class RecordService {
 
     }
 
-    initRecords() {
+    getRecords() {
         return new Promise<Record[]>((resolve, reject) => {
             this.userService.getUser().then(user => {
                 this.http.get<Record[]>(`https://herefyp.herokuapp.com/api/record?userId=${user.id}`).subscribe(records => {

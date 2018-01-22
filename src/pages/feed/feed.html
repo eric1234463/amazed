@@ -13,31 +13,47 @@
 </ion-header>
 
 <ion-content>
-    <ion-grid>
-        <div *ngFor="let feed of feeds" class="feed-container">
-            <ion-row>
-                <ion-col col-12 (click)="goToDetail(feed)">
-                    <img-loader class="feed_bg" [src]="feed.photoURL">
-                        <div class="feed-box-cover">
-                        </div>
-                    </img-loader>
-                </ion-col>
-            </ion-row>
-            <ion-row class="feed-box">
-                <ion-col col-8>
-                    <h2>{{ feed.title}}</h2>
-                    <h6>
-                        <i class="fa fa-user-circle-o" aria-hidden="true"> </i> {{ feed.Doctor.displayName }}</h6>
-                    <h6>
-                        <i class="fa fa-clock-o" aria-hidden="true"></i> {{ feed.createAt | amTimeAgo }}</h6>
-                </ion-col>
-                <ion-col col-4>
-                    <div class="feed-box-icon">
-                        <img-loader [src]="feed.Doctor.photoURL" class="doctor-icon"></img-loader>
-                    </div>
-                </ion-col>
-
-            </ion-row>
+    <div padding>
+        <ion-segment [(ngModel)]="content">
+            <ion-segment-button value="status">
+                Health Status
+            </ion-segment-button>
+            <ion-segment-button value="feed">
+                Feed
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="content">
+        <div *ngSwitchCase="'status'">
+            <canvas baseChart width="300" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
         </div>
-    </ion-grid>
+        <ion-grid *ngSwitchCase="'feed'">
+            <div *ngFor="let feed of feeds" class="feed-container">
+                <ion-row>
+                    <ion-col col-12 (click)="goToDetail(feed)">
+                        <img-loader class="feed_bg" [src]="feed.photoURL">
+                            <div class="feed-box-cover">
+                            </div>
+                        </img-loader>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="feed-box">
+                    <ion-col col-8>
+                        <h2>{{ feed.title}}</h2>
+                        <h6>
+                            <i class="fa fa-user-circle-o" aria-hidden="true"> </i> {{ feed.Doctor.displayName }}</h6>
+                        <h6>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{ feed.createAt | amTimeAgo }}</h6>
+                    </ion-col>
+                    <ion-col col-4>
+                        <div class="feed-box-icon">
+                            <img-loader [src]="feed.Doctor.photoURL" class="doctor-icon"></img-loader>
+                        </div>
+                    </ion-col>
+
+                </ion-row>
+            </div>
+        </ion-grid>
+    </div>
 </ion-content>

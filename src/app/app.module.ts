@@ -1,5 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -21,6 +23,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { RateComponent } from '../components/rate/rate';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { Angular2SocialLoginModule } from "angular2-social-login";
+import { ChartsModule } from 'ng2-charts';
 
 const config: SocketIoConfig = { url: 'https://herefyp.herokuapp.com', options: {} };
 const providers = {
@@ -50,7 +53,8 @@ const providers = {
         Ionic2RatingModule,
         HttpModule,
         HttpClientModule,
-        MomentModule
+        MomentModule,
+        ChartsModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

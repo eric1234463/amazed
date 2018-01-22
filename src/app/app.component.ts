@@ -24,7 +24,7 @@ export class MyApp {
                         this.rootPage = 'login';
                     }
                 })
-
+                statusBar.styleDefault();
             });
     }
 }

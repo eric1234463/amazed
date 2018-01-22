@@ -21,6 +21,7 @@ export interface facebookUser {
     uid: String;
     token: String;
     image: String;
+    displayName: String
 }
 @Injectable()
 export class UserService {
@@ -32,20 +33,29 @@ export class UserService {
         return new Promise((resolve, reject) => {
             if (this.platform.is('ios') || this.platform.is('android')) {
                 this.fb.login(['email', 'public_profile']).then(res => {
-                    this.http.post<Patient>('https://herefyp.herokuapp.com/api/user/patientLogin', {
-                        uid: res.authResponse.userID,
-                    }).subscribe(currentUser => {
-                        this.storage.set('user', currentUser);
-                        resolve(currentUser);
+                    this.fb.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+                        this.http.post<Patient>('https://herefyp.herokuapp.com/api/patient/login', {
+                            uid: res.authResponse.userID,
+                            email: profile['email'],
+                            displayName: profile['name'],
+                            photoURL: profile['picture_large']['data']['url']
+                        }).subscribe(currentUser => {
+                            this.storage.set('user', currentUser);
+                            resolve(currentUser);
+                        });
                     });
+
                 })
             }
             else {
                 this.auth.login('facebook').subscribe(
                     (user: facebookUser) => {
-                        this.http.post<Patient>('https://herefyp.herokuapp.com/api/user/patientLogin', {
+                        console.log(user);
+                        this.http.post<Patient>('https://herefyp.herokuapp.com/api/patient/login', {
                             uid: user.uid,
-                            email: user.email
+                            email: user.email,
+                            displayName: user.displayName,
+                            photoURL: user.image
                         }).subscribe(currentUser => {
                             this.storage.set('user', currentUser);
                             resolve(currentUser);
