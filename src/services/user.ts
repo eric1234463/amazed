@@ -33,7 +33,7 @@ export class UserService {
             if (this.platform.is('ios') || this.platform.is('android')) {
                 this.fb.login(['email', 'public_profile']).then(res => {
                     this.http.post<Patient>('https://herefyp.herokuapp.com/api/user/patientLogin', {
-                        uid: res.authResponse.userID
+                        uid: res.authResponse.userID,
                     }).subscribe(currentUser => {
                         this.storage.set('user', currentUser);
                         resolve(currentUser);
@@ -44,7 +44,8 @@ export class UserService {
                 this.auth.login('facebook').subscribe(
                     (user: facebookUser) => {
                         this.http.post<Patient>('https://herefyp.herokuapp.com/api/user/patientLogin', {
-                            uid: user.uid
+                            uid: user.uid,
+                            email: user.email
                         }).subscribe(currentUser => {
                             this.storage.set('user', currentUser);
                             resolve(currentUser);
