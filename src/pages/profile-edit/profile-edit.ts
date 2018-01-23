@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { UserService, Patient } from '../../services/user';
 
@@ -12,17 +12,19 @@ import { UserService, Patient } from '../../services/user';
         templateUrl: 'profile-edit.html'
     }
 )
-export class ProfileEditPage {
+export class ProfileEditPage implements OnInit {
     public user: Patient;
 
     constructor(public navCtrl: NavController, public userService: UserService) {
 
     }
-    ionViewWillEnter(){
-        console.log(this.user);
-        this.userService.getUser().then(user => {
-            this.user = user;
-        })
+
+    async ngOnInit() {
+        this.user = await this.userService.getUser();
+    }
+
+    async onViewWillEnter() {
+        this.user = await this.userService.getUser();
     }
     save() {
         console.log(this.user);
