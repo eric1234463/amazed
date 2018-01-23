@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import moment from 'moment';
 import { UserService, Patient } from './user';
+import { RequestOptions, Request, RequestMethod } from '@angular/http';
 
 export interface Feed {
     doctorID: string;
@@ -31,22 +32,24 @@ export class FeedService {
     async getFeedById(id) {
         return await this.http.get<Feed>(`https://herefyp.herokuapp.com/api/feed/${id}`).toPromise();
     }
-    getClocks() {
-        return new Promise<Clock[]>((resolve, reject) => {
-            const currentDate = moment().format('YYYY-MM-DD');
-            const days7Ago = moment().subtract(7, 'd').format('YYYY-MM-DD');
-            this.userService.getUser().then(user => {
-                this.http.get<Clock[]>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?patientId=${user.id}&from=${days7Ago}&to=${currentDate}`)
-                    .subscribe(clocks => {
-                        resolve(clocks);
-                    });
-            })
-        });
+    async getClocks() {
+        const currentDate = moment().format('YYYY-MM-DD');
+        const days7Ago = moment().subtract(7, 'd').format('YYYY-MM-DD');
+        const user = await this.userService.getUser();
+        return await this.http.get<Clock[]>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?patientId=${user.id}&from=${days7Ago}&to=${currentDate}`).toPromise();
     }
 
     async getClock(type, date) {
         const user = await this.userService.getUser();
-        const status = await this.http.get<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?type=${type}&patientId=${user.id}&date=${date}`).toPromise();
+        const status = await this.http.get<HttpResponse>(`http://herefyp.herokuapp.com/api/patient/biologicalClock`, {
+            params: {
+                type: type,
+                date: date,
+                patientId: user.id
+            },
+            observe: 'body',
+            withCredentials: true
+        }).toPromise();
         return status;
     }
     createClock(type, date) {

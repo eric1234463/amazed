@@ -37,13 +37,19 @@ export class FeedPage implements OnInit {
     ];
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
-
+    public showModal = false;
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig, public modalCtrl: ModalController) {
 
     }
     async ngOnInit() {
         const status = await this.feedService.getClock('WAKE', new Date());
         if (status.status === false) {
+            this.showModal = true;
+        } else {
+            console.log(status);
+        }
+        console.log(this.showModal);
+        if (this.showModal) {
             this.modalCtrl.create('clock').present();
         }
         this.imageLoaderConfig.setBackgroundSize('cover');
@@ -54,10 +60,7 @@ export class FeedPage implements OnInit {
             let date = moment().subtract(i, 'd').format('DD');
             this.lineChartLabels.push(date);
         }
-        this.feedService.getClocks().then(clocks => {
-            this.lineChartData = clocks;
-
-        });
+        this.lineChartData = await this.feedService.getClocks();
     }
 
     goToDetail(feed) {
