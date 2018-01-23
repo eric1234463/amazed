@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Record, RecordService } from '../../services/record';
@@ -12,17 +12,16 @@ import { Record, RecordService } from '../../services/record';
     templateUrl: 'record.html'
 })
 
-export class RecordPage {
+export class RecordPage implements OnInit {
     public records: Record[];
 
     constructor(public nativeStorage: NativeStorage, public recordService: RecordService, public navCtrl: NavController) {
-        this.recordService.getRecords().then(records => {
-            this.records = records;
-            console.log(records);
-        })
+
     }
 
-
+    async ngOnInit() {
+        this.records = await this.recordService.getRecords();
+    }
 
 
     goToDetail(record) {

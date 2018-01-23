@@ -24,20 +24,12 @@ export class FeedService {
 
     }
 
-    getFeeds() {
-        return new Promise<Feed[]>((resolve, reject) => {
-            this.http.get<Feed[]>(`https://herefyp.herokuapp.com/api/feed`).subscribe(feeds => {
-                resolve(feeds);
-            });
-        });
+    async getFeeds() {
+        return await this.http.get<Feed[]>(`https://herefyp.herokuapp.com/api/feed`).toPromise();
     }
 
-    getFeedById(id) {
-        return new Promise<Feed>((resolve, reject) => {
-            this.http.get<Feed>(`https://herefyp.herokuapp.com/api/feed/${id}`).subscribe(feed => {
-                resolve(feed);
-            });
-        });
+    async getFeedById(id) {
+        return await this.http.get<Feed>(`https://herefyp.herokuapp.com/api/feed/${id}`).toPromise();
     }
     getClocks() {
         return new Promise<Clock[]>((resolve, reject) => {
@@ -52,19 +44,10 @@ export class FeedService {
         });
     }
 
-    getClock(type, date) {
-        return new Promise((resolve, reject) => {
-            this.userService.getUser().then(user => {
-                this.http.get<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?type=${type}&patientId=${user.id}&date=${date}`).subscribe(res => {
-                    if (res.status) {
-                        reject(res);
-                    } else {
-                        resolve(res);
-                    }
-                })
-
-            })
-        });
+    async getClock(type, date) {
+        const user = await this.userService.getUser();
+        const status = await this.http.get<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock?type=${type}&patientId=${user.id}&date=${date}`).toPromise();
+        return status;
     }
     createClock(type, date) {
         return new Promise((resolve, reject) => {

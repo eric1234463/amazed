@@ -17,13 +17,13 @@ export class MyApp {
             .then(() => {
                 // Okay, so the platform is ready and our plugins are available. Here you can do
                 // any higher level native things you might need.
-                userService.getUser().then(user => {
-                    if (user !== null) {
-                        this.rootPage = TabsPage;
-                    } else {
-                        this.rootPage = 'login';
-                    }
-                })
+                const user = userService.getUser();
+                if (user !== null) {
+                    this.rootPage = TabsPage;
+                } else {
+                    this.rootPage = 'login';
+                }
+
                 statusBar.styleDefault();
             });
     }

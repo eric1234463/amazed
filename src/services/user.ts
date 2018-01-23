@@ -80,9 +80,7 @@ export class UserService {
         })
     }
 
-    getUser() {
-        return new Promise<Patient>((resolve, reject) => {
-            resolve(this.storage.get('user'));
-        });
+    async getUser() {
+        return await this.storage.get('user');
     }
 }

@@ -32,20 +32,11 @@ export class RecordService {
 
     }
 
-    getRecords() {
-        return new Promise<Record[]>((resolve, reject) => {
-            this.userService.getUser().then(user => {
-                this.http.get<Record[]>(`https://herefyp.herokuapp.com/api/record?userId=${user.id}`).subscribe(records => {
-                    resolve(records);
-                });
-            })
-        });
+    async getRecords() {
+        const user = await this.userService.getUser();
+        return await this.http.get<Record[]>(`https://herefyp.herokuapp.com/api/record?userId=${user.id}`).toPromise();
     }
-    getRecordByID(id) {
-        return new Promise<Record>((resolve, reject) => {
-            this.http.get<Record>(`https://herefyp.herokuapp.com/api/record/${id}`).subscribe(records => {
-                resolve(records);
-            });
-        });
+    async getRecordByID(id) {
+        return await this.http.get<Record>(`https://herefyp.herokuapp.com/api/record/${id}`).toPromise();
     }
 }

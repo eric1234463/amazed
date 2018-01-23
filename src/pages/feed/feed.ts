@@ -41,20 +41,14 @@ export class FeedPage implements OnInit {
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig, public modalCtrl: ModalController) {
 
     }
-    ngOnInit() {
-        this.feedService.getClock('WAKE', new Date()).then(res => {
-            console.log(res);
+    async ngOnInit() {
+        const status = await this.feedService.getClock('WAKE', new Date());
+        if (status.status === false) {
             this.modalCtrl.create('clock').present();
-        }).catch(error => {
-            console.log(error)
-        })
-
+        }
         this.imageLoaderConfig.setBackgroundSize('cover');
         this.imageLoaderConfig.enableSpinner(true);
-        this.feedService.getFeeds().then(feeds => {
-            console.log(feeds);
-            this.feeds = feeds;
-        });
+        this.feeds = await this.feedService.getFeeds();
 
         for (let i = 7; i > 0; i--) {
             let date = moment().subtract(i, 'd').format('DD');
