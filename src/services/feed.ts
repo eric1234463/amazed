@@ -67,18 +67,12 @@ export class FeedService {
         });
     }
     createClock(type, date) {
-        let momentDate = moment();
-        if (type == 'SLEEP') {
-            let hour = parseInt(date.split(':')[0]);
-            momentDate = moment().subtract(1, 'days');
-            momentDate.set('hour', hour);
-        }
         return new Promise((resolve, reject) => {
             this.userService.getUser().then(user => {
                 this.http.post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock`, {
                     type: type,
                     patientId: user.id,
-                    date: momentDate
+                    date: date
                 }).subscribe(res => {
                     if (res.status) {
                         resolve(res);

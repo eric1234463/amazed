@@ -37,15 +37,18 @@ export class FeedPage implements OnInit {
     ];
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public feedService: FeedService, public imageLoaderConfig: ImageLoaderConfig, public modalCtrl: ModalController) {
 
     }
     ngOnInit() {
         this.feedService.getClock('WAKE', new Date()).then(res => {
+            console.log(res);
             this.modalCtrl.create('clock').present();
         }).catch(error => {
             console.log(error)
         })
+
         this.imageLoaderConfig.setBackgroundSize('cover');
         this.imageLoaderConfig.enableSpinner(true);
         this.feedService.getFeeds().then(feeds => {
