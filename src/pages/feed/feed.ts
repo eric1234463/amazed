@@ -24,17 +24,14 @@ export class FeedPage implements OnInit {
     public lineChartLabels: Array<String> = [];
     public lineChartOptions: any = {
         responsive: true,
-    };
-    public lineChartColors: Array<any> = [
-        { // grey
-            backgroundColor: 'rgba(1,87,155,0.2)',
-            borderColor: 'rgba(1,87,155,1)',
-            pointBackgroundColor: 'rgba(1,87,155,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(1,87,155,0.8)'
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
         }
-    ];
+    };
     public lineChartLegend: boolean = true;
     public lineChartType: string = 'line';
     public showModal = false;
@@ -48,7 +45,6 @@ export class FeedPage implements OnInit {
         } else {
             console.log(status);
         }
-        console.log(this.showModal);
         if (this.showModal) {
             this.modalCtrl.create('clock').present();
         }
