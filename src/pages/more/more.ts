@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, IonicPage, AlertController, App } from 'ionic-angular';
-import { UserService, Patient } from '../../services/user';
+import { Component } from "@angular/core";
+import { NavController, IonicPage, AlertController, App } from "ionic-angular";
+import { UserService } from "../../services/user";
+import { Patient } from "../../services/interface";
+
 /**
  * Generated class for the MorePage page.
  *
@@ -9,47 +11,51 @@ import { UserService, Patient } from '../../services/user';
  */
 
 @IonicPage({
-    name: 'more',
-    segment: 'more'
+    name: "more",
+    segment: "more"
 })
 @Component({
-    selector: 'page-more',
-    templateUrl: 'more.html',
+    selector: "page-more",
+    templateUrl: "more.html"
 })
 export class MorePage {
     public user: Patient;
-    constructor(public navCtrl: NavController, public userService: UserService, public alertCtrl: AlertController, public app: App) {
+    constructor(
+        public navCtrl: NavController,
+        public userService: UserService,
+        public alertCtrl: AlertController,
+        public app: App
+    ) {
         this.userService.getUser().then(user => {
-            this.user = user
+            this.user = user;
         });
     }
 
     goToProfile() {
-        this.navCtrl.push('profile');
+        this.navCtrl.push("profile");
     }
 
     logout() {
         let alert = this.alertCtrl.create({
-            title: 'Confirm Logout',
-            message: 'Do you want to logout this Account?',
+            title: "Confirm Logout",
+            message: "Do you want to logout this Account?",
             buttons: [
                 {
-                    text: 'Cancel',
-                    role: 'cancel',
+                    text: "Cancel",
+                    role: "cancel",
                     handler: () => {
-                        console.log('Cancel clicked');
+                        console.log("Cancel clicked");
                     }
-                }, {
-                    text: 'Logout',
+                },
+                {
+                    text: "Logout",
                     handler: () => {
                         this.userService.logout();
-                        this.app.getRootNav().setRoot('login');
+                        this.app.getRootNav().setRoot("login");
                     }
                 }
             ]
-
         });
         alert.present();
     }
-
 }

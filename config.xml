@@ -101,4 +101,7 @@
         <variable name="APP_NAME" value="HERE" />
     </plugin>
     <engine name="ios" spec="~4.5.3" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

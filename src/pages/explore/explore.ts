@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 import {
     GoogleMaps,
     GoogleMap,
@@ -8,7 +8,10 @@ import {
     CameraPosition,
     MarkerOptions,
     Marker
-} from '@ionic-native/google-maps';
+} from "@ionic-native/google-maps";
+import { Geolocation } from "@ionic-native/geolocation";
+import { DoctorService } from "../../services/doctor";
+import { Doctor } from "../../services/interface";
 /**
  * Generated class for the ExplorePage page.
  *
@@ -17,25 +20,32 @@ import {
  */
 
 @IonicPage({
-    name: 'explore',
-    segment: 'explore'
+    name: "explore",
+    segment: "explore"
 })
 @Component({
-    selector: 'page-explore',
-    templateUrl: 'explore.html',
+    selector: "page-explore",
+    templateUrl: "explore.html"
 })
 export class ExplorePage {
     public map: GoogleMap;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public googleMaps: GoogleMaps) {
-    }
+    public doctors: Doctor[];
+
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public googleMaps: GoogleMaps,
+        public geolocation: Geolocation,
+        public doctorService: DoctorService
+    ) {}
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad ExplorePage');
         this.loadMap();
     }
-    loadMap() {
+    async loadMap() {
+        const resp = await this.geolocation.getCurrentPosition();
         let mapOptions: GoogleMapOptions = {
-            controls:{
+            controls: {
                 compass: true,
                 myLocationButton: true,
                 indoorPicker: true,
@@ -43,10 +53,10 @@ export class ExplorePage {
             },
             camera: {
                 target: {
-                    lat: 43.0741904,
-                    lng: -89.3809802
+                    lat: resp.coords.latitude,
+                    lng: resp.coords.longitude
                 },
-                zoom: 18,
+                zoom: 16,
                 tilt: 30
             },
             gestures: {
@@ -54,34 +64,34 @@ export class ExplorePage {
                 tilt: true,
                 rotate: true,
                 zoom: true
-            },
+            }
         };
+        this.doctors = await this.doctorService.getDoctorLocation(
+            resp.coords.latitude,
+            resp.coords.longitude
+        );
 
-        this.map = this.googleMaps.create('map_canvas', mapOptions);
-
+        this.map = GoogleMaps.create("map_canvas", mapOptions);
         // Wait the MAP_READY before using any methods.
-        this.map.one(GoogleMapsEvent.MAP_READY)
-            .then(() => {
-                console.log('Map is ready!');
-
-                // Now you can use all methods safely.
-                this.map.addMarker({
-                    title: 'Ionic',
-                    icon: 'blue',
-                    animation: 'DROP',
+        await this.map.one(GoogleMapsEvent.MAP_READY);
+        // Now you can use all methods safely.
+        this.doctors.forEach(doctor => {
+            this.map
+                .addMarker({
+                    title: doctor.displayName,
+                    icon: "blue",
+                    animation: "DROP",
                     position: {
-                        lat: 43.0741904,
-                        lng: -89.3809802
+                        lat: doctor.google_lat,
+                        lng: doctor.google_lng
                     }
                 })
-                    .then(marker => {
-                        marker.on(GoogleMapsEvent.MARKER_CLICK)
-                            .subscribe(() => {
-                                alert('clicked');
-                            });
+                .then(marker => {
+                    console.log(marker);
+                    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(data => {
+                        //Your code for navigation.
                     });
-
-            });
+                });
+        });
     }
-
 }

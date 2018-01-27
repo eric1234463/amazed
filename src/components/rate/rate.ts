@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { Record, RecordService } from '../../services/record';
-
+import { Component } from "@angular/core";
+import { NavController, NavParams, ViewController } from "ionic-angular";
+import { RecordService } from "../../services/record";
+import { Record } from "../../services/interface";
 /**
  * Generated class for the RateComponent component.
  *
@@ -9,19 +9,19 @@ import { Record, RecordService } from '../../services/record';
  * Components.
  */
 @Component({
-    selector: 'rate',
-    templateUrl: 'rate.html'
+    selector: "rate",
+    templateUrl: "rate.html"
 })
 export class RateComponent {
-
     public record: Record;
 
-
-    constructor(public viewCtrl: ViewController, public navParams: NavParams, public recordService: RecordService) {
-
-    }
+    constructor(
+        public viewCtrl: ViewController,
+        public navParams: NavParams,
+        public recordService: RecordService
+    ) {}
     ngOnInit() {
-        this.record = this.navParams.get('record');
+        this.record = this.navParams.get("record");
         console.log(this.record);
     }
     cancel() {
@@ -29,7 +29,6 @@ export class RateComponent {
     }
     update() {
         //this.recordService.update(this.record);
-        this.viewCtrl.dismiss()
+        this.viewCtrl.dismiss();
     }
-
 }
