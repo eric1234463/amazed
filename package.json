@@ -43,9 +43,8 @@
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-facebook4": "^1.7.4",
         "cordova-plugin-geolocation": "^4.0.1",
-        "cordova-plugin-googlemaps": "^2.1.1",
-        "cordova-plugin-googlemaps-sdk":
-            "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
+        "cordova-plugin-googlemaps": "^2.2.1",
+        "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
         "cordova-plugin-nativestorage": "^2.2.2",
         "cordova-plugin-splashscreen": "^4.1.0",
         "cordova-plugin-statusbar": "^2.4.1",
@@ -82,13 +81,10 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-nativestorage": {},
             "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID":
-                    "AIzaSyDihunfsXSWJ3vs8HGBycIFtg0Lk9ehamc",
+                "API_KEY_FOR_ANDROID": "AIzaSyDihunfsXSWJ3vs8HGBycIFtg0Lk9ehamc",
                 "API_KEY_FOR_IOS": "AIzaSyBXFNN9Q-S3XadfijFOXiASfgLj_WKqU-Y",
-                "LOCATION_WHEN_IN_USE_DESCRIPTION":
-                    "Show your location on the map",
-                "LOCATION_ALWAYS_USAGE_DESCRIPTION":
-                    "Trace your location on the map"
+                "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
+                "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
             },
             "phonegap-plugin-barcodescanner": {},
             "cordova-plugin-compat": {},
@@ -100,6 +96,9 @@
                 "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
             }
         },
-        "platforms": ["ios", "android"]
+        "platforms": [
+            "ios",
+            "android"
+        ]
     }
 }

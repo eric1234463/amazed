@@ -26,11 +26,11 @@
     <div [ngSwitch]="content">
         <div *ngSwitchCase="'status'">
             <ion-row>
-                <ion-col col-6>
-                    <circle-progress [percent]="currentProgres" [radius]="100" [title]="Current Step"></circle-progress>
+                <ion-col col-6 class="circle-progress">
+                    <circle-progress [percent]="currentStepProgres" [maxPercent]="maxStep" [title]="currentStep" [units]="'Step'"></circle-progress>
                 </ion-col>
-                <ion-col col-6>
-                    <circle-progress [percent]="currentProgres" [radius]="100" [title]="Sleep Hour"></circle-progress>
+                <ion-col col-6 class="circle-progress">
+                    <circle-progress [percent]="currentSleepProgres" [maxPercent]="maxSleep" [title]="sleepHours" [units]="'Hours'"></circle-progress>
                 </ion-col>
             </ion-row>
             <canvas *ngIf="lineChartData" baseChart width="300" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"

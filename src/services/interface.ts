@@ -61,6 +61,7 @@ export interface facebookUser {
 }
 
 export interface Feed {
+    id: number;
     doctorID: string;
     content: string;
     title: string;

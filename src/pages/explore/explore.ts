@@ -78,6 +78,7 @@ export class ExplorePage {
         this.doctors.forEach(doctor => {
             this.map
                 .addMarker({
+                    doctorId: doctor.id,
                     title: doctor.displayName,
                     icon: "blue",
                     animation: "DROP",
@@ -90,6 +91,12 @@ export class ExplorePage {
                     console.log(marker);
                     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(data => {
                         //Your code for navigation.
+                        console.log(data);
+                        let doctorId = data[1].get("doctorId");
+                        console.log(doctorId);
+                        this.navCtrl.push("doctor-detail", {
+                            id: doctorId
+                        });
                     });
                 });
         });

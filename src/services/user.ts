@@ -68,8 +68,8 @@ export class UserService {
     logout() {
         this.storage.remove("user");
     }
-    updateUserData(user: Patient) {
-        this.http
+    async updateUserData(user: Patient) {
+        const currentUser = await this.http
             .put("https://herefyp.herokuapp.com/api/patient", {
                 hkid: user.hkid,
                 gender: user.gender,
@@ -77,9 +77,8 @@ export class UserService {
                 weight: user.weight,
                 patientId: user.id
             })
-            .subscribe(currentUser => {
-                this.storage.set("user", user);
-            });
+            .toPromise();
+        return this.storage.set("user", currentUser);
     }
 
     async getUser() {

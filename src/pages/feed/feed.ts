@@ -26,8 +26,10 @@ import moment from "moment";
 })
 export class FeedPage implements OnInit {
     public currentStep: number = 1000;
-    public maxStep: number = 10000;
-    public currentProgres = this.currentStep / this.maxStep * 100;
+    public maxStep = 10000;
+    public maxSleep = 10;
+    public currentStepProgres = this.currentStep / this.maxStep * 100;
+    public currentSleepProgres = 0;
     public feeds: Feed[];
     public content = "status";
     public lineChartData: Clock[];
@@ -75,6 +77,10 @@ export class FeedPage implements OnInit {
             this.lineChartLabels.push(date);
         }
         this.lineChartData = await this.feedService.getClocks();
+        this.currentSleepProgres = Math.abs(
+            this.lineChartData[0].data[6] -
+                this.lineChartData[1].data[6] / 10 * 100
+        );
     }
 
     goToDetail(feed) {

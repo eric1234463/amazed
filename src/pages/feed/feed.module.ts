@@ -14,12 +14,11 @@ import { NgCircleProgressModule } from "ng-circle-progress";
         IonicImageLoader,
         NgCircleProgressModule.forRoot({
             subtitle: "",
-            units: "Step",
+            radius: 80,
             outerStrokeWidth: 10,
             innerStrokeWidth: 5,
             outerStrokeColor: "#64b5f6",
-            innerStrokeColor: "#01579B",
-            showBackground: false
+            innerStrokeColor: "#01579B"
         }),
         ChartsModule
     ]

@@ -6,8 +6,8 @@ import { Feed } from "./interface";
 import { RequestOptions, Request, RequestMethod } from "@angular/http";
 
 export interface Clock {
-    data: Date[];
-    label: String;
+    data: number[];
+    label: string;
 }
 export interface HttpResponse {
     status: Boolean;
@@ -52,9 +52,7 @@ export class FeedService {
                         type: type,
                         date: date,
                         patientId: user.id
-                    },
-                    observe: "body",
-                    withCredentials: true
+                    }
                 }
             )
             .toPromise();
