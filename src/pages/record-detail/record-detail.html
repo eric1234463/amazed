@@ -5,42 +5,44 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content *ngIf="record">
-    <div class="cover">
-        <ion-grid>
-            <ion-row *ngIf="record.Doctor">
-                <ion-col col-3></ion-col>
-                <ion-col col-6>
-                    <div class="icon-container">
-                        <img [src]="record.Doctor.photoURL" class="doctor-icon" />
-                    </div>
-                    <p class="doctor-name">{{record.Doctor.displayName}}</p>
-                </ion-col>
-                <ion-col col-3></ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>
-    <div>
-        <ion-grid>
-            <ion-row class="icon-row mat-orange-500-border">
-                <ion-col col-2 class="icon-col mat-orange-500-bg">
-                    <span class="grid-icon icon-moon icon-pen"></span>
-                </ion-col>
-                <ion-col col-10 class="padding-0-10">
-                    <h6 class="mat-orange-500-text">Description</h6>
-                    <p class="f-14" ion-text color="airbnb">{{ record.description}}</p>
-                </ion-col>
-            </ion-row>
-            <ion-row class="icon-row mat-cyan-500-border">
-                <ion-col col-2 class="icon-col mat-cyan-500-bg">
-                    <i class="grid-icon icon-moon icon-calendar "></i>
-                </ion-col>
-                <ion-col col-10 class="padding-0-10">
-                    <h6 class="mat-cyan-500-text">Visit Date</h6>
-                    <p class="f-14 " ion-text color="airbnb">{{ record.createdAt | amDateFormat:'DD MMM YYYY'}}</p>
-                </ion-col>
-            </ion-row>
-            <!-- <ion-row class="icon-row mat-purple-500-border">
+<ion-content>
+    <div *ngIf="record">
+
+        <div class="cover">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-3></ion-col>
+                    <ion-col col-6>
+                        <div class="icon-container">
+                            <img [src]="record.Doctor.photoURL" class="doctor-icon" />
+                        </div>
+                        <p class="doctor-name">{{record.Doctor.displayName}}</p>
+                    </ion-col>
+                    <ion-col col-3></ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div>
+            <ion-grid>
+                <ion-row class="icon-row mat-orange-500-border">
+                    <ion-col col-2 class="icon-col mat-orange-500-bg">
+                        <span class="grid-icon icon-moon icon-pen"></span>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 class="mat-orange-500-text">Description</h6>
+                        <p class="f-14" ion-text color="airbnb">{{ record.description}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-cyan-500-border">
+                    <ion-col col-2 class="icon-col mat-cyan-500-bg">
+                        <i class="grid-icon icon-moon icon-calendar "></i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10">
+                        <h6 class="mat-cyan-500-text">Visit Date</h6>
+                        <p class="f-14 " ion-text color="airbnb">{{ record.createdAt | amDateFormat:'DD MMM YYYY'}}</p>
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-row class="icon-row mat-purple-500-border">
                 <ion-col col-2 class="icon-col mat-purple-500-bg">
                     <i class="grid-icon icon-moon icon-calendar "></i>
                 </ion-col>
@@ -58,45 +60,47 @@
                     <p class="f-14 " ion-text color="airbnb">{{ record.endDate | amDateFormat:'DD MMM YYYY'}}</p>
                 </ion-col>
             </ion-row> -->
-            <ion-row class="icon-row mat-teal-500-border">
-                <ion-col col-2 class="icon-col mat-teal-500-bg">
-                    <i class="grid-icon icon-moon icon-shrink "></i>
-                </ion-col>
-                <ion-col col-10 class="padding-0-10 ">
-                    <h6 class="mat-teal-500-text">Factor</h6>
-                    <p class="f-14 ">
-                        <span *ngFor="let factor of record.RecordFactors" class="record-tag" [ngClass]="factor.class">{{factor.Factor.name}}</span>
-                    </p>
-                </ion-col>
-            </ion-row>
-            <ion-row class="icon-row mat-lime-500-border">
-                <ion-col col-2 class="icon-col mat-lime-500-bg">
-                    <i class="grid-icon icon-moon icon-aid-kit "></i>
-                </ion-col>
-                <ion-col col-10 class="padding-0-10 ">
-                    <h6 class="mat-lime-500-text">Medicine</h6>
-                    <p class="f-14">
-                        <span *ngFor="let medicine of record.RecordMedicines" class="record-tag" [ngClass]="medicine.class">{{medicine.Medicine.name}}</span>
-                    </p>
-                </ion-col>
-            </ion-row>
-            <ion-row class="icon-row mat-lime-500-border">
-                <ion-col col-2 class="icon-col mat-lime-500-bg">
-                    <i class="grid-icon icon-moon icon-aid-kit "></i>
-                </ion-col>
-                <ion-col col-6 class="padding-0-10 ">
-                    <h6 class="mat-lime-500-text">Rating</h6>
-                    <p class="margin-0">
-                        <rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
-                    </p>
-                </ion-col>
-                <ion-col col-4>
-                    <button ion-button color="primary" outline (click)="rate()">
+                <ion-row class="icon-row mat-teal-500-border">
+                    <ion-col col-2 class="icon-col mat-teal-500-bg">
+                        <i class="grid-icon icon-moon icon-shrink "></i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10 ">
+                        <h6 class="mat-teal-500-text">Factor</h6>
+                        <p class="f-14 ">
+                            <span *ngFor="let factor of record.RecordFactors" class="record-tag" [ngClass]="factor.class">{{factor.Factor.name}}</span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-lime-500-border">
+                    <ion-col col-2 class="icon-col mat-lime-500-bg">
+                        <i class="grid-icon icon-moon icon-aid-kit "></i>
+                    </ion-col>
+                    <ion-col col-10 class="padding-0-10 ">
+                        <h6 class="mat-lime-500-text">Medicine</h6>
+                        <p class="f-14">
+                            <span *ngFor="let medicine of record.RecordMedicines" class="record-tag" [ngClass]="medicine.class">{{medicine.Medicine.name}}</span>
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="icon-row mat-lime-500-border">
+                    <ion-col col-2 class="icon-col mat-lime-500-bg">
+                        <i class="grid-icon icon-moon icon-aid-kit "></i>
+                    </ion-col>
+                    <ion-col col-6 class="padding-0-10 ">
+                        <h6 class="mat-lime-500-text">Rating</h6>
+                        <p class="margin-0">
+                            <rating [(ngModel)]="record.rate" readOnly="false" max="5"></rating>
+                        </p>
+                    </ion-col>
+                    <ion-col col-4>
+                        <button ion-button color="primary" outline (click)="rate()">
                         <ion-icon name="star"></ion-icon>
                         Rate
                     </button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
     </div>
+
 </ion-content>

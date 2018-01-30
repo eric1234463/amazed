@@ -6,7 +6,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding class="background">
+<ion-content padding>
     <div *ngIf="connected == false">
         <p style="text-align:center">Scan to See Record!</p>
         <button ion-button block (click)="qrScan()">Scan QR Code</button>

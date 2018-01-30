@@ -21,7 +21,7 @@ $colors: (
     light: #f4f4f4,
     dark: #222,
     grey: #f7f7f7,
-    airbnb: #607d8b,
+    airbnb: #484848,
     star: #FFC107,
 );
 
@@ -199,7 +199,7 @@ ion-header {
 
 $toolbar-background: #fff;
 $tabs-background: #fff;
-$tabs-tab-color-inactive: color($colors, primary, 0.7);
+$tabs-tab-color-inactive: color($colors, secondary);
 $tabs-tab-color-active: color($colors, primary); // App iOS Variables
 
 

@@ -1,12 +1,16 @@
 page-more {
     .list-item{
-        border-bottom: 0.55px solid #607d8b;
-        padding: 10px;
-        margin: 10px;
+        border-bottom: 1px solid #DBDBDB !important;
+        padding: 16px 8px;
+    }
+    .item-profile-name{
+        font-size: 32px;
+        font-weight: 900;
+        margin: 0;
+        color: color($colors,primary)!important;
     }
     .item-name{
-        font-size: 20px;
-        font-weight: 900;
+        font-size: 22px;
         margin: 0;
         color: color($colors,primary)!important;
     }

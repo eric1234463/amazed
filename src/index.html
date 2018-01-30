@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="assets/font-icon.css">
     <link rel="stylesheet" href="assets/font-awesome.css">
     <link rel="stylesheet" href="assets/text-font.css">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        // !important: You want to give this variable(var googleLoaded = false;). This is used to run multiple chart in your jade.
-        var googleLoaded = false;
-        // !important: Define which chart packages to preload.Because this package uses ChartWrappers you can use any chart type that Google supports, but if it // isn't loaded it will load it on demand.
-        var googleChartsPackagesToLoad = ['geochart'];
-    </script>
+    // !important: You want to give this variable(var googleLoaded = false;). This is used to run multiple chart in your jade.
+var googleLoaded = false;
+// !important: Define which chart packages to preload.Because this package uses ChartWrappers you can use any chart type that Google supports, but if it // isn't loaded it will load it on demand.
+var googleChartsPackagesToLoad = ["geochart"];
+</script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4e8ef7">
 
@@ -29,12 +29,13 @@
 
     <!-- un-comment this code to enable service worker
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('service worker installed'))
-        .catch(err => console.error('Error', err));
-    }
-  </script>-->
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+        .register("service-worker.js")
+        .then(() => console.log("service worker installed"))
+        .catch(err => console.error("Error", err));
+}
+</script>-->
 
     <link href="build/main.css" rel="stylesheet">
 
