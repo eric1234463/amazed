@@ -15,10 +15,11 @@ import { NgCircleProgressModule } from "ng-circle-progress";
         NgCircleProgressModule.forRoot({
             subtitle: "",
             radius: 80,
-            outerStrokeWidth: 10,
+            space: -5,
+            outerStrokeWidth: 5,
             innerStrokeWidth: 5,
-            outerStrokeColor: "#64b5f6",
-            innerStrokeColor: "#01579B"
+            outerStrokeColor: "#43bfc7",
+            innerStrokeColor: "#607d8b"
         }),
         ChartsModule
     ]

@@ -80,7 +80,7 @@ export class ExplorePage {
                 .addMarker({
                     doctorId: doctor.id,
                     title: doctor.displayName,
-                    icon: "blue",
+                    icon: "#43bfc7",
                     animation: "DROP",
                     position: {
                         lat: doctor.google_lat,

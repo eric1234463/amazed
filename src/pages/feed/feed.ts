@@ -34,6 +34,26 @@ export class FeedPage implements OnInit {
     public content = "status";
     public lineChartData: Clock[];
     public lineChartLabels: Array<String> = [];
+    public lineChartColors: Array<any> = [
+        {
+            // grey
+            backgroundColor: "rgba(67,191,199,0.2)",
+            borderColor: "rgba(67,191,199,1)",
+            pointBackgroundColor: "rgba(67,191,199,0.1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(67,191,199,0.8)"
+        },
+        {
+            // dark grey
+            backgroundColor: "rgba(0,186,255,0.2)",
+            borderColor: "rgba(0,186,255,1)",
+            pointBackgroundColor: "rgba(0,186,255,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(0,186,255,0.8)"
+        }
+    ];
     public lineChartOptions: any = {
         responsive: true,
         scales: {

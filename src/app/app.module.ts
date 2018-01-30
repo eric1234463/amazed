@@ -7,7 +7,6 @@ import { Ionic2RatingModule } from "ionic2-rating";
 import { IonicStorageModule } from "@ionic/storage";
 import { MomentModule } from "angular2-moment";
 import { MyApp } from "./app.component";
-import { TabsPage } from "../pages/tabs/tabs";
 import { StatusBar } from "@ionic-native/status-bar";
 import { NativeStorage } from "@ionic-native/native-storage";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -37,7 +36,7 @@ const providers = {
 };
 
 @NgModule({
-    declarations: [MyApp, TabsPage, RateComponent],
+    declarations: [MyApp, RateComponent],
     imports: [
         BrowserModule,
         IonicImageLoader.forRoot(),
@@ -55,7 +54,7 @@ const providers = {
         ChartsModule
     ],
     bootstrap: [IonicApp],
-    entryComponents: [MyApp, TabsPage, RateComponent],
+    entryComponents: [MyApp, RateComponent],
     providers: [
         StatusBar,
         NativeStorage,
