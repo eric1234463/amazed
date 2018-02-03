@@ -6,7 +6,6 @@ import {
     PopoverController
 } from "ionic-angular";
 import { RecordService } from "../../services/record";
-import { RateComponent } from "../../components/rate/rate";
 import { Record } from "../../services/interface";
 
 @IonicPage({
@@ -31,9 +30,6 @@ export class RecordDetailPage implements OnInit {
         this.record = await this.recordService.getRecordByID(this.id);
     }
     rate() {
-        let popover = this.popoverCtrl.create(RateComponent, {
-            record: this.record
-        });
-        popover.present();
+
     }
 }

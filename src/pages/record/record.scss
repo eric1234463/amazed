@@ -10,7 +10,7 @@ page-record {
         padding: 10px 0 !important;
         background: color($colors,primary);
         color: #FFF;
-        border-radius: 0px 5px 5px 0;
+        border-radius: 5px 0 0 5px;
       }
 
       .inline-icon {
@@ -50,10 +50,12 @@ page-record {
       }
       .record-row {
         border-color: color($colors,primary);
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
         border-radius: 5px;
-        border-width: 2px;
-        border-style: solid;
-        margin-bottom: 5px;
+        background-color: #fff;
+        // border-width: 2px;
+        // border-style: solid;
+        margin-bottom: 10px;
       }
 
 }

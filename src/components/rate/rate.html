@@ -1,30 +1,8 @@
 <!-- Generated template for the RateComponent component -->
-<ion-header>
-    <ion-navbar color="primary">
-        <ion-title>Rate</ion-title>
-    </ion-navbar>
-</ion-header>
-<ion-content>
-    <div class="box">
-        <p> Please Rate this visit experience !</p>
-        <p class="margin-0">
-            <rating [(ngModel)]="record.rate" max="5"></rating>
-        </p>
-    </div>
-</ion-content>
-<ion-footer no-border>
-    <ion-toolbar>
-        <ion-row>
-            <ion-col col-6>
-                <button ion-button color="primary" outline (click)="cancel()">
-                    Cancel
-                </button>
-            </ion-col>
-            <ion-col col-6>
-                <button ion-button color="primary" block (click)="update()">
-                    Submit
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-toolbar>
-</ion-footer>
+
+<div class="box">
+    <p> Please Rate this visit experience !</p>
+    <p class="margin-0">
+        <rating [(ngModel)]="record.rate" max="5"></rating>
+    </p>
+</div>

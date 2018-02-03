@@ -4,7 +4,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
     <ion-grid class="padding-8">
         <ion-row class="record-row" *ngFor="let record of records" (click)="goToDetail(record)">
             <ion-col col-3 class="date-col">
@@ -17,7 +17,7 @@
                 </div>
                 <p class="item-doctor" ion-text color="secondary">{{record.Doctor.displayName}}</p>
             </ion-col>
-            <ion-col col-6 class="padding-10" ion-text color="airbnb">
+            <ion-col col-6 class="padding-10" ion-text color="secondary">
                 <p class="item-header">{{record.description}}</p>
                 <p class="item-has-icon">
                     <ion-icon name="map" class="inline-icon"></ion-icon>

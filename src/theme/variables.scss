@@ -20,13 +20,19 @@ $colors: (
     danger: #f53d3d,
     light: #f4f4f4,
     dark: #222,
-    grey: #f7f7f7,
+    grey: #e9ebee,
     airbnb: #484848,
     star: #FFC107,
 );
 
 .background {
     background: color($colors,grey)!important;
+
+}
+
+.white-background {
+    background: white !important;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06) !important
 }
 
 .mat-orange-500-bg {

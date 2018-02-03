@@ -1,12 +1,39 @@
 page-feed {
-    .circle-progress{
-        padding: 0;
+    .progress-box-1{
+        margin-right: 2px;
+        padding: 24px;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
+        background-color: white;
+        height: 150px;
+        border-radius: 8px;
+    }
+    .progress-box-2{
+        margin-left: 2px;
+        padding: 24px;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
+        background-color: white;
+        height: 150px;
+        border-radius: 8px;
+    }
+    .progress-title {
+        font-size: 18px;
+        margin: 8px 0 0 0;
+    }
+    .progress-bold{
+        font-size: 24px;
+        font-weight: 900;
+    }
+    .progress-row{
+        margin-bottom: 8px;
+    }
+    .chart-container{
+        border-radius: 8px;
     }
     .feed_bg{
         width: 100%!important;
-        height: 280px!important;
+        height: 180px!important;
+        background-position: 50% 50% !important;
         background-repeat: no-repeat;
-        background-position: center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -25,11 +52,9 @@ page-feed {
         border-bottom-right-radius: 8px;
     }
     .feed-box{
+        background: rgba(67,191,199,0.5);
         color: #fff;
         width: 100%;
-        position: relative;
-        top: -90px;
-        height: 90px;
         padding: 4px 8px;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
@@ -39,8 +64,8 @@ page-feed {
         width: 70px;
     }
     .feed-container{
-        height: 280px;
         margin-bottom: 5px;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
         border-radius: 8px;
     }
     .doctor-icon{
@@ -50,12 +75,14 @@ page-feed {
         width: 70px!important;
         display: block;
     }
-    h2,h6{
+    h6, p {
         margin: 2px;
         max-height: 30px;
         overflow: hidden;
     }
+
     canvas {
         height: 70vh!important;
     }
+
 }

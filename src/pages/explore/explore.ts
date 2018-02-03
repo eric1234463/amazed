@@ -4,10 +4,7 @@ import {
     GoogleMaps,
     GoogleMap,
     GoogleMapsEvent,
-    GoogleMapOptions,
-    CameraPosition,
-    MarkerOptions,
-    Marker
+    GoogleMapOptions
 } from "@ionic-native/google-maps";
 import { Geolocation } from "@ionic-native/geolocation";
 import { DoctorService } from "../../services/doctor";
