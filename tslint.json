@@ -1,13 +1,21 @@
 {
     "rules": {
         "no-duplicate-variable": true,
+        "no-console": false,
+        "no-import-side-effect": false,
+        "object-literal-key-quotes" : false,
+        "object-literal-sort-keys": false,
+        "member-access": false,
+        "ordered-imports": false,
+        "no-submodule-imports": false,
+        "interface-name":false,
         "no-unused-variable": [
             true
         ],
         "indent": [
             true,
             "spaces",
-            4
+            2
         ],
         "whitespace": [
             true,
@@ -20,5 +28,9 @@
     },
     "rulesDirectory": [
         "node_modules/tslint-eslint-rules/dist/rules"
+    ],
+    "extends": [
+        "tslint:latest",
+        "tslint-config-prettier"
     ]
 }

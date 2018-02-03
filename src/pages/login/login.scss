@@ -1,10 +1,29 @@
 page-login {
     .login-background{
-        background: color($colors,primary);
+        background: url('/assets/login.jpg');
+        background-position: 50% 50% !important;
+        background-repeat: no-repeat !important;
+        background-size: cover;
     }
+    .facebook-button{
+        margin: 16px 0;
+        height: 50px;
+        line-height: 50px;
+        font-weight: 700;
+        color: color($colors,white);
+        background: color($colors,facebook);
+    }
+
     .google-button{
-        color: color($colors,primary);
-        background: color($colors,light);
+      margin: 16px 0;
+      height: 50px;
+      line-height: 50px;
+      font-weight: 700;
+      color: color($colors,white);
+      background: color($colors,google);
+    }
+    .social-icon{
+      font-size: 32px;
     }
     h2 {
         text-align: center;
@@ -15,5 +34,7 @@ page-login {
         color: color($colors,light);
         font-size: 16px;
     }
-
+    .login-content{
+      height: 70vh;
+    }
 }

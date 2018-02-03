@@ -6,20 +6,21 @@
 -->
 
 <ion-content padding class="login-background">
-    <ion-grid>
+    <ion-grid class="login-content">
         <ion-row>
-            <ion-col col-3>
+            <ion-col col-2>
             </ion-col>
-            <ion-col col-6>
+            <ion-col col-8>
                 <img src="assets/icon.png" />
-                <h2>HERE</h2>
-                <p>A Secure Health Record Apps</p>
             </ion-col>
-            <ion-col col-3>
+            <ion-col col-2>
             </ion-col>
         </ion-row>
     </ion-grid>
-    <button ion-button icon-left block class="google-button" (click)="facebookLogin()">
-        <ion-icon name="logo-facebook"></ion-icon>Sign in with Facebook
+    <button ion-button icon-left block class="facebook-button" (click)="facebookLogin()">
+        <ion-icon name="logo-facebook" class="social-icon"></ion-icon>Sign in with Facebook
     </button>
+    <button ion-button icon-left block class="google-button" (click)="facebookLogin()">
+      <ion-icon name="logo-google" class="social-icon"></ion-icon>Sign in with Google
+  </button>
 </ion-content>

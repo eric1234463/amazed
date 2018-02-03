@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { FeedService, Clock } from '../../services/feed';
-import { Feed } from '../../services/interface';
+import { Health } from '@ionic-native/health';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import moment from 'moment';
-import { Health } from '@ionic-native/health';
+import { Clock, FeedService } from '../../services/feed';
+import { Feed } from '../../services/interface';
 
 /**
  * Generated class for the FeedPage page.
@@ -75,12 +75,10 @@ export class FeedPage implements OnInit {
     public modalCtrl: ModalController,
     public health: Health
   ) {}
-  async ngOnInit() {
+  public async ngOnInit() {
     const status = await this.feedService.getClock('WAKE', new Date());
     if (status.status === false) {
       this.showModal = true;
-    } else {
-      console.log(status);
     }
     if (this.showModal) {
       this.modalCtrl.create('clock').present();
@@ -88,7 +86,6 @@ export class FeedPage implements OnInit {
     this.imageLoaderConfig.setBackgroundSize('cover');
     this.imageLoaderConfig.enableSpinner(true);
     this.feeds = await this.feedService.getFeeds();
-
     for (let i = 7; i > 0; i--) {
       let date = moment()
         .subtract(i, 'd')
@@ -106,15 +103,14 @@ export class FeedPage implements OnInit {
           .then(res =>
             this.health
               .queryAggregated({
-                startDate: new Date(new Date().getTime() - 1 * 24 * 60 * 60 * 1000), // three days ago
-                //startDate: new Date(), // 1 days ago
+                startDate: new Date(), // 1 days ago
                 endDate: new Date(),
                 dataType: 'steps',
                 bucket: 'day'
               })
               .then(steps => {
                 if (!!steps) {
-                  this.currentStep = parseInt(steps[0].value);
+                  this.currentStep = parseInt(steps[0].value, 1);
                   this.feedService.createWalkingStep(steps[0].value, new Date());
                   this.currentStepProgress = this.currentStep / this.maxStep * 100;
                 }
@@ -125,7 +121,7 @@ export class FeedPage implements OnInit {
       .catch(e => console.log(e));
   }
 
-  goToDetail(feed) {
+  public goToDetail(feed) {
     // this.feedService.addfeed(feed);
     this.navCtrl.push('feed-detail', {
       id: feed.id

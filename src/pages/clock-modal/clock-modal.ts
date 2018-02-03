@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { FeedService } from '../../services/feed';
 import moment from 'moment-timezone';
+import { FeedService } from '../../services/feed';
 /**
  * Generated class for the ClockModalPage page.
  *

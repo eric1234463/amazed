@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
-import {
-    GoogleMaps,
-    GoogleMap,
-    GoogleMapsEvent,
-    GoogleMapOptions
-} from "@ionic-native/google-maps";
 import { Geolocation } from "@ionic-native/geolocation";
+import {
+    GoogleMap,
+    GoogleMapOptions,
+    GoogleMaps,
+    GoogleMapsEvent
+} from "@ionic-native/google-maps";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { DoctorService } from "../../services/doctor";
 import { Doctor } from "../../services/interface";
 /**
@@ -87,9 +87,9 @@ export class ExplorePage {
                 .then(marker => {
                     console.log(marker);
                     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(data => {
-                        //Your code for navigation.
+                        // Your code for navigation.
                         console.log(data);
-                        let doctorId = data[1].get("doctorId");
+                        const doctorId = data[1].get("doctorId");
                         console.log(doctorId);
                         this.navCtrl.push("doctor-detail", {
                             id: doctorId
