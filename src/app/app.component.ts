@@ -17,12 +17,11 @@ export class MyApp {
             // Okay, so the platform is ready and our plugins are available. Here you can do
             // any higher level native things you might need.
             const user = userService.getUser();
-            if (user !== null) {
-                this.rootPage = "tab";
+            if (!!user) {
+              this.rootPage = "tab";
             } else {
-                this.rootPage = "login";
+              this.rootPage = "login";
             }
-
             statusBar.styleDefault();
         });
     }

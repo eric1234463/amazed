@@ -1,0 +1,25 @@
+<!--
+  Generated template for the FeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<div *ngFor="let feed of feeds" class="feed-container white-background" (click)="goToDetail(feed)">
+  <img-loader class="feed_bg" [src]="feed.photoURL">
+  </img-loader>
+  <ion-row class="feed-box">
+    <ion-col col-8>
+      <h6>{{ feed.title}}</h6>
+      <p>
+        <i class="fa fa-user-circle-o" aria-hidden="true"> </i> {{ feed.Doctor.displayName }}</p>
+      <p>
+        <i class="fa fa-clock-o" aria-hidden="true"></i> {{ feed.createAt | amTimeAgo }}</p>
+    </ion-col>
+    <ion-col col-4>
+      <div class="feed-box-icon">
+        <img-loader [src]="feed.Doctor.photoURL" class="doctor-icon"></img-loader>
+      </div>
+    </ion-col>
+  </ion-row>
+</div>

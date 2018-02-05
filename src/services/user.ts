@@ -83,6 +83,6 @@ export class UserService {
     }
 
     async getUser() {
-        return await this.storage.get("user");
+        return this.storage.get("user");
     }
 }

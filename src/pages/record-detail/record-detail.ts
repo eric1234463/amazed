@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import {
     NavController,
     NavParams,
@@ -16,7 +16,7 @@ import { Record } from "../../services/interface";
     selector: "page-record-detail",
     templateUrl: "record-detail.html"
 })
-export class RecordDetailPage implements OnInit {
+export class RecordDetailPage {
     public record: Record;
     public id: String;
     constructor(
@@ -25,11 +25,8 @@ export class RecordDetailPage implements OnInit {
         public popoverCtrl: PopoverController,
         public recordService: RecordService
     ) {}
-    async ngOnInit() {
+    async ionViewDidLoad() {
         this.id = this.navParams.get("id");
         this.record = await this.recordService.getRecordByID(this.id);
-    }
-    rate() {
-
     }
 }

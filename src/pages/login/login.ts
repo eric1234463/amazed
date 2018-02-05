@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../services/user';
-import { TabsPage } from '../tabs/tabs'
 /**
  * Generated class for the LoginPage page.
  *
@@ -23,7 +22,7 @@ export class LoginPage {
 
     facebookLogin() {
         this.userService.facebookLogin().then(success => {
-            this.navCtrl.push(TabsPage);
+            this.navCtrl.push('tab');
         });
     }
 

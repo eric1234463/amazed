@@ -1,0 +1,31 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar>
+    <ion-title>{{content}}</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="content">
+      <ion-segment-button value="Health status">
+        Health Status
+      </ion-segment-button>
+      <ion-segment-button value="Feed">
+        Feed
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="padding-5-10 background">
+    <div [ngSwitch]="content">
+      <page-health *ngIf="content === 'Health status'"></page-health>
+      <page-feed *ngIf="content === 'Feed'"></page-feed>
+    </div>
+  </div>
+</ion-content>

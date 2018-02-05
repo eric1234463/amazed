@@ -18,12 +18,12 @@ import { DoctorService } from "../services/doctor";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 import { GoogleMaps } from "@ionic-native/google-maps";
 import { Facebook } from "@ionic-native/facebook";
-import { ComponentsModule } from "../components/components.module";
 import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { ChartsModule } from "ng2-charts";
 import { Geolocation } from "@ionic-native/geolocation";
 import { Health } from '@ionic-native/health';
+import { ComponentModule } from '../components/components.module';
 
 const config: SocketIoConfig = {
     url: "https://herefyp.herokuapp.com",
@@ -37,7 +37,9 @@ const providers = {
 };
 
 @NgModule({
-    declarations: [MyApp],
+    declarations: [
+      MyApp
+    ],
     imports: [
         BrowserModule,
         IonicImageLoader.forRoot(),
@@ -51,9 +53,9 @@ const providers = {
         Ionic2RatingModule,
         HttpModule,
         HttpClientModule,
-        ComponentsModule,
         MomentModule,
-        ChartsModule
+        ChartsModule,
+        ComponentModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [MyApp],

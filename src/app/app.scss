@@ -17,24 +17,24 @@
 
 .ion-md-explore-outline:before,
 .ion-ios-explore-outline:before{
-    content: "\f278";
-    font-family: FontAwesome;
+    content: "\e947";
+    font-family: 'icomoon';
 }
 .ion-md-explore:before,
 .ion-ios-explore:before{
-    content: "\f279";
-    font-family: FontAwesome;
+    content: "\e948";
+    font-family: 'icomoon';
 }
 
 .ion-md-feed-outline:before,
 .ion-ios-feed-outline:before{
-    content: "\f2d1";
-    font-family: FontAwesome;
+  content: "\e99b";
+  font-family: 'icomoon';
 }
 .ion-md-feed:before,
 .ion-ios-feed:before{
-    content: "\f2d0";
-    font-family: FontAwesome;
+  content: "\e99b";
+  font-family: 'icomoon';
 }
 
 .ion-md-profile-outline:before,
@@ -94,6 +94,11 @@
     padding: 0 10px;
 }
 
+.padding-0-20{
+  padding: 0 20px;
+}
+
+
 .padding-5-10{
     padding: 5px 10px;
 }
@@ -113,27 +118,31 @@
 }
 
 .grid-icon{
+    position: relative;
+    top: calc(50% - 18px);
     font-size: 24px;
-    height: 90px;
     width: 100%;
     margin: auto;
     text-align: center;
-    line-height:90px;
     display: block;
     padding: 0px;
 }
 
 .icon-col {
-    color: #fff;
-    border-radius: 0px 5px 5px 0;
+    color: color($colors,secondary);;
     padding: 0px;
 }
+.top-border-8 {
+  border-radius: 8px 0 0 0;
+}
+
+.bottom-border-8 {
+  border-radius: 0 0 0 8px;
+}
+
 .icon-row {
-    height: 90px;
-    border-radius: 5px;
-    border-width: 2px;
-    border-style: solid;
-    margin-bottom: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
 .user-icon{

@@ -1,6 +1,5 @@
 import { Component, ViewChild } from "@angular/core";
-import { Tabs } from "ionic-angular";
-import { IonicPage } from "ionic-angular";
+import { Tabs, IonicPage } from "ionic-angular";
 
 @IonicPage({
     name: "tab",
@@ -13,7 +12,7 @@ import { IonicPage } from "ionic-angular";
 export class TabsPage {
     @ViewChild("myTabs") tabRef: Tabs;
 
-    tab1Root: any = "feed";
+    tab1Root: any = "health";
     tab2Root: any = "record";
     tab3Root: any = "qr";
     tab4Root: any = "explore";

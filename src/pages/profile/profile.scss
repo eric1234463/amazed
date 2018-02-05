@@ -1,8 +1,8 @@
 page-profile {
     .cover{
         width: 100%;
-        height: 160px;
-        background-color: color($colors, secondary);
+        height: 150px;
+        background-color: color($colors, primary);
         top:0;
         text-align: center;
         color: #fff;
@@ -14,5 +14,35 @@ page-profile {
     }
     .icon-container{
         padding-top: 20px
+    }
+
+    .profile-card{
+      position: relative;
+      top: -125px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    }
+    .profile-icon-container{
+      padding: 0 25px;
+    }
+
+    .profile-name{
+      color: color($colors, primary);
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      margin: 0.5em 0;
+    }
+
+    .profile-info{
+      margin: 0.25em 0;
+      color: color($colors, secondary);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .grid-icon{
+      color: color($colors, secondary);
     }
 }

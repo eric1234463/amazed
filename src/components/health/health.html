@@ -1,0 +1,50 @@
+<!--
+  Generated template for the HealthPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div>
+  <ion-row style="padding-bottom:8px">
+    <ion-col style="padding:0">
+      <div class="progress-box-1">
+        <p class="progress-title">Weather</p>
+        <span class="progress-bold">{{currentWeather}}</span>
+        <span>&#8451;</span>
+        <i class="icon-moon icon-cloud-sun progress-icon"></i>
+      </div>
+    </ion-col>
+    <ion-col style="padding:0">
+      <div class="progress-box-2">
+        <progress-bar [progress]="currentDistanceProgress"></progress-bar>
+        <p class="progress-title">Walk Distance</p>
+        <span class="progress-bold">{{currentDistance}}</span>
+        <span>M</span>
+        <i class="icon-moon icon-compass2 progress-icon"></i>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-bottom:8px">
+    <ion-col style="padding:0">
+      <div class="progress-box-1">
+        <progress-bar [progress]="currentStepProgress"></progress-bar>
+        <p class="progress-title">Step</p>
+        <span class="progress-bold">{{currentStep}}</span>
+        <span>Step</span>
+        <i class="ficon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
+      </div>
+    </ion-col>
+    <ion-col style="padding:0">
+      <div class="progress-box-2">
+        <progress-bar [progress]="currentSleepProgress"></progress-bar>
+        <p class="progress-title">Sleep</p>
+        <span class="progress-bold">{{currentSleep}}</span>
+        <span>Hours</span>
+        <i class="icon-moon icon-moon-stroke progress-icon"></i>
+      </div>
+    </ion-col>
+  </ion-row>
+  <canvas class="white-background chart-container" *ngIf="lineChartData" baseChart width="300" height="400" [datasets]="lineChartData"
+    [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType" [colors]="lineChartColors">
+  </canvas>
+</div>
