@@ -81,4 +81,8 @@ export class HealthPage implements OnInit  {
       data: this.lineChartData
     })
   }
+
+  goToWalkDetail() {
+    this.navCtrl.push('walk-detail');
+  }
 }

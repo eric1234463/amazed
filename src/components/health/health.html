@@ -25,13 +25,13 @@
     </ion-col>
   </ion-row>
   <ion-row style="padding-bottom:8px">
-    <ion-col style="padding:0">
+    <ion-col style="padding:0" (click)="goToWalkDetail()">
       <div class="progress-box-1">
         <progress-bar [progress]="currentStepProgress"></progress-bar>
         <p class="progress-title">Step</p>
         <span class="progress-bold">{{currentStep}}</span>
         <span>Step</span>
-        <i class="ficon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
+        <i class="icon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
       </div>
     </ion-col>
     <ion-col style="padding:0" (click)="goToSleepDetail()">

@@ -7,6 +7,11 @@ export interface Doctor {
     google_lng: number;
 }
 
+export interface Step {
+  date: Date;
+  value : number;
+  currentProgress?: number;
+}
 export interface Record {
     id: string;
     visitDate: Date;

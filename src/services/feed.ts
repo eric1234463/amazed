@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import moment from 'moment';
 import { UserService } from './user';
-import { Feed } from './interface';
+import { Feed , Step } from './interface';
 
 export interface Clock {
   data: number[];
@@ -65,7 +65,7 @@ export class FeedService {
     return status;
   }
 
-  public createWalkingStep(step, date) {
+  createWalkingStep(step, date) {
     this.userService.getUser().then(user => {
       this.http
         .post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/walkingStep`, {
@@ -79,7 +79,16 @@ export class FeedService {
     });
   }
 
-  public createClock(type, date) {
+  async getWalkingStep() {
+    const user = await this.userService.getUser();
+    return this.http
+      .get<Step[]>(
+        `https://herefyp.herokuapp.com/api/patient/walkingStep?patientId=${user.id}`
+      )
+      .toPromise();
+  }
+
+  createClock(type, date) {
     return new Promise((resolve, reject) => {
       this.userService.getUser().then(user => {
         this.http
