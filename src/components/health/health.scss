@@ -15,7 +15,10 @@ page-health {
       height: 150px;
       border-radius: 8px;
   }
-
+  .weather-title{
+    margin: 18px 0 0 0;
+    font-size: 18px;
+  }
   .progress-icon{
     position: absolute;
     right: 0;
@@ -34,8 +37,5 @@ page-health {
   }
   .progress-row{
       margin-bottom: 8px;
-  }
-  .chart-container{
-      border-radius: 8px;
   }
 }

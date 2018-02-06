@@ -26,39 +26,6 @@ export class HealthPage implements OnInit  {
   public currentSleepProgress = 0;
   public currentDistanceProgress = 0;
   public lineChartData: Clock[];
-  public lineChartLabels: Array<String> = [];
-  public lineChartColors: Array<any> = [
-    {
-      // grey
-      backgroundColor: 'rgba(67,191,199,0.2)',
-      borderColor: 'rgba(67,191,199,1)',
-      pointBackgroundColor: 'rgba(67,191,199,0.1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(67,191,199,0.8)'
-    },
-    {
-      // dark grey
-      backgroundColor: 'rgba(0,186,255,0.2)',
-      borderColor: 'rgba(0,186,255,1)',
-      pointBackgroundColor: 'rgba(0,186,255,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(0,186,255,0.8)'
-    }
-  ];
-  public lineChartOptions: any = {
-    responsive: true,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true
-          }
-        }
-      ]
-    }
-  };
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
   constructor(public navCtrl: NavController, public navParams: NavParams, public health: Health, public feedService : FeedService) {
@@ -66,12 +33,6 @@ export class HealthPage implements OnInit  {
   }
 
   async ngOnInit(){
-    for (let i = 7; i > 0; i--) {
-      let date = moment()
-        .subtract(i, 'd')
-        .format('DD');
-      this.lineChartLabels.push(date);
-    }
     this.currentWeather = Math.round(await this.feedService.getWeather() - 273.15);
     this.lineChartData = await this.feedService.getClocks();
     this.currentSleep = this.lineChartData[0].data[6];
@@ -113,5 +74,11 @@ export class HealthPage implements OnInit  {
           .catch(e => console.log(e));
       })
       .catch(e => console.log(e));
+  }
+
+  goToSleepDetail() {
+    this.navCtrl.push('sleep-detail',{
+      data: this.lineChartData
+    })
   }
 }

@@ -77,7 +77,13 @@ export class ExplorePage {
                 .addMarker({
                     doctorId: doctor.id,
                     title: doctor.displayName,
-                    icon: "#43bfc7",
+                    icon: {
+                      url: 'assets/map-marker.png',
+                      size:{
+                        width: 40,
+                        height: 40,
+                      }
+                    },
                     animation: "DROP",
                     position: {
                         lat: doctor.google_lat,

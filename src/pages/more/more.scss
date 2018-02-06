@@ -1,21 +1,23 @@
 page-more {
     .list-item{
         border-bottom: 1px solid #DBDBDB !important;
+        color: color($colors, secondary)!important;
         padding: 16px 8px;
+        &:hover {
+          color: color($colors, primary)!important;
+        }
     }
     .item-profile-name{
         font-size: 32px;
         font-weight: 900;
         margin: 0;
-        color: color($colors,primary)!important;
+        color: color($colors, primary)!important;
     }
     .item-name{
         font-size: 22px;
         margin: 0;
-        color: color($colors,primary)!important;
     }
     .item-icon{
-        color: color($colors,primary)!important;
         font-size: 29px;
     }
     .item-profile-link{

@@ -8,7 +8,7 @@
   <ion-row style="padding-bottom:8px">
     <ion-col style="padding:0">
       <div class="progress-box-1">
-        <p class="progress-title">Weather</p>
+        <p class="weather-title">Weather</p>
         <span class="progress-bold">{{currentWeather}}</span>
         <span>&#8451;</span>
         <i class="icon-moon icon-cloud-sun progress-icon"></i>
@@ -34,7 +34,7 @@
         <i class="ficon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
       </div>
     </ion-col>
-    <ion-col style="padding:0">
+    <ion-col style="padding:0" (click)="goToSleepDetail()">
       <div class="progress-box-2">
         <progress-bar [progress]="currentSleepProgress"></progress-bar>
         <p class="progress-title">Sleep</p>
@@ -44,7 +44,4 @@
       </div>
     </ion-col>
   </ion-row>
-  <canvas class="white-background chart-container" *ngIf="lineChartData" baseChart width="300" height="400" [datasets]="lineChartData"
-    [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType" [colors]="lineChartColors">
-  </canvas>
 </div>
