@@ -13,7 +13,7 @@ import { Health } from '@ionic-native/health';
 
 @Component({
   selector: 'page-health',
-  templateUrl: 'health.html',
+  templateUrl: 'health.html'
 })
 export class HealthPage implements OnInit {
   public currentDistance = 0;
@@ -28,9 +28,13 @@ export class HealthPage implements OnInit {
   public lineChartData: Clock[];
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
-  constructor(public navCtrl: NavController, public navParams: NavParams, public health: Health, public feedService: FeedService, public loadingCtrl: LoadingController) {
-
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public health: Health,
+    public feedService: FeedService,
+    public loadingCtrl: LoadingController
+  ) {}
 
   async ngOnInit() {
     let loading = this.loadingCtrl.create({
@@ -40,7 +44,7 @@ export class HealthPage implements OnInit {
     });
     loading.present();
     try {
-      this.currentWeather = Math.round(await this.feedService.getWeather() - 273.15);
+      this.currentWeather = Math.round((await this.feedService.getWeather()) - 273.15);
       this.lineChartData = await this.feedService.getClocks();
       this.currentSleep = this.lineChartData[0].data[6];
       this.currentSleepProgress = this.lineChartData[0].data[6] / 10 * 100;
@@ -75,7 +79,7 @@ export class HealthPage implements OnInit {
   goToSleepDetail() {
     this.navCtrl.push('sleep-detail', {
       data: this.lineChartData
-    })
+    });
   }
 
   goToWalkDetail() {

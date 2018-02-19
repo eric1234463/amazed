@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import moment from 'moment';
@@ -22,7 +22,7 @@ export class FeedPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     public feedService: FeedService,
-    public imageLoaderConfig: ImageLoaderConfig,
+    public imageLoaderConfig: ImageLoaderConfig
   ) {}
 
   async ngOnInit() {
