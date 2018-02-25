@@ -14,15 +14,15 @@ export interface HttpResponse {
 
 export interface WeatherResponse {
   main: {
-    temp: number,
-    temp_min: number,
-    temp_max: number
-  }
+    temp: number;
+    temp_min: number;
+    temp_max: number;
+  };
 }
 
 @Injectable()
 export class FeedService {
-  constructor(public http: HttpClient, public userService: UserService) { }
+  constructor(public http: HttpClient, public userService: UserService) {}
 
   async getFeeds() {
     return this.http.get<Feed[]>(`https://herefyp.herokuapp.com/api/feed`).toPromise();
@@ -33,7 +33,12 @@ export class FeedService {
   }
 
   async getWeather() {
-    return this.http.get<WeatherResponse>(`http://api.openweathermap.org/data/2.5/weather?id=1819730&appid=4443ae248df4476fb31d841466b4a361`).toPromise().then(weather => weather.main.temp);
+    return this.http
+      .get<WeatherResponse>(
+        `http://api.openweathermap.org/data/2.5/weather?id=1819730&appid=4443ae248df4476fb31d841466b4a361`
+      )
+      .toPromise()
+      .then(weather => weather.main.temp);
   }
 
   async getClocks() {
@@ -44,9 +49,9 @@ export class FeedService {
     const user = await this.userService.getUser();
     return this.http
       .get<Clock[]>(
-      `https://herefyp.herokuapp.com/api/patient/biologicalClock?patientId=${
-      user.id
-      }&from=${days7Ago}&to=${currentDate}`
+        `https://herefyp.herokuapp.com/api/patient/biologicalClock?patientId=${
+          user.id
+        }&from=${days7Ago}&to=${currentDate}`
       )
       .toPromise();
   }
@@ -83,9 +88,7 @@ export class FeedService {
   async getWalkingStep() {
     const user = await this.userService.getUser();
     return this.http
-      .get<Step[]>(
-      `https://herefyp.herokuapp.com/api/patient/walkingStep?patientId=${user.id}`
-      )
+      .get<Step[]>(`https://herefyp.herokuapp.com/api/patient/walkingStep?patientId=${user.id}`)
       .toPromise();
   }
 
