@@ -5,18 +5,20 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { RecordService } from '../../services/record';
 import { Socket } from 'ng-socket-io';
 import { Loading } from 'ionic-angular/components/loading/loading';
-import { Patient } from '../../services/interface';
+import { Patient, Doctor } from '../../services/interface';
+import { DoctorService } from '../../services/doctor';
 
 @IonicPage({
   name: 'qr',
   segment: 'qr'
 })
-@Component({ templateUrl: 'qr.html' })
+@Component({ templateUrl: 'qr.html',  selector: 'page-qr', })
 export class GeneratrorPage {
-  public doctorID: String;
+  public doctorID: string;
   public connected = false;
   public loading: Loading;
   public patient: Patient;
+  public doctor: Doctor;
   constructor(
     public navCtrl: NavController,
     public socket: Socket,
@@ -24,7 +26,8 @@ export class GeneratrorPage {
     public barcodeScanner: BarcodeScanner,
     public recordService: RecordService,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public doctorService: DoctorService
   ) {
     this.userService.getUser().then(patient => {
       this.patient = patient;
@@ -50,6 +53,7 @@ export class GeneratrorPage {
         patient: this.patient.id
       });
       this.connected = true;
+      this.doctor = await this.doctorService.getDoctor(this.doctorID);
       loading.dismiss();
     } catch (e) {
       loading.dismiss();

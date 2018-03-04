@@ -6,6 +6,15 @@
 -->
 <div>
   <ion-row style="padding-bottom:8px">
+    <ion-col class="progress-box" *ngIf="user">
+      <p class="progress-title">Hi, {{user.displayName}}</p>
+      <span>You got
+        <span class="progress-bold">{{healthRank}}</span> mark Today!</span>
+      <i class="icon-moon icon-star-empty progress-icon"></i>
+      <p>Please Keep going on!</p>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-bottom:8px">
     <ion-col style="padding:0">
       <div class="progress-box-1">
         <p class="weather-title">Weather</p>

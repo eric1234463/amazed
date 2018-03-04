@@ -3,6 +3,8 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Clock, FeedService } from '../../services/feed';
 import moment from 'moment';
 import { Health } from '@ionic-native/health';
+import { UserService } from '../../services/user';
+import { Patient } from '../../services/interface';
 
 /**
  * Generated class for the HealthPage page.
@@ -16,27 +18,33 @@ import { Health } from '@ionic-native/health';
   templateUrl: 'health.html'
 })
 export class HealthPage implements OnInit {
-  public currentDistance = 0;
-  public currentStep = 0;
-  public maxStep = 10000;
-  public currentWeather = 0;
-  public maxSleep = 10;
-  public currentSleep = 0;
-  public currentStepProgress = 0;
-  public currentSleepProgress = 0;
-  public currentDistanceProgress = 0;
-  public lineChartData: Clock[];
-  public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  private currentDistance = 0;
+  private currentStep = 0;
+  private maxStep = 10000;
+  private currentWeather = 0;
+  private maxSleep = 10;
+  private currentSleep = 0;
+  private currentStepProgress = 0;
+  private currentSleepProgress = 0;
+  private currentDistanceProgress = 0;
+  private lineChartData: Clock[];
+  private lineChartLegend: boolean = true;
+  private lineChartType: string = 'line';
+  private healthRank: number;
+  private user: Patient;
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public health: Health,
-    public feedService: FeedService,
-    public loadingCtrl: LoadingController
-  ) {}
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private health: Health,
+    private feedService: FeedService,
+    private loadingCtrl: LoadingController,
+    private userService: UserService
+  ) {
+    this.healthRank = 0;
+  }
 
   async ngOnInit() {
+    this.user = await this.userService.getUser();
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
@@ -74,8 +82,27 @@ export class HealthPage implements OnInit {
       console.error(error);
       loading.dismiss();
     }
+    this.calculateHealthRanking();
   }
-
+  calculateHealthRanking() {
+    this.user.bmi = this.user.weight / Math.pow(this.user.height / 100, 2);
+    if (this.user.bmi < 18.5) {
+      this.healthRank += 10;
+    } else if (this.user.bmi < 18.5) {
+      this.healthRank += 15;
+    } else {
+      this.healthRank -= 5;
+    }
+    this.healthRank += Math.round(this.currentDistance / 1000) * 5;
+    this.healthRank += Math.round(this.currentStep / 1000) * 5;
+    this.healthRank += Math.round(this.currentSleep / 10) * 10;
+    this.lineChartData[0].data.forEach(sleepHour => {
+      if(sleepHour > 8) {
+        this.healthRank += 2
+      }
+    });
+    console.log(this.healthRank);
+  }
   goToSleepDetail() {
     this.navCtrl.push('sleep-detail', {
       data: this.lineChartData

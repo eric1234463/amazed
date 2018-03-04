@@ -1,3 +1,18 @@
-page-about {
-
+page-qr {
+  .doctor-icon{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+  .doctor-name{
+      font-size: 18px;
+      font-weight: 900;
+      margin:0 10px;
+  }
+  .doctor-location {
+    margin: 0 10px;
+  }
+  .doctor-info-box{
+    text-align: left;
+  }
 }
