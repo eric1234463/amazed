@@ -21,8 +21,8 @@
 </ion-header>
 
 
-<ion-content>
-  <div class="padding-5-10 background">
+<ion-content class="background"
+  <div class="padding-5-10">
     <div [ngSwitch]="content">
       <page-health *ngIf="content === 'Health status'"></page-health>
       <page-feed *ngIf="content === 'Feed'"></page-feed>

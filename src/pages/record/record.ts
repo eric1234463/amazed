@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { RecordService } from '../../services/record';
 import { Record } from '../../services/interface';
@@ -18,11 +18,19 @@ export class RecordPage {
   constructor(
     public nativeStorage: NativeStorage,
     public recordService: RecordService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController
   ) {}
 
   async ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.records = await this.recordService.getRecords();
+    loading.dismiss();
   }
 
   goToDetail(record) {
