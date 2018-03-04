@@ -16,6 +16,7 @@ export class MyApp {
         platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available. Here you can do
             // any higher level native things you might need.
+            splashScreen.hide();
             const user = userService.getUser();
             if (!!user) {
               this.rootPage = "tab";
