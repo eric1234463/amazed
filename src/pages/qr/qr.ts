@@ -32,35 +32,34 @@ export class GeneratrorPage {
     this.socket.connect();
   }
 
-  qrScan() {
-    this.barcodeScanner
-      .scan({
+  async qrScan() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    try {
+      const barcodeData = await this.barcodeScanner.scan({
         formats: 'QR_CODE'
-      })
-      .then(barcodeData => {
-        this.loading = this.loadingCtrl.create({
-          content: 'Waiting for connection...'
-        });
-        this.doctorID = barcodeData.text;
-        this.loading.present();
-        this.socket.emit('subscribe', barcodeData.text);
-        this.socket.emit('connect doctor', {
-          room: barcodeData.text,
-          patient: this.patient.id
-        });
-        this.connected = true;
-        this.loading.dismiss();
-      })
-      .catch(() => {
-        this.loading.dismiss();
-
-        let alert = this.alertCtrl.create({
-          title: 'Scanning Error',
-          subTitle: 'Please try to scan again!',
-          buttons: ['Understand']
-        });
-        alert.present();
       });
+      this.doctorID = barcodeData.text;
+      loading.present();
+      this.socket.emit('subscribe', barcodeData.text);
+      this.socket.emit('connect doctor', {
+        room: barcodeData.text,
+        patient: this.patient.id
+      });
+      this.connected = true;
+      loading.dismiss();
+    } catch (e) {
+      loading.dismiss();
+      let alert = this.alertCtrl.create({
+        title: 'Scanning Error',
+        subTitle: 'Please try to scan again!',
+        buttons: ['Understand']
+      });
+      alert.present();
+    }
   }
 
   cancel() {

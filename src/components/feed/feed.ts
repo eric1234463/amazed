@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import moment from 'moment';
 import { FeedService } from '../../services/feed';
@@ -22,13 +22,21 @@ export class FeedPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     public feedService: FeedService,
-    public imageLoaderConfig: ImageLoaderConfig
+    public imageLoaderConfig: ImageLoaderConfig,
+    public loadingCtrl: LoadingController
   ) {}
 
   async ngOnInit() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.imageLoaderConfig.setBackgroundSize('cover');
     this.imageLoaderConfig.enableSpinner(true);
     this.feeds = await this.feedService.getFeeds();
+    loading.dismiss();
   }
 
   goToDetail(feed) {

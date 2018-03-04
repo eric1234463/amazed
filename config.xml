@@ -102,10 +102,10 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <engine name="ios" spec="~4.5.3" />
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-health" spec="^1.0.3">
         <variable name="HEALTH_READ_PERMISSION" value="App needs read access" />
         <variable name="HEALTH_WRITE_PERMISSION" value="App needs wrtie access" />
     </plugin>
+    <engine name="ios" spec="4.5.3" />
+    <engine name="android" spec="6.3.0" />
 </widget>
