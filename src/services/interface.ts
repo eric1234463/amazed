@@ -9,6 +9,18 @@ export interface Doctor {
     id: number;
     name: string;
   }
+  Specialty:{
+    id: number;
+    name: string;
+  }
+}
+
+export interface HealthRank {
+  sleep: number;
+  step: number;
+  distance: number;
+  bmi: number;
+  total: number;
 }
 
 export interface Step {

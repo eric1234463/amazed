@@ -4,7 +4,7 @@ import { Clock, FeedService } from '../../services/feed';
 import moment from 'moment';
 import { Health } from '@ionic-native/health';
 import { UserService } from '../../services/user';
-import { Patient } from '../../services/interface';
+import { Patient, HealthRank } from '../../services/interface';
 
 /**
  * Generated class for the HealthPage page.
@@ -30,7 +30,7 @@ export class HealthPage implements OnInit {
   private lineChartData: Clock[];
   private lineChartLegend: boolean = true;
   private lineChartType: string = 'line';
-  private healthRank: number;
+  private healthRank: HealthRank;
   private user: Patient;
   constructor(
     private navCtrl: NavController,
@@ -40,7 +40,13 @@ export class HealthPage implements OnInit {
     private loadingCtrl: LoadingController,
     private userService: UserService
   ) {
-    this.healthRank = 0;
+    this.healthRank = {
+      sleep: 0,
+      total: 0,
+      step: 0,
+      distance: 0,
+      bmi: 0
+    };
   }
 
   async ngOnInit() {
@@ -87,22 +93,24 @@ export class HealthPage implements OnInit {
   calculateHealthRanking() {
     this.user.bmi = this.user.weight / Math.pow(this.user.height / 100, 2);
     if (this.user.bmi < 18.5) {
-      this.healthRank += 10;
+      this.healthRank.bmi = 10;
     } else if (this.user.bmi < 18.5) {
-      this.healthRank += 15;
+      this.healthRank.bmi = 15;
     } else {
-      this.healthRank -= 5;
+      this.healthRank.bmi = 5;
     }
-    this.healthRank += Math.round(this.currentDistance / 1000) * 5;
-    this.healthRank += Math.round(this.currentStep / 1000) * 5;
-    this.healthRank += Math.round(this.currentSleep / 10) * 10;
+    this.healthRank.distance = Math.round(this.currentDistance / 1000) * 5;
+    this.healthRank.step = Math.round(this.currentStep / 1000) * 5;
+    this.healthRank.sleep = Math.round(this.currentSleep / 10) * 10;
     this.lineChartData[0].data.forEach(sleepHour => {
-      if(sleepHour > 8) {
-        this.healthRank += 2
+      if (sleepHour > 8) {
+        this.healthRank.sleep += 2;
       }
     });
-    console.log(this.healthRank);
+    this.healthRank.total =
+      this.healthRank.bmi + this.healthRank.distance + this.healthRank.sleep + this.healthRank.step;
   }
+
   goToSleepDetail() {
     this.navCtrl.push('sleep-detail', {
       data: this.lineChartData

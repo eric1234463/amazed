@@ -9,7 +9,7 @@
     <ion-col class="progress-box" *ngIf="user">
       <p class="progress-title">Hi, {{user.displayName}}</p>
       <span>You got
-        <span class="progress-bold">{{healthRank}}</span> mark Today!</span>
+        <span class="progress-bold">{{ healthRank.total }}</span> mark Today!</span>
       <i class="icon-moon icon-star-empty progress-icon"></i>
       <p>Please Keep going on!</p>
     </ion-col>
@@ -40,7 +40,7 @@
         <p class="progress-title">Step</p>
         <span class="progress-bold">{{currentStep}}</span>
         <span>Step</span>
-        <i class="icon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
+        <i class="icon-moon icon-travel-walk progress-icon"></i>
       </div>
     </ion-col>
     <ion-col style="padding:0" (click)="goToSleepDetail()">
@@ -53,4 +53,75 @@
       </div>
     </ion-col>
   </ion-row>
+  <div class="health-card">
+    <p class="health-card-title">Today</p>
+    <ion-row class="health-card-row">
+      <ion-col col-2 class="health-card-col">
+        <div class="health-card-col-icon mat-teal-500-bg">
+          <i class="icon-moon icon-moon-stroke"></i>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="health-card-col">
+        <p class="health-card-row-title">Sleep</p>
+        <span class="health-card-row-desc">You should sleep more!</span>
+      </ion-col>
+      <ion-col col-4 class="health-card-col">
+        <div class="health-card-col-rank">
+          +
+          <span>{{healthRank.sleep}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="health-card-row">
+      <ion-col col-2 class="health-card-col">
+        <div class="health-card-col-icon mat-blue-500-bg">
+          <i class="icon-moon icon-health"></i>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="health-card-col">
+        <p class="health-card-row-title">BMI</p>
+        <span class="health-card-row-desc">You should eat less!</span>
+      </ion-col>
+      <ion-col col-4 class="health-card-col">
+        <div class="health-card-col-rank">
+          +
+          <span>{{healthRank.bmi}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="health-card-row">
+      <ion-col col-2 class="health-card-col">
+        <div class="health-card-col-icon mat-cyan-500-bg">
+          <i class="icon-moon icon-compass2"></i>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="health-card-col">
+        <p class="health-card-row-title">Walk Distance</p>
+        <span class="health-card-row-desc">You should run more!</span>
+      </ion-col>
+      <ion-col col-4 class="health-card-col">
+        <div class="health-card-col-rank">
+          +
+          <span>{{healthRank.distance}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="health-card-row">
+      <ion-col col-2 class="health-card-col">
+        <div class="health-card-col-icon mat-purple-500-bg">
+          <i class="icon-moon icon-travel-walk"></i>
+        </div>
+      </ion-col>
+      <ion-col col-6 class="health-card-col">
+        <p class="health-card-row-title">Step</p>
+        <span class="health-card-row-desc">You should walk more!</span>
+      </ion-col>
+      <ion-col col-4 class="health-card-col">
+        <div class="health-card-col-rank">
+          +
+          <span>{{healthRank.step}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
 </div>

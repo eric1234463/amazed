@@ -23,12 +23,22 @@
           <p class="doctor-name">{{doctor.displayName}}</p>
           <p class="doctor-location">{{doctor.District.name}}</p>
         </ion-col>
-
         <ion-col col-12>
           <div id="map_canvas">
           </div>
         </ion-col>
       </ion-row>
+      <div class="detail-box">
+        <ion-row class="icon-row">
+          <ion-col col-2 class="icon-col top-border-8">
+            <span class="grid-icon icon-moon icon-clipboard"></span>
+          </ion-col>
+          <ion-col col-10 class="padding-0-10">
+            <h6 class="title">Specialty</h6>
+            <p class="f-14 desc">{{ doctor.Specialty.name }}</p>
+          </ion-col>
+        </ion-row>
+      </div>
     </div>
     <button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
   </div>

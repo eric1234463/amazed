@@ -1,12 +1,4 @@
 page-record-detail{
-    .detail-box{
-      width: 100%;
-      margin: 8px 0;
-      padding: 4px;
-      background-color: color($colors, white);
-      border-radius: 8px;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-    }
     ul {
       padding: 0;
       margin: 0 10px;
@@ -20,7 +12,8 @@ page-record-detail{
               font-size: 14px;
           }
       }
-  }
+    }
+
     .icon-container{
         padding-top: 20px
     }
@@ -32,9 +25,11 @@ page-record-detail{
         border-radius: 4px;
         display: inline-block;
     }
+
     .description{
         margin: 10px 0px;
     }
+
     .title{
       font-size: 14px;
       font-weight: 700;
