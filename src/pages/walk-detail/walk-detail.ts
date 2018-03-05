@@ -27,7 +27,7 @@ export class WalkDetailPage {
     console.log('ionViewDidLoad WalkDetailPage');
     const steps = await this.feedService.getWalkingStep();
     this.steps = steps.map(step=>{
-      step.currentProgress = step.value / 10000 * 100;
+      step.currentProgress = step.step / 10000 * 100;
       return step;
     });
   }

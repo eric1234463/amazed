@@ -99,7 +99,7 @@ export class HealthPage implements OnInit {
       this.healthRank.bmi = 5;
     }
     this.healthRank.distance = Math.round(this.currentDistance / 1000) * 5;
-    this.healthRank.step = Math.round(this.currentStep / 1000) * 5;
+    this.healthRank.step = Math.round(this.currentStep / 1000) * 2;
     this.healthRank.sleep = Math.round(this.currentSleep / 10) * 10;
     this.lineChartData[0].data.forEach(sleepHour => {
       if (sleepHour > 8) {

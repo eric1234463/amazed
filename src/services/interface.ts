@@ -25,7 +25,7 @@ export interface HealthRank {
 
 export interface Step {
   date: Date;
-  value: number;
+  step: number;
   currentProgress?: number;
 }
 export interface Record {
