@@ -81,7 +81,6 @@ export class HealthPage implements OnInit {
         this.currentDistance = parseInt(distances[0].value);
         this.currentStepProgress = this.currentStep / this.maxStep * 100;
         this.currentDistanceProgress = this.currentDistance / this.maxStep * 100;
-        this.feedService.createWalkingStep(this.currentStep, this.currentDistance, new Date());
       }
       loading.dismiss();
     } catch (error) {
@@ -109,6 +108,12 @@ export class HealthPage implements OnInit {
     });
     this.healthRank.total =
       this.healthRank.bmi + this.healthRank.distance + this.healthRank.sleep + this.healthRank.step;
+    this.feedService.createHealthStatus(
+      this.healthRank.total,
+      this.currentStep,
+      this.currentDistance,
+      new Date()
+    );
   }
 
   goToSleepDetail() {

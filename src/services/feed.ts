@@ -70,10 +70,11 @@ export class FeedService {
     return status;
   }
 
-  createWalkingStep(step: number, distance: number, date: Date) {
+  createHealthStatus(value: number,step: number, distance: number, date: Date) {
     this.userService.getUser().then(user => {
       this.http
-        .post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/walkingStep`, {
+        .post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/healthStatus`, {
+          value,
           step,
           date,
           distance,

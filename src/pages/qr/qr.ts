@@ -53,17 +53,19 @@ export class GeneratrorPage {
       const barcodeData = await this.barcodeScanner.scan({
         formats: 'QR_CODE'
       });
-      this.doctorID = barcodeData.text;
-      loading.present();
-      this.socket.emit('subscribe', barcodeData.text);
-      this.socket.emit('connect doctor', {
-        room: barcodeData.text,
-        patient: this.patient.id
-      });
-      this.connected = true;
-      this.doctor = await this.doctorService.getDoctor(this.doctorID);
-      this.loadMap(this.doctor);
-      loading.dismiss();
+      if (!barcodeData.cancelled) {
+        this.doctorID = barcodeData.text;
+        loading.present();
+        this.socket.emit('subscribe', barcodeData.text);
+        this.socket.emit('connect doctor', {
+          room: barcodeData.text,
+          patient: this.patient.id
+        });
+        this.connected = true;
+        this.doctor = await this.doctorService.getDoctor(this.doctorID);
+        this.loadMap(this.doctor);
+        loading.dismiss();
+      }
     } catch (e) {
       loading.dismiss();
       let alert = this.alertCtrl.create({

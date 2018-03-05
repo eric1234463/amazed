@@ -180,17 +180,12 @@
   border-radius: 0 0 0 8px;
 }
 
-.icon-row {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-}
-
 .user-icon{
-    margin: 0 auto;
-    border-radius: 50%;
-    height: 70px;
-    width: 70px;
-    display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  display: block;
 }
 .user-icon-container {
     width: 70px;
@@ -222,19 +217,9 @@ margin: 0 10px;
 text-align: left;
 }
 
-.cover{
-  width: 100%;
-  background-color: color($colors, white);
-  top:0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  text-align: center;
-  color: color($colors, secondary);
-}
-
 .detail-box{
   width: 100%;
-  margin: 8px 0;
+  margin: 4px 0;
   padding: 4px;
   background-color: color($colors, white);
   border-radius: 8px;

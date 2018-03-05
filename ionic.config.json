@@ -1,6 +1,6 @@
 {
   "name": "HERE",
-  "app_id": "",
+  "app_id": "58d7fca0",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

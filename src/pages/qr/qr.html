@@ -14,6 +14,10 @@
   <div *ngIf="connected == true">
     <div class="cover">
       <ion-row *ngIf="doctor">
+        <ion-col col-12>
+          <div id="map_canvas">
+          </div>
+        </ion-col>
         <ion-col col-3>
           <div>
             <img [src]="doctor.photoURL" class="doctor-icon" />
@@ -22,10 +26,6 @@
         <ion-col col-9 class="doctor-info-box">
           <p class="doctor-name">{{doctor.displayName}}</p>
           <p class="doctor-location">{{doctor.District.name}}</p>
-        </ion-col>
-        <ion-col col-12>
-          <div id="map_canvas">
-          </div>
         </ion-col>
       </ion-row>
       <div class="detail-box">
