@@ -201,3 +201,29 @@
 .box{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
+
+.doctor-icon{
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+.doctor-name{
+  font-size: 18px;
+  font-weight: 900;
+  margin:0 10px;
+}
+.doctor-location {
+margin: 0 10px;
+}
+.doctor-info-box{
+text-align: left;
+}
+.cover{
+  width: 100%;
+  background-color: color($colors, white);
+  top:0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  text-align: center;
+  color: color($colors, secondary);
+}

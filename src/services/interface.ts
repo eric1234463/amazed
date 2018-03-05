@@ -5,6 +5,10 @@ export interface Doctor {
   location: string;
   google_lat: number;
   google_lng: number;
+  District:{
+    id: number;
+    name: string;
+  }
 }
 
 export interface Step {

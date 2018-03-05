@@ -39,6 +39,7 @@ export class ExplorePage {
     ionViewDidLoad() {
         this.loadMap();
     }
+
     async loadMap() {
         const resp = await this.geolocation.getCurrentPosition();
         let mapOptions: GoogleMapOptions = {
