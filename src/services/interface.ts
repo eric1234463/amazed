@@ -44,41 +44,56 @@ export interface Record {
 
 export interface Patient {
   id: number;
-  hkid: String;
-  gender: String;
-  uid: String;
-  photoURL?: String;
-  displayName?: String;
+  hkid: string;
+  gender: string;
+  age: number;
+  uid: string;
+  photoURL?: string;
+  displayName?: string;
   weight: number;
   height: number;
   bmi: number;
 }
+
+export interface GoogleUser {
+  userId: number;
+  email: string;
+  displayName: string;
+  imageUrl: string;
+  gender: string;
+  ageRange: {
+    min: number,
+    max: number
+  }
+}
+
 export interface facebookUser {
-  email: String;
-  uid: String;
-  token: String;
-  image: String;
-  displayName: String;
+  email: string;
+  uid: string;
+  token: string;
+  image: string;
+  displayName: string;
+  gender: string
 }
 
 export interface Patient {
   id: number;
-  hkid: String;
-  gender: String;
-  uid: String;
-  photoURL?: String;
-  displayName?: String;
+  hkid: string;
+  gender: string;
+  uid: string;
+  photoURL?: string;
+  displayName?: string;
   weight: number;
   height: number;
   bmi: number;
 }
 
 export interface facebookUser {
-  email: String;
-  uid: String;
-  token: String;
-  image: String;
-  displayName: String;
+  email: string;
+  uid: string;
+  token: string;
+  image: string;
+  displayName: string;
 }
 
 export interface Feed {
