@@ -1,0 +1,48 @@
+<!--
+  Generated template for the InsuranceModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search Insurance</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Provider</ion-label>
+    <ion-select [(ngModel)]="searchPayload.provider">
+      <ion-option value="MSIG">MSIG</ion-option>
+      <ion-option value="FWD">FWD</ion-option>
+      <ion-option value="CIGNA">CIGNA</ion-option>
+      <ion-option value="AIA">AIA</ion-option>
+      <ion-option value="BUPA">BUPA</ion-option>
+      <ion-option value="ZURICH">ZURICH</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Daliy Cover</ion-label>
+    <ion-select [(ngModel)]="searchPayload.daliy_cover">
+      <ion-option value=2000>$ 2000</ion-option>
+      <ion-option value=2500>$ 2500</ion-option>
+      <ion-option value=3000>$ 3000</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sugery Cover</ion-label>
+    <ion-select [(ngModel)]="searchPayload.surgery_cover">
+      <ion-option value=50000>$ 50000</ion-option>
+      <ion-option value=100000>$ 100000</ion-option>
+      <ion-option value=150000>$ 150000</ion-option>
+      <ion-option value=200000>$ 200000</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button ion-button full (click)="search()">Search</button>
+</ion-footer>

@@ -52,6 +52,12 @@ export interface InsurancePlan {
   miscellaneous_benefit: number;
 }
 
+export interface InsuranceSearch {
+  provider: string;
+  surgery_cover: number;
+  daliy_cover: number;
+}
+
 export interface Patient {
   id: number;
   hkid: string;
