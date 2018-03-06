@@ -210,6 +210,8 @@ $tabs-background: #fff;
 $tabs-tab-color-inactive: color($colors, secondary);
 $tabs-tab-color-active: color($colors, primary); // App iOS Variables
 $loading-ios-background: transparent;
+$searchbar-ios-background-color	:transparent;
+$searchbar-ios-padding-horizontal : 0px;
 
 // --------------------------------------------------
 // iOS only Sass variables can go here

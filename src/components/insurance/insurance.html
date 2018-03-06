@@ -1,7 +1,9 @@
+<ion-searchbar></ion-searchbar>
 <div *ngFor="let insurancePlan of insurancePlans">
   <ion-row class="insurance-row">
     <ion-col col-3>
       <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
+      <p class="info-rate">93% fit for you</p>
     </ion-col>
     <ion-col col-9>
       <ion-row>
@@ -11,11 +13,11 @@
       </ion-row>
       <ion-row>
         <ion-col col-4>
-          <p class="info-desc">{{insurancePlan.daliy_colver}}</p>
+          <p class="info-desc">{{insurancePlan.daliy_cover}}</p>
           <p class="info-title">Board & Room Daily Cover</p>
         </ion-col>
         <ion-col col-4>
-          <p class="info-desc">{{insurancePlan.surgery_colver}}</p>
+          <p class="info-desc">{{insurancePlan.surgery_cover}}</p>
           <p class="info-title">Surgery Cover</p>
         </ion-col>
 

@@ -27,6 +27,7 @@ export class InsurancePage implements OnInit {
     });
     loading.present();
     this.imageLoaderConfig.enableSpinner(true);
+    this.imageLoaderConfig.setHeight('70%');
     this.insurancePlans = await this.insuranceService.getInsurancePlans();
     loading.dismiss();
   }
