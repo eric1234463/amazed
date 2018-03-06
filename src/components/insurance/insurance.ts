@@ -3,8 +3,7 @@ import {
   ModalController,
   NavController,
   NavParams,
-  LoadingController,
-  Loading
+  LoadingController
 } from 'ionic-angular';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import { InsuranceService } from '../../services/insurance';
@@ -23,8 +22,7 @@ export class InsurancePage implements OnInit {
     public insuranceService: InsuranceService,
     public imageLoaderConfig: ImageLoaderConfig,
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
-    public loading: Loading
+    public modalCtrl: ModalController
   ) {
     this.searchPayload = {
       provider: null,
@@ -34,16 +32,16 @@ export class InsurancePage implements OnInit {
   }
 
   async ngOnInit() {
-    this.loading = this.loadingCtrl.create({
+    let loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
       <img src="assets/spinner.svg"/>`
     });
-    this.loading.present();
+    loading.present();
     this.imageLoaderConfig.enableSpinner(true);
     this.imageLoaderConfig.setHeight('70%');
     this.insurancePlans = await this.insuranceService.getInsurancePlans();
-    this.loading.dismiss();
+    loading.dismiss();
   }
 
   showSearchModal() {
@@ -58,8 +56,13 @@ export class InsurancePage implements OnInit {
   }
 
   async performSearch(search: InsuranceSearch) {
-    this.loading.present();
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.insurancePlans = await this.insuranceService.searchInsurancePlans(search);
-    this.loading.dismiss();
+    loading.dismiss();
   }
 }
