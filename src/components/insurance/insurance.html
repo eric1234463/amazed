@@ -1,0 +1,30 @@
+<div *ngFor="let insurancePlan of insurancePlans">
+  <ion-row class="insurance-row">
+    <ion-col col-3>
+      <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
+    </ion-col>
+    <ion-col col-9>
+      <ion-row>
+        <ion-col col-12>
+          <p class="insurance-name">{{insurancePlan.name}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <p class="info-desc">{{insurancePlan.daliy_colver}}</p>
+          <p class="info-title">Board & Room Daily Cover</p>
+        </ion-col>
+        <ion-col col-4>
+          <p class="info-desc">{{insurancePlan.surgery_colver}}</p>
+          <p class="info-title">Surgery Cover</p>
+        </ion-col>
+
+        <ion-col col-4>
+          <p class="info-desc" *ngIf="insurancePlan.miscellaneous_benefit > -1">{{insurancePlan.miscellaneous_benefit}}</p>
+          <p class="info-desc" *ngIf="insurancePlan.miscellaneous_benefit == -1">Fully Cover</p>
+          <p class="info-title">Miscellaneous Benefits</p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</div>

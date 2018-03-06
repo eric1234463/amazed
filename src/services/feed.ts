@@ -59,18 +59,16 @@ export class FeedService {
   async getClock(type, date) {
     const user = await this.userService.getUser();
     const status = await this.http
-      .get<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/biologicalClock`, {
-        params: {
-          type,
-          date,
-          patientId: user.id
-        }
-      })
+      .get<HttpResponse>(
+        `https://herefyp.herokuapp.com/api/patient/biologicalClock?patientId=${
+          user.id
+        }&date=${date}&type=${type}`
+      )
       .toPromise();
     return status;
   }
 
-  createHealthStatus(value: number,step: number, distance: number, date: Date) {
+  createHealthStatus(value: number, step: number, distance: number, date: Date) {
     this.userService.getUser().then(user => {
       this.http
         .post<HttpResponse>(`https://herefyp.herokuapp.com/api/patient/healthStatus`, {

@@ -5,14 +5,14 @@ export interface Doctor {
   location: string;
   google_lat: number;
   google_lng: number;
-  District:{
+  District: {
     id: number;
     name: string;
-  }
-  Specialty:{
+  };
+  Specialty: {
     id: number;
     name: string;
-  }
+  };
 }
 
 export interface HealthRank {
@@ -42,6 +42,16 @@ export interface Record {
   Patient: Patient;
 }
 
+export interface InsurancePlan {
+  id: number;
+  name: string;
+  daliy_colver: number;
+  surgery_colver: number;
+  provider: string;
+  provider_photo_url: string;
+  miscellaneous_benefit: number;
+}
+
 export interface Patient {
   id: number;
   hkid: string;
@@ -62,9 +72,9 @@ export interface GoogleUser {
   imageUrl: string;
   gender: string;
   ageRange: {
-    min: number,
-    max: number
-  }
+    min: number;
+    max: number;
+  };
 }
 
 export interface facebookUser {
@@ -73,7 +83,7 @@ export interface facebookUser {
   token: string;
   image: string;
   displayName: string;
-  gender: string
+  gender: string;
 }
 
 export interface Patient {

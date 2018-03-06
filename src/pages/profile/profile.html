@@ -16,7 +16,7 @@
           <div class="profile-icon-container">
             <img [src]="user.photoURL" class="user-icon" />
             <p class="profile-name">{{user.displayName}}</p>
-            <p class="profile-info">
+            <!-- <p class="profile-info">
               <span>
                 <i class="icon-moon icon-male" *ngIf="user.gender === 'M'"></i>
                 <i class="icon-moon icon-female" *ngIf="user.gender === 'F'"></i>
@@ -30,10 +30,35 @@
               <span>
                 {{user.height}} CM
               </span>
-            </p>
+            </p> -->
           </div>
         </ion-col>
         <ion-col col-3></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col col-10>
+          <ion-row>
+            <ion-col col-3>
+              <p class="info-desc">{{user.gender}}</p>
+              <p class="info-title">Gender</p>
+            </ion-col>
+            <ion-col col-3>
+              <p class="info-desc">{{user.age}}</p>
+              <p class="info-title">Age</p>
+            </ion-col>
+            <ion-col col-3>
+              <p class="info-desc">{{user.height}}</p>
+              <p class="info-title">Height</p>
+            </ion-col>
+            <ion-col col-3>
+              <p class="info-desc">{{user.weight}}</p>
+              <p class="info-title">Weight</p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-1></ion-col>
+
       </ion-row>
       <ion-row class="icon-row">
         <ion-col col-2>
@@ -45,14 +70,14 @@
         </ion-col>
       </ion-row>
       <ion-row class="icon-row">
-          <ion-col col-2>
-            <i class="grid-icon icon-moon icon-key"></i>
-          </ion-col>
-          <ion-col col-10 ion-text color="secondary">
-            <p>HKID</p>
-            <p>{{user.hkid}}</p>
-          </ion-col>
-        </ion-row>
+        <ion-col col-2>
+          <i class="grid-icon icon-moon icon-key"></i>
+        </ion-col>
+        <ion-col col-10 ion-text color="secondary">
+          <p>HKID</p>
+          <p>{{user.hkid}}</p>
+        </ion-col>
+      </ion-row>
       <ion-row class="icon-row">
         <ion-col col-2>
           <i class="grid-icon icon-moon icon-health"></i>

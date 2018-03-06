@@ -75,7 +75,6 @@ export class UserService {
     const currentUser = await this.http
       .put('https://herefyp.herokuapp.com/api/patient', {
         hkid: user.hkid,
-        gender: user.gender,
         height: user.height,
         weight: user.weight,
         patientId: user.id
@@ -86,6 +85,7 @@ export class UserService {
   }
 
   async getUser() {
-    return this.storage.get('user');
+    const user: Patient = await this.storage.get('user');
+    return this.http.get<Patient>(`https://herefyp.herokuapp.com/api/patient/${user.id}`).toPromise();
   }
 }

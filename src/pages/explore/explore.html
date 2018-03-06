@@ -5,16 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border>
-
   <ion-navbar>
-    <ion-title>Explore</ion-title>
+    <ion-title>{{content}}</ion-title>
   </ion-navbar>
-
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="content">
+      <ion-segment-button value="Insurance">
+        Insurance
+      </ion-segment-button>
+      <ion-segment-button value="Find Doctor">
+        Doctor
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-    <div id="map_canvas">
-
+<ion-content class="background">
+  <div class="padding-5-10">
+    <div [ngSwitch]="content">
+      <page-insurance *ngIf="content === 'Insurance'"></page-insurance>
+      <div *ngIf="content === 'Find Doctor'"></div>
     </div>
+  </div>
 </ion-content>

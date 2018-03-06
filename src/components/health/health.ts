@@ -82,12 +82,12 @@ export class HealthPage implements OnInit {
         this.currentStepProgress = this.currentStep / this.maxStep * 100;
         this.currentDistanceProgress = this.currentDistance / this.maxStep * 100;
       }
+      this.calculateHealthRanking();
       loading.dismiss();
     } catch (error) {
       console.error(error);
       loading.dismiss();
     }
-    this.calculateHealthRanking();
   }
   calculateHealthRanking() {
     this.user.bmi = this.user.weight / Math.pow(this.user.height / 100, 2);
