@@ -30,4 +30,8 @@ export class InsuranceModalPage {
   search() {
     this.viewCtrl.dismiss(this.searchPayload);
   }
+
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
 }

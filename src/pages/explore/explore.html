@@ -10,7 +10,7 @@
   </ion-navbar>
   <ion-toolbar>
     <ion-segment [(ngModel)]="content">
-      <ion-segment-button value="Insurance">
+      <ion-segment-button value="Find Insurance">
         Insurance
       </ion-segment-button>
       <ion-segment-button value="Find Doctor">
@@ -24,7 +24,7 @@
 <ion-content class="background">
   <div class="padding-5-10">
     <div [ngSwitch]="content">
-      <page-insurance *ngIf="content === 'Insurance'"></page-insurance>
+      <page-insurance *ngIf="content === 'Find Insurance'"></page-insurance>
       <div *ngIf="content === 'Find Doctor'"></div>
     </div>
   </div>

@@ -1,4 +1,11 @@
-<ion-searchbar (click)="showSearchModal()"></ion-searchbar>
+<ion-row class="margin-5-0">
+  <ion-col col-6 class="search-col">
+    <button ion-button block class="search-button">Filter</button>
+  </ion-col>
+  <ion-col col-6 class="search-col">
+    <button ion-button block class="search-button">Sort by</button>
+  </ion-col>
+</ion-row>
 <div *ngFor="let insurancePlan of insurancePlans">
   <ion-row class="insurance-row">
     <ion-col col-3>

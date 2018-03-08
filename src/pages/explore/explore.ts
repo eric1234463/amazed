@@ -24,8 +24,9 @@ import { Doctor } from "../../services/interface";
     selector: "page-explore",
     templateUrl: "explore.html"
 })
+
 export class ExplorePage {
-    public content = 'Insurance';
+    public content = 'Find Insurance';
     constructor(
 
     ) {}

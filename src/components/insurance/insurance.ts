@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ModalController,
-  NavController,
-  NavParams,
-  LoadingController
-} from 'ionic-angular';
+import { ModalController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ImageLoaderConfig } from 'ionic-image-loader';
 import { InsuranceService } from '../../services/insurance';
 import { InsurancePlan, InsuranceSearch } from '../../services/interface';
@@ -49,8 +44,10 @@ export class InsurancePage implements OnInit {
       searchPayload: this.searchPayload
     });
     searchModal.onDidDismiss((searchPayload: InsuranceSearch) => {
-      this.searchPayload = searchPayload;
-      this.performSearch(searchPayload);
+      if (!!searchPayload) {
+        this.searchPayload = searchPayload;
+        this.performSearch(searchPayload);
+      }
     });
     searchModal.present();
   }
