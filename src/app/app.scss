@@ -262,3 +262,15 @@ text-align: left;
   margin: 1em 0;
   border-radius: 8px;
 }
+
+.item-header {
+  margin: 5px 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: color($colors, secondary);
+}
+.item-desc {
+  margin: 5px 0;
+  font-size: 14px;
+  color: color($colors, secondary);
+}

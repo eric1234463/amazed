@@ -17,4 +17,10 @@ export class DoctorService {
       .get<Doctor>(`https://herefyp.herokuapp.com/api/doctor/${id}`)
       .toPromise();
   }
+
+  async getDoctors() {
+    return await this.http
+      .get<Doctor[]>(`https://herefyp.herokuapp.com/api/doctor`)
+      .toPromise();
+  }
 }
