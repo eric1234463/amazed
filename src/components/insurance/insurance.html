@@ -1,9 +1,15 @@
 <ion-row class="margin-5-0">
-  <ion-col col-6 class="search-col">
-    <button ion-button block class="search-button">Filter</button>
+  <ion-col col-6 class="search-col-1" (click)="showSearchModal()">
+    <button ion-button block icon-left class="search-button" color="white">
+      <ion-icon name="options"></ion-icon>
+      Filter
+    </button>
   </ion-col>
-  <ion-col col-6 class="search-col">
-    <button ion-button block class="search-button">Sort by</button>
+  <ion-col col-6 class="search-col-2">
+    <button ion-button block icon-left class="search-button" color="white">
+      <ion-icon name="sort"></ion-icon>
+      Sort by
+    </button>
   </ion-col>
 </ion-row>
 <div *ngFor="let insurancePlan of insurancePlans">

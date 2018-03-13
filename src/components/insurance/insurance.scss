@@ -33,14 +33,14 @@ page-insurance{
 
   .search-button {
     margin: 0;
-    padding: 8px ;
-    font-size: 12px;
-    background-color: color($colors, white);
-    color: color($colors, primary);
-
+    border-radius: 8px;
+    color: color($colors, secondary);
   }
 
-  .search-col {
+  .search-col-1 {
+    padding: 0 2px 0 0;
+  }
+  .search-col-2 {
     padding: 0 0 0 2px;
   }
 }

@@ -26,6 +26,12 @@
   font-family: 'icomoon';
 }
 
+.ion-md-sort:before,
+.ion-ios-sort:before{
+  content: "\e99d";
+  font-family: 'icomoon';
+}
+
 .ion-md-feed-outline:before,
 .ion-ios-feed-outline:before{
   content: "\e99b";
