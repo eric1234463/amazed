@@ -1,17 +1,17 @@
 <!-- Generated template for the DoctorComponent component -->
 <div *ngIf="doctors">
-  <ion-row class="doctor-row" *ngFor="let doctor of doctors">
-    <ion-col col-3>
-      <img-loader class="perfect-image" [src]="doctor.photoURL"></img-loader>
-    </ion-col>
-    <ion-col col-9>
-      <p class="item-header">{{doctor.displayName}}</p>
-      <p class="item-desc">
-        {{ doctor.District.name }}
-      </p>
-      <p class="item-desc">
-        {{ doctor.Specialty.name }}
-      </p>
+  <ion-row class="doctor-row">
+    <ion-col col-6 *ngFor="let doctor of doctors" class="col" (click)="goToDetail(doctor)">
+      <div class="doctor-card">
+        <img-loader class="doctor-image" [src]="doctor.photoURL"></img-loader>
+        <p class="item-header">{{doctor.displayName}}</p>
+        <p class="item-desc">
+          {{ doctor.District.name }}
+        </p>
+        <p class="item-desc">
+          {{ doctor.Specialty.name }}
+        </p>
+      </div>
     </ion-col>
   </ion-row>
 </div>

@@ -7,15 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>doctor-detail</ion-title>
+    <ion-title>Detail</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content *ngIf="doctor">
-    <img [src]="doctor.photoURL" />
-    <p>{{doctor.displayName}}</p>
-    <p>{{doctor.location}}</p>
-    <p>{{doctor.email}}</p>
+<ion-content padding class="background">
+  <div class="doctor-card" *ngIf="doctor">
+    <img-loader class="doctor-image" [src]="doctor.photoURL"></img-loader>
+    <p class="item-header">{{doctor.displayName}}</p>
+    <p class="item-header">Specialty</p>
+    <p class="item-desc">
+      {{ doctor.Specialty.name }}
+    </p>
+    <p class="item-header">Open Hours</p>
+    <p class="item-desc">Mon - Fri</p>
+    <p class="item-desc">
+      {{ doctor.open_time | amParse:'HH:mm' | amDateFormat:'HH:mm A' }} - {{ doctor.close_time | amParse:'HH:mm' | amDateFormat:'HH:mm
+      A'}}
+    </p>
+    <p class="item-desc">
+      {{ doctor.District.name }}
+    </p>
+    <div id="map_canvas"></div>
+  </div>
 </ion-content>

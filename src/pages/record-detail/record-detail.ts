@@ -13,7 +13,7 @@ import { Record } from '../../services/interface';
 })
 export class RecordDetailPage {
   public record: Record;
-  public id: String;
+  public id: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

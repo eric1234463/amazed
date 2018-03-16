@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../../services/doctor';
 import { Doctor } from '../../services/interface';
 import { ImageLoaderConfig } from 'ionic-image-loader';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController, NavController } from 'ionic-angular';
 
 /**
  * Generated class for the DoctorComponent component.
@@ -19,7 +19,8 @@ export class DoctorComponent implements OnInit {
   constructor(
     public doctorService: DoctorService,
     public imageLoaderConfig: ImageLoaderConfig,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController
   ) {}
 
   async ngOnInit() {
@@ -30,8 +31,15 @@ export class DoctorComponent implements OnInit {
     });
     loading.present();
     this.imageLoaderConfig.enableSpinner(true);
-    this.imageLoaderConfig.setHeight('100%');
+    this.imageLoaderConfig.setWidth('80px');
+    this.imageLoaderConfig.setHeight('80px');
     this.doctors = await this.doctorService.getDoctors();
     loading.dismiss();
+  }
+
+  goToDetail(doctor) {
+    this.navCtrl.push('doctor-detail', {
+      id: doctor.id
+    });
   }
 }
