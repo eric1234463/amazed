@@ -17,19 +17,21 @@
   <div class="doctor-card" *ngIf="doctor">
     <img-loader class="doctor-image" [src]="doctor.photoURL"></img-loader>
     <p class="item-header">{{doctor.displayName}}</p>
-    <p class="item-header">Specialty</p>
-    <p class="item-desc">
+    <div id="map_canvas"></div>
+    <p class="list-header">Specialty</p>
+
+    <p class="list-info">
       {{ doctor.Specialty.name }}
     </p>
-    <p class="item-header">Open Hours</p>
-    <p class="item-desc">Mon - Fri</p>
-    <p class="item-desc">
-      {{ doctor.open_time | amParse:'HH:mm' | amDateFormat:'HH:mm A' }} - {{ doctor.close_time | amParse:'HH:mm' | amDateFormat:'HH:mm
-      A'}}
+    <p class="list-header">Open Hours</p>
+    <p class="list-info">Mon - Fri {{ doctor.open_time | amParse:'HH:mm' | amDateFormat:'HH:mm A' }} - {{ doctor.close_time | amParse:'HH:mm'
+      | amDateFormat:'HH:mm A'}}
     </p>
-    <p class="item-desc">
+
+    <p class="list-header">Location</p>
+
+    <p class="list-info">
       {{ doctor.District.name }}
     </p>
-    <div id="map_canvas"></div>
   </div>
 </ion-content>
