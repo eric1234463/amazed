@@ -12,9 +12,15 @@
     <div class="icon-qr">
       <div class="fa fa-desktop"></div>
     </div>
-    <div *ngFor="let scanRecord of scanRecords">
-      <p>{{scanRecord.id}}</p>
-    </div>
+    <ion-row *ngFor="let scanRecord of scanRecords" class="record-row">
+      <ion-col col-2>
+        <img [src]="scanRecord.Doctor.photoURL" class="doctor-small-icon" />
+      </ion-col>
+      <ion-col col-10 class="doctor-info-box">
+        <p class="record-name">{{scanRecord.Doctor.displayName}}</p>
+        <p class="record-info">Scan at: {{scanRecord.createdAt | amTimeAgo }}</p>
+      </ion-col>
+    </ion-row>
     <button ion-button block (click)="qrScan()">Scan QR Code</button>
   </div>
   <div *ngIf="connected == true">

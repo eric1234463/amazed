@@ -9,4 +9,28 @@ page-qr {
     color: color($colors, primary);
     text-align: center;
   }
+  .doctor-small-icon{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: calc(50% - 18px);
+    margin: auto;
+    text-align: center;
+    display: block;
+    padding: 0px;
+  }
+
+  .record-row {
+    background: white;
+  }
+
+  .record-name{
+    color: color($colors, secondary);
+    font-weight: bold;
+  }
+
+  .record-info{
+    color: color($colors, secondary);
+  }
 }
