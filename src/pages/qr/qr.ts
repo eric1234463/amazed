@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { UserService } from '../../services/user';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { RecordService } from '../../services/record';
 import { Socket } from 'ng-socket-io';
 import { Loading } from 'ionic-angular/components/loading/loading';
-import { Patient, Doctor } from '../../services/interface';
+import { Patient, Doctor, ScanRecord } from '../../services/interface';
 import { DoctorService } from '../../services/doctor';
 import {
   GoogleMap,
@@ -19,11 +19,12 @@ import {
   segment: 'qr'
 })
 @Component({ templateUrl: 'qr.html', selector: 'page-qr' })
-export class GeneratrorPage {
+export class QRPage implements OnInit {
   public doctorID: string;
   public connected = false;
   public loading: Loading;
   public patient: Patient;
+  public scanRecords: ScanRecord[];
   public doctor: Doctor;
   public map: GoogleMap;
   constructor(
@@ -37,9 +38,11 @@ export class GeneratrorPage {
     public googleMaps: GoogleMaps,
     public doctorService: DoctorService
   ) {
-    this.userService.getUser().then(patient => {
-      this.patient = patient;
-    });
+  }
+
+  async ngOnInit() {
+    this.patient = await this.userService.getUser();
+    this.scanRecords = await this.recordService.getScanRecord(this.patient.id);
     this.socket.connect();
   }
 
@@ -63,6 +66,8 @@ export class GeneratrorPage {
         });
         this.connected = true;
         this.doctor = await this.doctorService.getDoctor(this.doctorID);
+        await this.recordService.createScanRecord(this.patient.id, this.doctorID);
+
         this.loadMap(this.doctor);
         loading.dismiss();
       }

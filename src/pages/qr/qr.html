@@ -1,14 +1,20 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-title>
-      Generator
+      QR Code Scanner
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="background" padding>
-  <div *ngIf="connected == false">
+  <div *ngIf="connected == false" class="cover">
     <p style="text-align:center">Scan to See Record!</p>
+    <div class="icon-qr">
+      <div class="fa fa-desktop"></div>
+    </div>
+    <div *ngFor="let scanRecord of scanRecords">
+      <p>{{scanRecord.id}}</p>
+    </div>
     <button ion-button block (click)="qrScan()">Scan QR Code</button>
   </div>
   <div *ngIf="connected == true">

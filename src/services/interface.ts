@@ -23,6 +23,12 @@ export interface HealthRank {
   total: number;
 }
 
+export interface ScanRecord {
+  id: string;
+  doctorID: string;
+  patientId: string;
+}
+
 export interface Step {
   date: Date;
   step: number;

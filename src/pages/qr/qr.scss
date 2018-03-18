@@ -2,4 +2,11 @@ page-qr {
   #map_canvas {
     height: 300px;
   }
+
+  .icon-qr {
+    margin: auto;
+    font-size: 128px;
+    color: color($colors, primary);
+    text-align: center;
+  }
 }
