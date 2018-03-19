@@ -23,6 +23,7 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { ChartsModule } from "ng2-charts";
 import { Geolocation } from "@ionic-native/geolocation";
 import { Health } from '@ionic-native/health';
+import { Push } from '@ionic-native/push';
 import { ComponentModule } from '../components/components.module';
 
 const config: SocketIoConfig = {
@@ -63,6 +64,7 @@ const providers = {
         StatusBar,
         NativeStorage,
         BarcodeScanner,
+        Push,
         Health,
         RecordService,
         DoctorService,

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1069815185055",
+    "firebase_url": "https://bufyp-8ae9f.firebaseio.com",
+    "project_id": "bufyp-8ae9f",
+    "storage_bucket": "bufyp-8ae9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069815185055:android:a374d3f1f545040c",
+        "android_client_info": {
+          "package_name": "com.eric.health2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069815185055-67h83nghemvan2tdqhe5hrqtc4sps3r8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0FXA6S-a4SYdnhUwZwjfP95waZrB2Eks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
