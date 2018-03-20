@@ -23,8 +23,13 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <resource-file src="GoogleService-Info.plist" />
-    <resource-file src="google-services.json" target="google-services.json" />
+    <platform name="android">
+        <resource-file src="google-services.json" target="app/google-services.json" />
+        <preference name="android-minSdkVersion" value="15" />
+    </platform>
+    <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
+    </platform>
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -110,7 +115,9 @@
         <variable name="HEALTH_READ_PERMISSION" value=" " />
         <variable name="HEALTH_WRITE_PERMISSION" value=" " />
     </plugin>
-    <plugin name="phonegap-plugin-push" spec="^2.2.2" />
+    <plugin name="phonegap-plugin-push" spec="^2.2.2">
+        <variable name="SENDER_ID" value="1:1069815185055:android:df201d13e7261425" />
+    </plugin>
     <engine name="ios" spec="~4.5.3" />
-    <engine name="android" spec="~6.3.0" />
+    <engine name="android" spec="~7.1.0" />
 </widget>

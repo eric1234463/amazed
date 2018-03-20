@@ -39,13 +39,13 @@
     "angular2-qrscanner": "^0.1.7",
     "angular2-social-login": "^3.1.1",
     "chart.js": "^2.7.1",
-    "cordova-android": "6.3.0",
+    "cordova-android": "7.1.0",
     "cordova-ios": "4.5.3",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
-    "cordova-plugin-facebook4": "1.7.4",
+    "cordova-plugin-facebook4": "^1.7.4",
     "cordova-plugin-geolocation": "^4.0.1",
-    "cordova-plugin-googlemaps": "^2.2.6",
+    "cordova-plugin-googlemaps": "^2.2.8",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#2.6.0",
     "cordova-plugin-health": "^1.0.4",
     "cordova-plugin-nativestorage": "^2.3.1",
@@ -62,7 +62,7 @@
     "moment-timezone": "^0.5.14",
     "ng-socket-io": "^0.2.4",
     "ng2-charts": "^1.6.0",
-    "phonegap-plugin-barcodescanner": "^7.0.3",
+    "phonegap-plugin-barcodescanner": "^7.1.0",
     "phonegap-plugin-push": "^2.2.2",
     "promise-polyfill": "^6.0.2",
     "rxjs": "5.5.2",
@@ -91,10 +91,13 @@
         "API_KEY_FOR_ANDROID": "AIzaSyDihunfsXSWJ3vs8HGBycIFtg0Lk9ehamc",
         "API_KEY_FOR_IOS": "AIzaSyBXFNN9Q-S3XadfijFOXiASfgLj_WKqU-Y",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
-        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map",
+        "PLAY_SERVICES_VERSION": "11.8.0",
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
       },
       "phonegap-plugin-barcodescanner": {
-        "CAMERA_USAGE_DESCRIPTION": " "
+        "CAMERA_USAGE_DESCRIPTION": " ",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-compat": {},
       "cordova-plugin-facebook4": {
