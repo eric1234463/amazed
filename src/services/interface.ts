@@ -5,6 +5,8 @@ export interface Doctor {
   location: string;
   google_lat: number;
   google_lng: number;
+  open_time: Date;
+  close_time: Date;
   District: {
     id: number;
     name: string;

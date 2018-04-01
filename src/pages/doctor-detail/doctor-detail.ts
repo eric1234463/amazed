@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Platform, ModalController } from 'ionic-angular';
 import { Doctor } from '../../services/interface';
 import { DoctorService } from '../../services/doctor';
 import { ImageLoaderConfig } from 'ionic-image-loader';
@@ -37,7 +37,8 @@ export class DoctorDetailPage {
     public doctorService: DoctorService,
     public imageLoaderConfig: ImageLoaderConfig,
     public loadingCtrl: LoadingController,
-    public platform: Platform
+    public platform: Platform,
+    public modalCtrl: ModalController
   ) {}
 
   async ionViewDidLoad() {
@@ -57,6 +58,13 @@ export class DoctorDetailPage {
       this.loadMap(this.doctor);
     }
     loading.dismiss();
+  }
+
+  goToBooking() {
+    let bookingModal = this.modalCtrl.create('booking-modal', {
+      doctor: this.doctor
+    });
+    bookingModal.present();
   }
 
   loadMap(doctor: Doctor) {

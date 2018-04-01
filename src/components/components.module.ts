@@ -31,7 +31,7 @@ import { DoctorComponent } from './doctor/doctor';
     HealthPage,
     InsurancePage,
     ProgressBarComponent,
-    DoctorComponent,
+    DoctorComponent
   ],
   providers: [
     FeedService,

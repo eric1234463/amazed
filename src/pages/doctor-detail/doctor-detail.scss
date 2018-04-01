@@ -40,4 +40,8 @@ page-doctor-detail {
     border-width: 0 0 2px 0 ;
     border-color: color($colors, secondary);
   }
+
+  button {
+    margin: 0 !important;
+  }
 }

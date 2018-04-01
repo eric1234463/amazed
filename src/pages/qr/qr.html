@@ -52,6 +52,8 @@
         </ion-row>
       </div>
     </div>
-    <button ion-button block color="danger" (click)="cancel()">Cancel Connection</button>
   </div>
 </ion-content>
+<ion-footer *ngIf="connected == false">
+  <button ion-button block full color="danger" (click)="cancel()">Cancel Connection</button>
+</ion-footer>
