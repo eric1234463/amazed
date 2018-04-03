@@ -100,8 +100,8 @@ export class QRPage implements OnInit {
       icon: {
         url: 'assets/map-marker.png',
         size: {
-          width: 40,
-          height: 40
+          width: 27,
+          height: 43
         }
       },
       animation: 'DROP',
