@@ -1,0 +1,39 @@
+page-insurance-detail {
+  .insurance-row {
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 4px;
+  }
+
+  .info-desc{
+    color: color($colors, primary);
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    min-height: 42px;
+  }
+
+  .insurance-name{
+    margin: 2em;
+    font-size: 16px;
+    text-align: center;
+    color: color($colors, primary);
+    font-weight: bold;
+  }
+
+  .disadvantage {
+    color: color($colors, danger);
+    font-size: 32px;
+  }
+
+  .advantage {
+    color: color($colors, primary);
+    font-size: 32px;
+  }
+
+  .desc{
+    color: color($colors, secondary) !important;
+    font-size: 12px;
+  }
+}

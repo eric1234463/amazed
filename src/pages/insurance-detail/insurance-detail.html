@@ -1,0 +1,59 @@
+<!--
+  Generated template for the InsuranceDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+  <div class="insurance-row" *ngIf="insurancePlan">
+    <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
+    <p class="insurance-name">{{insurancePlan.name}}</p>
+    <ion-row>
+      <ion-col col-4>
+        <p class="info-desc">{{insurancePlan.daliy_cover}}</p>
+        <p class="info-title">Board & Room Daily Cover</p>
+      </ion-col>
+      <ion-col col-4>
+        <p class="info-desc">{{insurancePlan.surgery_cover}}</p>
+        <p class="info-title">Surgery Cover</p>
+      </ion-col>
+
+      <ion-col col-4>
+        <p class="info-desc" *ngIf="insurancePlan.miscellaneous_benefit > -1">{{insurancePlan.miscellaneous_benefit}}</p>
+        <p class="info-desc" *ngIf="insurancePlan.miscellaneous_benefit == -1">Fully Cover</p>
+        <p class="info-title">Miscellaneous Benefits</p>
+      </ion-col>
+    </ion-row>
+    <div>
+      <p>Advantage</p>
+      <ion-row class="icon-row" *ngFor="let InsurancePlanAdvantage of insurancePlan.InsurancePlanAdvantages">
+        <ion-col col-2 class="icon-col">
+          <ion-icon name="checkmark" class="grid-icon advantage"></ion-icon>
+        </ion-col>
+        <ion-col col-10 class="padding-0-10">
+          <p class="f-14 desc">{{InsurancePlanAdvantage.InsuranceAdvantage.name}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div>
+      <p>Disadvantage</p>
+      <ion-row class="icon-row" *ngFor="let InsurancePlanDisadvantage of insurancePlan.InsurancePlanDisadvantages">
+        <ion-col col-2 class="icon-col">
+          <ion-icon name="checkmark" class="grid-icon disadvantage"></ion-icon>
+        </ion-col>
+        <ion-col col-10 class="padding-0-10">
+          <p class="f-14 desc">{{InsurancePlanDisadvantage.InsuranceDisadvantage.name}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

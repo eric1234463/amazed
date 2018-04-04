@@ -62,4 +62,10 @@ export class InsurancePage implements OnInit {
     this.insurancePlans = await this.insuranceService.searchInsurancePlans(search);
     loading.dismiss();
   }
+
+  goToDetail(insurancePlan: InsurancePlan) {
+    this.navCtrl.push('insurance-detail',{
+      id: insurancePlan.id
+    });
+  }
 }

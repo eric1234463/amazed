@@ -11,6 +11,12 @@ export class InsuranceService {
       .toPromise();
   }
 
+  async getInsurancePlan(id: number) {
+    return await this.http
+      .get<InsurancePlan>(`https://herefyp.herokuapp.com/api/insurance/${id}`)
+      .toPromise();
+  }
+
   async searchInsurancePlans(search: InsuranceSearch) {
     return await this.http
       .post<InsurancePlan[]>('https://herefyp.herokuapp.com/api/insurance/search', {

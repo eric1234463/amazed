@@ -13,7 +13,7 @@
   </ion-col>
 </ion-row>
 <div *ngFor="let insurancePlan of insurancePlans">
-  <ion-row class="insurance-row">
+  <ion-row class="insurance-row" (click)="goToDetail(insurancePlan)">
     <ion-col col-3>
       <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
       <p class="info-rate">93% fit for you</p>
