@@ -11,6 +11,7 @@ import { UserService } from "../services/user";
 import { FeedService } from "../services/feed";
 import { InsuranceService } from "../services/insurance";
 import { DoctorComponent } from './doctor/doctor';
+import { BookingComponent } from './booking/booking';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DoctorComponent } from './doctor/doctor';
     HealthPage,
     ProgressBarComponent,
     InsurancePage,
-    DoctorComponent
+    DoctorComponent,
+    BookingComponent
   ],
   imports: [
     IonicModule,
@@ -31,7 +33,8 @@ import { DoctorComponent } from './doctor/doctor';
     HealthPage,
     InsurancePage,
     ProgressBarComponent,
-    DoctorComponent
+    DoctorComponent,
+    BookingComponent
   ],
   providers: [
     FeedService,

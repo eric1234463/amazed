@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user';
 import { HttpClient } from '@angular/common/http';
-import { Record, ScanRecord } from './interface';
-import 'rxjs/add/operator/map';
+import { Record, ScanRecord, PatientBooking } from './interface';
 
 @Injectable()
 export class RecordService {
@@ -37,13 +36,18 @@ export class RecordService {
   }
 
   async createBooking(doctorId, time, date) {
-    console.log('call booking api');
     const user = await this.userService.getUser();
     return await this.http.post('https://herefyp.herokuapp.com/api/booking', {
       doctorId: doctorId,
       patientId: user.id,
       time: time,
       date: date
+    }).toPromise();
+  }
+
+  async getBookings() {
+    const user = await this.userService.getUser();
+    return await this.http.get<PatientBooking[]>(`https://herefyp.herokuapp.com/api/booking/patient?id=${user.id}`, {
     }).toPromise();
   }
 }

@@ -69,4 +69,8 @@ export class BookingModalPage {
       console.log(error);
     }
   }
+
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
 }

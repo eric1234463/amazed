@@ -17,6 +17,11 @@ export interface Doctor {
   };
 }
 
+export interface PatientBooking {
+  id: number;
+  date: Date;
+  time: Date;
+}
 export interface HealthRank {
   sleep: number;
   step: number;

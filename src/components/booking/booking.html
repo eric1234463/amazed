@@ -1,0 +1,26 @@
+<!-- Generated template for the BookingComponent component -->
+<div>
+  <ion-grid class="padding-8">
+    <ion-row class="record-row" *ngFor="let booking of bookings" (click)="goToDoctor(booking)">
+      <ion-col col-3 class="date-col">
+        <p class="date">{{booking.createdAt | amDateFormat:'MMM'}}</p>
+        <p class="date">{{booking.createdAt | amDateFormat:'DD'}}</p>
+      </ion-col>
+      <ion-col col-3 style="text-align: center">
+        <div class="doctor-icon-outer">
+          <img class='doctor-icon' [src]="booking.Doctor.photoURL" />
+        </div>
+        <p class="item-doctor" ion-text color="secondary">{{booking.Doctor.displayName}}</p>
+      </ion-col>
+      <ion-col col-6 class="padding-10" ion-text color="secondary">
+        <p class="item-header">{{booking.time | amParse:'HH:mm' | amDateFormat:'HH:mm A'}}</p>
+        <p class="item-desc">
+          {{ booking.Doctor.District.name }}
+        </p>
+        <p class="item-desc">
+          {{ booking.Doctor.Specialty.name }}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

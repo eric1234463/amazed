@@ -16,6 +16,9 @@
       <ion-segment-button value="Feed">
         Feed
       </ion-segment-button>
+      <ion-segment-button value="Booking">
+        Booking
+      </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
@@ -26,6 +29,7 @@
     <div [ngSwitch]="content">
       <page-health *ngIf="content === 'Health status'"></page-health>
       <page-feed *ngIf="content === 'Feed'"></page-feed>
+      <page-booking *ngIf="content === 'Booking'"></page-booking>
     </div>
   </div>
 </ion-content>
