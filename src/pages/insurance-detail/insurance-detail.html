@@ -33,8 +33,8 @@
         <p class="info-title">Miscellaneous Benefits</p>
       </ion-col>
     </ion-row>
-    <div>
-      <p>Advantage</p>
+    <div class="detail-row">
+      <p class="detail-title">Advantage</p>
       <ion-row class="icon-row" *ngFor="let InsurancePlanAdvantage of insurancePlan.InsurancePlanAdvantages">
         <ion-col col-2 class="icon-col">
           <ion-icon name="checkmark" class="grid-icon advantage"></ion-icon>
@@ -44,11 +44,11 @@
         </ion-col>
       </ion-row>
     </div>
-    <div>
-      <p>Disadvantage</p>
+    <div class="detail-row">
+      <p class="detail-title">Disadvantage</p>
       <ion-row class="icon-row" *ngFor="let InsurancePlanDisadvantage of insurancePlan.InsurancePlanDisadvantages">
         <ion-col col-2 class="icon-col">
-          <ion-icon name="checkmark" class="grid-icon disadvantage"></ion-icon>
+          <ion-icon name="close" class="grid-icon disadvantage"></ion-icon>
         </ion-col>
         <ion-col col-10 class="padding-0-10">
           <p class="f-14 desc">{{InsurancePlanDisadvantage.InsuranceDisadvantage.name}}</p>

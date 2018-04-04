@@ -14,6 +14,16 @@ page-insurance-detail {
     min-height: 42px;
   }
 
+  .detail-row{
+    padding: 1em;
+  }
+
+  .detail-title{
+    font-size: 14px;
+    color: color($colors, secondary);
+    font-weight: bold;
+  }
+
   .insurance-name{
     margin: 2em;
     font-size: 16px;
