@@ -20,6 +20,15 @@
         <p class="item-desc">
           {{ booking.Doctor.Specialty.name }}
         </p>
+        <div class="accept-tag" *ngIf="booking.status === 'A'">
+          Accepted
+        </div>
+        <div class="request-tag" *ngIf="booking.status === 'R'">
+          Waiting for Accept
+        </div>
+        <div class="reject-tag" *ngIf="booking.status === 'D'">
+          Rejected
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

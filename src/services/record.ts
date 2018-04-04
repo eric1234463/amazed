@@ -47,7 +47,8 @@ export class RecordService {
 
   async getBookings() {
     const user = await this.userService.getUser();
-    return await this.http.get<PatientBooking[]>(`https://herefyp.herokuapp.com/api/booking/patient?id=${user.id}`, {
+    const date = new Date();
+    return await this.http.get<PatientBooking[]>(`https://herefyp.herokuapp.com/api/booking/patient?id=${user.id}&date=${date}`, {
     }).toPromise();
   }
 }
