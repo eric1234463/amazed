@@ -35,6 +35,10 @@ export class MorePage {
     this.navCtrl.push('profile');
   }
 
+  goToMedicineAllergies() {
+    this.navCtrl.push('patient-medicine');
+  }
+
   logout() {
     let alert = this.alertCtrl.create({
       title: 'Confirm Logout',

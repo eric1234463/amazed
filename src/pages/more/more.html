@@ -5,65 +5,57 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border>
-    <ion-navbar>
-        <ion-title>More</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>More</ion-title>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-grid>
-        <ion-row class="list-item" *ngIf="user" (click)='goToProfile()'>
-            <ion-col col-9>
-                <p class="item-profile-name">{{ user.displayName}}</p>
-                <p class="item-profile-link">View and edit Profile</p>
-            </ion-col>
-            <ion-col col-3>
-                <div class="user-icon-container">
-                    <img [src]="user.photoURL" class="user-icon" />
-                </div>
-            </ion-col>
-        </ion-row>
-        <ion-row class="list-item">
-            <ion-col col-11>
-                <p class="item-name">Notification</p>
-            </ion-col>
-            <ion-col col-1>
-                <i class="fa  fa-bell item-icon" aria-hidden="true"></i>
-            </ion-col>
-        </ion-row>
-        <ion-row class="list-item">
-            <ion-col col-11>
-                <p class="item-name">Wallet</p>
-            </ion-col>
-            <ion-col col-1>
-                <i class="fa fa-get-pocket item-icon" aria-hidden="true"></i>
-            </ion-col>
-        </ion-row>
-        <ion-row class="list-item">
-            <ion-col col-11>
-                <p class="item-name">Give us feedback</p>
-            </ion-col>
-            <ion-col col-1>
-                <i class="icon-moon icon-info item-icon" aria-hidden="true"></i>
-            </ion-col>
-        </ion-row>
-        <ion-row class="list-item">
-            <ion-col col-11>
-                <p class="item-name">Setting</p>
-            </ion-col>
-            <ion-col col-1>
-                <i class="icon-moon icon-settings item-icon" aria-hidden="true"></i>
-            </ion-col>
-        </ion-row>
+  <ion-grid>
+    <ion-row class="list-item" *ngIf="user" (click)='goToProfile()'>
+      <ion-col col-9>
+        <p class="item-profile-name">{{ user.displayName}}</p>
+        <p class="item-profile-link">View and edit Profile</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="user-icon-container">
+          <img [src]="user.photoURL" class="user-icon" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="list-item" (click)="goToMedicineAllergies()">
+      <ion-col col-11>
+        <p class="item-name">Medicine Allergies List</p>
+      </ion-col>
+      <ion-col col-1>
+        <i class="icon-moon icon-star item-icon" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
+    <ion-row class="list-item">
+      <ion-col col-11>
+        <p class="item-name">Give us feedback</p>
+      </ion-col>
+      <ion-col col-1>
+        <i class="icon-moon icon-info item-icon" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
+    <ion-row class="list-item">
+      <ion-col col-11>
+        <p class="item-name">Setting</p>
+      </ion-col>
+      <ion-col col-1>
+        <i class="icon-moon icon-settings item-icon" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
 
-        <ion-row class="list-item" (click)='logout()'>
-            <ion-col col-11>
-                <p class="item-name">Logout</p>
-            </ion-col>
-            <ion-col col-1>
-                <i class="fa fa-sign-out item-icon" aria-hidden="true"></i>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-row class="list-item" (click)='logout()'>
+      <ion-col col-11>
+        <p class="item-name">Logout</p>
+      </ion-col>
+      <ion-col col-1>
+        <i class="fa fa-sign-out item-icon" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

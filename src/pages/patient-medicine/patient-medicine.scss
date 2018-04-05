@@ -1,0 +1,20 @@
+page-patient-medicine {
+  .item-header{
+    color: color($colors, primary);
+  }
+
+  .item-icon {
+    font-size: 18px;
+    padding-right: 0.5em;
+    color: color($colors, primary);
+
+  }
+
+  .item-info {
+    font-size: 14px;
+  }
+
+  .item-desc {
+    padding: 0.25em 0;
+  }
+}
