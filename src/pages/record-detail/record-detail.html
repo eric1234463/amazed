@@ -58,7 +58,7 @@
         <ion-col col-10 class="padding-0-10 ">
           <h6 class="title">Medicine</h6>
           <p class="f-14">
-            <span *ngFor="let medicine of record.RecordMedicines" class="record-tag" [ngClass]="medicine.class">{{medicine.Medicine.name}}</span>
+            <span *ngFor="let medicine of record.RecordMedicines" class="record-tag" [ngClass]="medicine.class" (click)="goToMedicine(medicine)">{{medicine.Medicine.name}}</span>
           </p>
         </ion-col>
       </ion-row>

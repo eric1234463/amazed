@@ -14,7 +14,7 @@
 
 
 <ion-content padding class="background">
-  <div class="insurance-row" *ngIf="insurancePlan">
+  <div class="insurance-card" *ngIf="insurancePlan">
     <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
     <p class="insurance-name">{{insurancePlan.name}}</p>
     <ion-row>

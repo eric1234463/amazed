@@ -24,4 +24,10 @@ export class RecordDetailPage {
     this.id = this.navParams.get('id');
     this.record = await this.recordService.getRecordByID(this.id);
   }
+
+  goToMedicine(medicine) {
+    this.navCtrl.push('medicine-detail',{
+      id: medicine.id
+    })
+  }
 }

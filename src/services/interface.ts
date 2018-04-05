@@ -17,6 +17,18 @@ export interface Doctor {
   };
 }
 
+export interface PatientMedicine {
+  medicine: {
+    id: string,
+    name: string,
+    company: string;
+    address: string;
+    permit: string;
+    ingredients: string;
+  },
+  hasBan: boolean;
+}
+
 export interface PatientBooking {
   id: number;
   date: Date;

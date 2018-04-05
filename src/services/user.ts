@@ -4,7 +4,7 @@ import { Platform } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { AuthService } from 'angular2-social-login';
-import { Patient, facebookUser, GoogleUser } from './interface';
+import { Patient, facebookUser, GoogleUser, PatientMedicine } from './interface';
 @Injectable()
 export class UserService {
   public user: Patient;
@@ -87,5 +87,19 @@ export class UserService {
   async getUser() {
     const user: Patient = await this.storage.get('user');
     return this.http.get<Patient>(`https://herefyp.herokuapp.com/api/patient/${user.id}`).toPromise();
+  }
+
+  async getPatientMedicine(id) {
+    const user: Patient = await this.storage.get('user');
+    return this.http.get<PatientMedicine>(`https://herefyp.herokuapp.com/api/medicine/${id}?patientId=${user.id}`).toPromise();
+  }
+
+  async createPatientMedicine(id) {
+    const user: Patient = await this.storage.get('user');
+    return this.http.post<PatientMedicine>('https://herefyp.herokuapp.com/api/patient/medicine', {
+      patientId: user.id,
+      medicineId: id
+    }).toPromise();
+
   }
 }
