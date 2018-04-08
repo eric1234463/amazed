@@ -1,0 +1,28 @@
+page-feedback {
+  button {
+    margin: 0 !important;
+  }
+
+  rating {
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .card {
+    background: #fff;
+    min-height: 400px;
+    border-radius: 8px;
+    padding: 1.5em;
+  }
+
+  ion-textarea {
+    border-color: color($colors, secondary);
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 8px;
+  }
+
+  ion-item {
+    padding: 1em 0;
+  }
+}

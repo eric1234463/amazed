@@ -7,7 +7,7 @@ import { Patient } from '../../services/interface';
   segment: 'profile'
 })
 @Component({ selector: 'page-profile', templateUrl: 'profile.html' })
-export class ProfilePage {
+export class ProfilePage  {
   public user: Patient;
   public bmiProgress: number;
   constructor(
@@ -16,7 +16,7 @@ export class ProfilePage {
     public alertCtrl: AlertController
   ) {}
 
-  async ionViewDidLoad() {
+  async ionViewWillEnter () {
     try {
       this.user = await this.userService.getUser();
       console.log(this.user);

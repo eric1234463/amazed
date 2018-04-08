@@ -6,21 +6,19 @@
 -->
 
 <ion-header no-border>
-    <ion-toolbar>
-        <ion-navbar>
-            <ion-title>
-                Medicine Allergies List
-            </ion-title>
-        </ion-navbar>
-        <ion-buttons end>
-            <button ion-button *ngIf="remove === false" (click)="editMode()">
-                Remove
-            </button>
-            <button ion-button *ngIf="remove === true" (click)="editMode()">
-                Cancel
-            </button>
-        </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-navbar>
+    </ion-navbar>
+    <ion-title>Medicine Allergies List</ion-title>
+    <ion-buttons end>
+      <button ion-button *ngIf="remove === false" (click)="editMode()">
+        Remove
+      </button>
+      <button ion-button *ngIf="remove === true" (click)="editMode()">
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="background">

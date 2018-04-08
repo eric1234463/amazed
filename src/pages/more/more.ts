@@ -39,6 +39,10 @@ export class MorePage {
     this.navCtrl.push('patient-medicine');
   }
 
+  goToFeedback(){
+    this.navCtrl.push('feedback');
+  }
+
   logout() {
     let alert = this.alertCtrl.create({
       title: 'Confirm Logout',

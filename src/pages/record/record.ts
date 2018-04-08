@@ -22,7 +22,7 @@ export class RecordPage {
     public loadingCtrl: LoadingController
   ) {}
 
-  async ionViewDidLoad() {
+  async ionViewWillEnter() {
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `

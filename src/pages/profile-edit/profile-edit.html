@@ -1,10 +1,8 @@
 <ion-header no-border>
     <ion-toolbar>
-        <ion-navbar>
-            <ion-title *ngIf="user">
-                {{user.username }}
-            </ion-title>
-        </ion-navbar>
+    <ion-navbar>
+    </ion-navbar>
+    <ion-title *ngIf="user">{{user.displayName}}</ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="save()">
                 <ion-icon name="checkmark"></ion-icon>
