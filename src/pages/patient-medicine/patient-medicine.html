@@ -4,12 +4,23 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>Medicine Allergies List</ion-title>
-  </ion-navbar>
-
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-navbar>
+            <ion-title>
+                Medicine Allergies List
+            </ion-title>
+        </ion-navbar>
+        <ion-buttons end>
+            <button ion-button *ngIf="remove === false" (click)="editMode()">
+                Remove
+            </button>
+            <button ion-button *ngIf="remove === true" (click)="editMode()">
+                Cancel
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="background">
@@ -19,7 +30,7 @@
         <p class="date">{{patientMedicine.createdAt | amDateFormat:'MMM'}}</p>
         <p class="date">{{patientMedicine.createdAt | amDateFormat:'DD'}}</p>
       </ion-col>
-      <ion-col col-9 class="padding-15" ion-text color="secondary">
+      <ion-col col-8 class="padding-15" ion-text color="secondary">
         <p class="item-header">{{patientMedicine.Medicine.name}}</p>
         <p class="item-desc">
           <i class="icon-moon icon-suitcase item-icon"></i>
@@ -29,6 +40,9 @@
           <i class="icon-moon icon-health item-icon"></i>
           <span class="item-info">{{ patientMedicine.Medicine.permit }}</span>
         </p>
+      </ion-col>
+      <ion-col col-1 class="icon-col" *ngIf="remove" (click)="removeMedicine(patientMedicine)">
+        <ion-icon name="close" class="grid-icon"></ion-icon>
       </ion-col>
     </ion-row>
   </div>

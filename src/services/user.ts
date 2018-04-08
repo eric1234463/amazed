@@ -99,6 +99,10 @@ export class UserService {
     return this.http.get<PatientMedicine[]>(`https://herefyp.herokuapp.com/api/patient/${user.id}/medicine`).toPromise();
   }
 
+  async removePatientMedicine(id) {
+    return this.http.delete<PatientMedicine>(`https://herefyp.herokuapp.com/api/patient/${id}/medicine`).toPromise();
+  }
+
   async createPatientMedicine(id) {
     const user: Patient = await this.storage.get('user');
     return this.http.post<PatientMedicine>('https://herefyp.herokuapp.com/api/patient/medicine', {

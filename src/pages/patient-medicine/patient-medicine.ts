@@ -20,6 +20,7 @@ import { PatientMedicine } from '../../services/interface';
 })
 export class PatientMedicinePage {
   public patientMedicines: PatientMedicine[];
+  public remove = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,5 +29,20 @@ export class PatientMedicinePage {
 
   async ionViewDidLoad() {
     this.patientMedicines = await this.userService.getPatientMedicines();
+  }
+
+  async removeMedicine(medicine) {
+    try {
+      const result = await this.userService.removePatientMedicine(medicine.id);
+      if (result) {
+        this.patientMedicines = await this.userService.getPatientMedicines();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  editMode() {
+    this.remove = this.remove ? false : true;
   }
 }
