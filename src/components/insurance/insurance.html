@@ -16,7 +16,8 @@
   <ion-row class="insurance-row" (click)="goToDetail(insurancePlan)">
     <ion-col col-3>
       <img-loader class="perfect-image" [src]="insurancePlan.provider_photo_url"></img-loader>
-      <p class="info-rate">93% fit for you</p>
+      <p class="info-rate">{{insurancePlan.similarity}}% fit for you</p>
+      <progress-bar [progress]="insurancePlan.similarity"></progress-bar>
     </ion-col>
     <ion-col col-9>
       <ion-row>

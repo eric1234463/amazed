@@ -64,7 +64,7 @@ export class InsurancePage implements OnInit {
   }
 
   goToDetail(insurancePlan: InsurancePlan) {
-    this.navCtrl.push('insurance-detail',{
+    this.navCtrl.push('insurance-detail', {
       id: insurancePlan.id
     });
   }

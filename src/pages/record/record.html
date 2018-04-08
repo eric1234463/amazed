@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content class="background">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-grid class="padding-8">
     <ion-row class="record-row" *ngFor="let record of records" (click)="goToDetail(record)">
       <ion-col col-3 class="date-col">

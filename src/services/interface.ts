@@ -70,6 +70,7 @@ export interface Record {
 export interface InsurancePlan {
   id: number;
   name: string;
+  similarity: number;
   daliy_colver: number;
   surgery_colver: number;
   provider: string;

@@ -38,4 +38,16 @@ export class RecordPage {
       id: record.id
     });
   }
+
+  async doRefresh(refresher) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
+    this.records = await this.recordService.getRecords();
+    refresher.complete();
+    loading.dismiss();
+  }
 }

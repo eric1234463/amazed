@@ -26,6 +26,7 @@ export class ProfileEditPage implements OnInit {
     async onViewWillEnter() {
         this.user = await this.userService.getUser();
     }
+
     save() {
         console.log(this.user);
         this.userService.updateUserData(this.user);

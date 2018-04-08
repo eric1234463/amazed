@@ -80,7 +80,6 @@ export class UserService {
         patientId: user.id
       })
       .toPromise();
-    console.log(currentUser);
     return this.storage.set('user', currentUser);
   }
 

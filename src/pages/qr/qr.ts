@@ -37,13 +37,19 @@ export class QRPage implements OnInit {
     public alertCtrl: AlertController,
     public googleMaps: GoogleMaps,
     public doctorService: DoctorService
-  ) {
-  }
+  ) {}
 
   async ngOnInit() {
     this.patient = await this.userService.getUser();
     this.scanRecords = await this.recordService.getScanRecord(this.patient.id);
     this.socket.connect();
+    new Promise((resolve, reject) => {
+      this.socket.on('cancel room connection', function(data) {
+        resolve();
+      });
+    }).then(() => {
+      this.connected = false;
+    });
   }
 
   async qrScan() {

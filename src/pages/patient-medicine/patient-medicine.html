@@ -30,7 +30,7 @@
         <p class="date">{{patientMedicine.createdAt | amDateFormat:'MMM'}}</p>
         <p class="date">{{patientMedicine.createdAt | amDateFormat:'DD'}}</p>
       </ion-col>
-      <ion-col col-8 class="padding-15" ion-text color="secondary">
+      <ion-col col-7 class="padding-15" ion-text color="secondary">
         <p class="item-header">{{patientMedicine.Medicine.name}}</p>
         <p class="item-desc">
           <i class="icon-moon icon-suitcase item-icon"></i>
@@ -41,7 +41,7 @@
           <span class="item-info">{{ patientMedicine.Medicine.permit }}</span>
         </p>
       </ion-col>
-      <ion-col col-1 class="icon-col" *ngIf="remove" (click)="removeMedicine(patientMedicine)">
+      <ion-col col-2 class="icon-col" *ngIf="remove" (click)="removeMedicine(patientMedicine)">
         <ion-icon name="close" class="grid-icon"></ion-icon>
       </ion-col>
     </ion-row>
