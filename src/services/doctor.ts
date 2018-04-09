@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user';
-import { Doctor } from './interface';
+import { Doctor, District, SearchDoctor } from './interface';
 
 @Injectable()
 export class DoctorService {
@@ -19,8 +19,23 @@ export class DoctorService {
   }
 
   async getDoctors() {
+    return await this.http.get<Doctor[]>(`https://herefyp.herokuapp.com/api/doctor`).toPromise();
+  }
+
+  async getDistricts() {
     return await this.http
-      .get<Doctor[]>(`https://herefyp.herokuapp.com/api/doctor`)
+      .get<District[]>(`https://herefyp.herokuapp.com/api/district`)
+      .toPromise();
+  }
+
+  async searchDoctors(search: SearchDoctor, sort) {
+    return await this.http
+      .post<Doctor[]>(`https://herefyp.herokuapp.com/api/doctor/search`, {
+        search: {
+          ...search
+        },
+        sort
+      })
       .toPromise();
   }
 }

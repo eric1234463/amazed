@@ -122,7 +122,10 @@ export class HealthPage implements OnInit {
     });
   }
 
-  goToWalkDetail() {
-    this.navCtrl.push('walk-detail');
+  goToWalkDetail(page) {
+    this.navCtrl.push('walk-detail', {
+      page: page
+    });
   }
+
 }

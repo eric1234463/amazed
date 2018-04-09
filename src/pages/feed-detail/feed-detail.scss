@@ -8,11 +8,17 @@ page-feed-detail {
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        border-radius: 8px!important;
+    }
+    .feed-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.06) !important;
     }
     .feed-title{
         margin: 0px 4px;
         width: 60vw;
-        color: #fff;
+        color: color($colors,primary);
         top: 70px;
         position: relative;
         max-height: 60px;
@@ -26,30 +32,26 @@ page-feed-detail {
         width: 100%;
         height: 100px;
         padding: 4px 8px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
+        border-radius: 8px;
+
     }
     .feed-doctor-name{
         width: 40vw;
         margin: 4px 8px;
-        color: #fff;
+        color: color($colors,primary);
         position: relative;
         top: 60px;
         font-weight: bold;
     }
     .feed-content-box{
-        color: #fff;
+        margin: 1em;
+        color: #000;
     }
     .feed-content{
         margin: 0;
         padding: 12px;
-        font-size: 18px;
-        line-height: 200%;
-
-    }
-    ion-content{
-        background-color: color($colors, grey)!important;
-        margin: 0;
-        padding: 0;
+        font-size: 16px;
+        line-height: 1.58;
+        letter-spacing: -.004em;
     }
 }

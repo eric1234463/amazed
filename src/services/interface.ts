@@ -42,6 +42,15 @@ export interface HealthRank {
   total: number;
 }
 
+export interface District {
+  id: number;
+  name: string;
+}
+
+export interface SearchDoctor {
+  district_id: number;
+}
+
 export interface ScanRecord {
   id: string;
   doctorID: string;
@@ -53,6 +62,13 @@ export interface Step {
   step: number;
   currentProgress?: number;
 }
+
+export interface Distance {
+  date: Date;
+  distance: number;
+  currentProgress?: number;
+}
+
 export interface Record {
   id: string;
   visitDate: Date;

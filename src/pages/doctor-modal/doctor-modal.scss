@@ -1,0 +1,22 @@
+page-doctor-modal {
+  ion-select{
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .select-label{
+    color: color($colors, secondary);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0.5em 0;
+  }
+
+  button {
+    margin: 0 !important;
+  }
+
+  .bar-button-ios[icon-only]{
+    font-size: 24px;
+  }
+}

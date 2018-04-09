@@ -14,7 +14,7 @@
 
 
 <ion-content class="background">
-  <div *ngIf="steps" class="padding-5-10">
+  <div *ngIf="page === 'step'" class="padding-5-10">
     <ion-row *ngFor="let step of steps" class="record-row">
       <ion-col col-3 class="date-col">
         <p class="date">{{step.date | amDateFormat:'MMM'}}</p>
@@ -25,7 +25,22 @@
         <p class="progress-title">Step</p>
         <span class="progress-bold">{{step.step}}</span>
         <span>Step</span>
-        <i class="icon-moon icon-moon-stroke icon-travel-walk progress-icon"></i>
+        <i class="icon-moon icon-travel-walk progress-icon"></i>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="page === 'distance'" class="padding-5-10">
+    <ion-row *ngFor="let distance of distances" class="record-row">
+      <ion-col col-3 class="date-col">
+        <p class="date">{{distance.date | amDateFormat:'MMM'}}</p>
+        <p class="date">{{distance.date | amDateFormat:'DD'}}</p>
+      </ion-col>
+      <ion-col col-9 *ngIf="page === 'distance'">
+        <progress-bar [progress]="distance.currentProgress"></progress-bar>
+        <p class="progress-title">Walk Distance</p>
+        <span class="progress-bold">{{distance.distance}}</span>
+        <span>M</span>
+        <i class="icon-moon icon-compass2 progress-icon"></i>
       </ion-col>
     </ion-row>
   </div>

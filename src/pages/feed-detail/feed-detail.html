@@ -9,8 +9,8 @@
       <ion-title>Feed Detail</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content>
-    <div *ngIf="feed">
+<ion-content padding class="background">
+    <div *ngIf="feed" class="feed-card">
         <img-loader class="feed_bg" [src]="feed.photoURL">
             <div class="feed-box-cover">
             </div>

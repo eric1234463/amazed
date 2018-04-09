@@ -19,7 +19,7 @@ export class InsuranceService {
       .toPromise();
   }
 
-  async searchInsurancePlans(search: InsuranceSearch) {
+  async searchInsurancePlans(search: InsuranceSearch, sort) {
     const user = await this.userService.getUser();
 
     return await this.http
@@ -27,7 +27,8 @@ export class InsuranceService {
         patientId: user.id,
         search: {
           ...search
-        }
+        },
+        sort
       })
       .toPromise();
   }

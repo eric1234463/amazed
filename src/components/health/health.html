@@ -23,7 +23,7 @@
         <i class="icon-moon icon-cloud-sun progress-icon"></i>
       </div>
     </ion-col>
-    <ion-col style="padding:0">
+    <ion-col style="padding:0" (click)="goToWalkDetail('distance')">
       <div class="progress-box-2">
         <progress-bar [progress]="currentDistanceProgress"></progress-bar>
         <p class="progress-title">Walk Distance</p>
@@ -34,7 +34,7 @@
     </ion-col>
   </ion-row>
   <ion-row style="padding-bottom:8px">
-    <ion-col style="padding:0" (click)="goToWalkDetail()">
+    <ion-col style="padding:0" (click)="goToWalkDetail('step')">
       <div class="progress-box-1">
         <progress-bar [progress]="currentStepProgress"></progress-bar>
         <p class="progress-title">Step</p>

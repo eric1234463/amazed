@@ -37,6 +37,7 @@
     "angular2-qrscanner": "^0.1.7",
     "angular2-social-login": "^3.1.1",
     "chart.js": "^2.7.1",
+    "cordova-android": "7.0.0",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-facebook4": "^1.7.4",
@@ -107,7 +108,8 @@
       }
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

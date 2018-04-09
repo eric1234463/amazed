@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FeedService } from '../../services/feed';
-import { Step } from '../../services/interface';
+import { Step, Distance } from '../../services/interface';
 
 /**
  * Generated class for the WalkDetailPage page.
@@ -20,15 +20,24 @@ import { Step } from '../../services/interface';
 })
 export class WalkDetailPage {
   public steps: Step[];
+  public distances : Distance[];
+  public page: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public feedService : FeedService) {
   }
 
   async ionViewDidLoad() {
-    console.log('ionViewDidLoad WalkDetailPage');
+    this.page = this.navParams.get('page');
+    console.log(this.page);
     const steps = await this.feedService.getWalkingStep();
+    const distances = await this.feedService.getWalkingDistance();
+
     this.steps = steps.map(step=>{
       step.currentProgress = step.step / 10000 * 100;
       return step;
+    });
+    this.distances = distances.map(distance=>{
+      distance.currentProgress = distance.distance / 10000 * 100;
+      return distance;
     });
   }
 
