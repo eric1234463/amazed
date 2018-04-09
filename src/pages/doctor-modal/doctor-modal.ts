@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { DoctorService } from '../../services/doctor';
 import { District, SearchDoctor } from '../../services/interface';
 
@@ -26,13 +26,21 @@ export class DoctorModalPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public doctorService: DoctorService
+    public doctorService: DoctorService,
+    public loadingCtrl: LoadingController
   ) {
     this.searchPayload = this.navParams.get('searchPayload');
   }
 
   async ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.districts = await this.doctorService.getDistricts();
+    loading.dismiss();
   }
 
   search() {

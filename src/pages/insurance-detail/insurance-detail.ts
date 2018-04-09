@@ -29,7 +29,7 @@ export class InsuranceDetailPage {
     public insuranceService: InsuranceService
   ) {
     this.imageLoaderConfig.enableSpinner(true);
-    this.imageLoaderConfig.setHeight('125px');
+    this.imageLoaderConfig.setHeight('250px');
   }
 
   async ionViewDidLoad() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Clock } from '../../services/feed';
 import moment from 'moment';
 /**
@@ -10,12 +10,12 @@ import moment from 'moment';
  */
 
 @IonicPage({
-  name:'sleep-detail',
+  name: 'sleep-detail',
   segment: 'sleep-detail'
 })
 @Component({
   selector: 'page-sleep-detail',
-  templateUrl: 'sleep-detail.html',
+  templateUrl: 'sleep-detail.html'
 })
 export class SleepDetailPage {
   public lineChartData: Clock[];
@@ -54,7 +54,17 @@ export class SleepDetailPage {
   };
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController
+  ) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     for (let i = 7; i > 0; i--) {
       let date = moment()
         .subtract(i, 'd')
@@ -62,10 +72,8 @@ export class SleepDetailPage {
       this.lineChartLabels.push(date);
     }
     this.lineChartData = this.navParams.get('data');
+    loading.dismiss();
   }
 
-  ionViewDidLoad() {
-
-  }
-
+  ionViewDidLoad() {}
 }

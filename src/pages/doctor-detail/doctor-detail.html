@@ -19,6 +19,18 @@
     <p class="item-header">{{doctor.displayName}}</p>
     <div id="map_canvas"></div>
     <div class="list-item">
+      <p class="list-header">About Me</p>
+      <p class="list-info">
+        {{ doctor.about }}
+      </p>
+    </div>
+    <div class="list-item">
+      <p class="list-header">Telephone</p>
+      <p class="list-info">
+        {{ doctor.telphone }}
+      </p>
+    </div>
+    <div class="list-item">
       <p class="list-header">Specialty</p>
       <p class="list-info">
         {{ doctor.Specialty.name }}

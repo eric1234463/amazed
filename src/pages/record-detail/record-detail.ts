@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage, PopoverController } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, PopoverController, LoadingController } from 'ionic-angular';
 import { RecordService } from '../../services/record';
 import { Record } from '../../services/interface';
 
@@ -18,11 +18,20 @@ export class RecordDetailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public popoverCtrl: PopoverController,
-    public recordService: RecordService
+    public recordService: RecordService,
+    public loadingCtrl: LoadingController
   ) {}
+
   async ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.id = this.navParams.get('id');
     this.record = await this.recordService.getRecordByID(this.id);
+    loading.dismiss();
   }
 
   goToMedicine(medicine) {
