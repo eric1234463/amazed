@@ -40,8 +40,16 @@ export class QRPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.patient = await this.userService.getUser();
     this.scanRecords = await this.recordService.getScanRecord(this.patient.id);
+    loading.dismiss();
+
     this.socket.connect();
     this.socket.fromEvent('cancel room connection').subscribe(data => {
       this.connected = false;

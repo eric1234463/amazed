@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UserService } from '../../services/user';
 import { PatientMedicine } from '../../services/interface';
 
@@ -24,21 +24,38 @@ export class PatientMedicinePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public userService: UserService
+    public userService: UserService,
+    public loadingCtrl: LoadingController,
   ) {}
 
   async ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     this.patientMedicines = await this.userService.getPatientMedicines();
+    loading.dismiss();
   }
 
   async removeMedicine(medicine) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <img src="assets/spinner.svg"/>`
+    });
+    loading.present();
     try {
       const result = await this.userService.removePatientMedicine(medicine.id);
       if (result) {
         this.patientMedicines = await this.userService.getPatientMedicines();
       }
+      loading.dismiss();
     } catch (error) {
       console.log(error);
+      loading.dismiss();
+
     }
   }
 
