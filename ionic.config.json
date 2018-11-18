@@ -1,12 +1,14 @@
 {
   "name": "HERE",
-  "app_id": "58d7fca0",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
-  "proxies": [{
-    "path": "/api",
-    "proxyUrl": "https://herefyp.herokuapp.com/api"
-  }]
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://herefyp.herokuapp.com/api"
+    }
+  ],
+  "pro_id": "58d7fca0"
 }
